@@ -1,5 +1,5 @@
 // RootLayout.tsx
-import StoreProvider from "./store/provider/StoreProvider";
+import StoreProvider from "../store/providers/StoreProvider";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
