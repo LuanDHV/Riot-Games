@@ -1,3 +1,25 @@
+"use client";
+import { useEffect, useState } from "react";
+
 export default function Header() {
-  return <div>Riot Games Header</div>;
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScrollToChangeBgColor = () =>
+      setIsScrolled(window.scrollY > 50);
+
+    window.addEventListener("scroll", handleScrollToChangeBgColor);
+    return () =>
+      window.removeEventListener("scroll", handleScrollToChangeBgColor);
+  }, []);
+
+  return (
+    <div
+      className={`fixed z-50 h-20 w-full transition-colors duration-300 ease-in-out ${
+        isScrolled ? "bg-[#111]" : "bg-transparent"
+      }`}
+    >
+      <p className="text-white">Riot Games Header</p>
+    </div>
+  );
 }
