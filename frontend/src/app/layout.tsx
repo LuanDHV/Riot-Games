@@ -5,7 +5,7 @@ import StoreProvider from "../store/providers/StoreProvider";
 export const metadata = {
   title: "Riot Games",
   description: "Welcome to Riot Games",
-  icons: "/imgs/riotgames/riot-games-icon.png",
+  icons: "/imgs/riotgames/icon.png",
 };
 
 export default function RootLayout({

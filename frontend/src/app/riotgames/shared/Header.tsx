@@ -15,7 +15,7 @@ export default function Header() {
 
   return (
     <div
-      className={`fixed z-50 h-20 w-full transition-colors duration-300 ease-in-out ${
+      className={`fixed z-50 h-20 w-full px-5 transition-colors duration-300 ease-in-out md:px-10 ${
         isScrolled ? "bg-[#111]" : "bg-transparent"
       }`}
     >
