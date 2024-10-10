@@ -1,11 +1,12 @@
 import Banner from "./components/Banner";
-import Games from "./components/Games";
+import OurGame from "./components/OurGame";
 
 export default function RiotGamesPage() {
   return (
     <>
       <Banner />
-      <Games />
+
+      <OurGame />
     </>
   );
 }

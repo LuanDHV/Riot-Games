@@ -3,53 +3,53 @@ import Link from "next/link";
 export default function Games() {
   const games = [
     {
-      launchImg: "/imgs/riotgames/lol-launch.png",
-      logotype: "/imgs/riotgames/lol-logotype.png",
+      launchImg: "/imgs/riotgames/games/lol-launch.png",
+      logotype: "/imgs/riotgames/games/lol-logotype.png",
       platforms: [
-        "/imgs/riotgames/platforms-window.png",
-        "/imgs/riotgames/platforms-macos.png",
+        "/imgs/riotgames/games/platforms-window.png",
+        "/imgs/riotgames/games/platforms-macos.png",
       ],
       link: "/leagueoflegends",
     },
     {
-      launchImg: "/imgs/riotgames/valorant-launch.png",
-      logotype: "/imgs/riotgames/valorant-logotype.png",
+      launchImg: "/imgs/riotgames/games/valorant-launch.png",
+      logotype: "/imgs/riotgames/games/valorant-logotype.png",
       platforms: [
-        "/imgs/riotgames/platforms-window.png",
-        "/imgs/riotgames/platforms-playstation.png",
-        "/imgs/riotgames/platforms-xbox.png",
+        "/imgs/riotgames/games/platforms-window.png",
+        "/imgs/riotgames/games/platforms-playstation.png",
+        "/imgs/riotgames/games/platforms-xbox.png",
       ],
       link: "/valorant",
     },
     {
-      launchImg: "/imgs/riotgames/tft-launch.png",
-      logotype: "/imgs/riotgames/tft-logotype.png",
+      launchImg: "/imgs/riotgames/games/tft-launch.png",
+      logotype: "/imgs/riotgames/games/tft-logotype.png",
       platforms: [
-        "/imgs/riotgames/platforms-window.png",
-        "/imgs/riotgames/platforms-macos.png",
-        "/imgs/riotgames/platforms-phone.png",
+        "/imgs/riotgames/games/platforms-window.png",
+        "/imgs/riotgames/games/platforms-macos.png",
+        "/imgs/riotgames/games/platforms-phone.png",
       ],
       link: "/teamfighttactics",
     },
     {
-      launchImg: "/imgs/riotgames/wildrift-launch.png",
-      logotype: "/imgs/riotgames/wildrift-logotype.png",
-      platforms: ["/imgs/riotgames/platforms-phone.png"],
+      launchImg: "/imgs/riotgames/games/wildrift-launch.png",
+      logotype: "/imgs/riotgames/games/wildrift-logotype.png",
+      platforms: ["/imgs/riotgames/games/platforms-phone.png"],
       link: "/wildrift",
     },
     {
-      launchImg: "/imgs/riotgames/runeterra-launch.png",
-      logotype: "/imgs/riotgames/runeterra-logotype.png",
+      launchImg: "/imgs/riotgames/games/runeterra-launch.png",
+      logotype: "/imgs/riotgames/games/runeterra-logotype.png",
       platforms: [
-        "/imgs/riotgames/platforms-window.png",
-        "/imgs/riotgames/platforms-phone.png",
+        "/imgs/riotgames/games/platforms-window.png",
+        "/imgs/riotgames/games/platforms-phone.png",
       ],
       link: "/runeterra",
     },
   ];
 
   return (
-    <div className="h-auto w-full bg-[#1F1F1F] px-5 py-20 lg:px-20 lg:py-[100px]">
+    <>
       <h2 className="mb-[30px] text-center text-3xl font-bold text-[#F9F9F9] lg:mb-[60px] lg:text-start lg:text-5xl">
         Games
       </h2>
@@ -85,6 +85,6 @@ export default function Games() {
           </Link>
         ))}
       </div>
-    </div>
+    </>
   );
 }
