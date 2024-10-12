@@ -15,22 +15,22 @@ export default function Entertainment() {
   ];
   return (
     <>
-      <h2 className="mb-[30px] text-center text-3xl font-bold text-[#F9F9F9] lg:mb-[60px] lg:text-start lg:text-5xl">
+      <h2 className="mb-[30px] text-center font-bold text-[#F9F9F9] lg:mb-[60px] lg:text-start lg:text-5xl xl:text-3xl">
         Entertainments
       </h2>
       <div className="grid items-center justify-center lg:grid-cols-2">
-        {entertainments.map((esport, index) => (
-          <Link key={index} href={esport.link}>
+        {entertainments.map((entertainment, index) => (
+          <Link key={index} href={entertainment.link}>
             <div className="relative mb-6 h-auto w-full cursor-pointer rounded-lg lg:mb-[50px] lg:pl-5">
               <img
-                src={esport.img}
-                alt="esport-launch"
+                src={entertainment.img}
+                alt="entertainment-launch"
                 className="rounded-lg border border-transparent object-cover duration-300 ease-in-out hover:border-white"
               />
               <div className="pointer-events-none absolute top-0 flex h-full w-[168px] flex-col items-center justify-between py-3 pl-6 pr-8 lg:w-[325px] lg:px-[55px] lg:py-6">
                 <img
-                  src={esport.logo}
-                  alt="esport-logo"
+                  src={entertainment.logo}
+                  alt="entertainment-logo"
                   className="m-auto max-w-[112px] object-cover lg:max-w-[180px]"
                 />
               </div>

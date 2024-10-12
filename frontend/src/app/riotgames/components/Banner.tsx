@@ -22,7 +22,7 @@ export default function Banner() {
             alt="logo"
             className="max-w-[215px] object-cover lg:max-w-[360px]"
           />
-          <h1 className="text-center text-2xl font-bold md:text-3xl">
+          <h1 className="text-center text-2xl font-bold md:xl:text-3xl">
             World Finals <br />
             League of Legends
           </h1>
@@ -42,7 +42,7 @@ export default function Banner() {
                   alt="arrow-right"
                 />
               </div>
-              <span className="text-2xl font-bold text-white lg:text-3xl">
+              <span className="text-2xl font-bold text-white lg:xl:text-3xl">
                 Play Now
               </span>
             </Link>

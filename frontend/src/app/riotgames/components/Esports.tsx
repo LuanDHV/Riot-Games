@@ -14,7 +14,7 @@ export default function Esports() {
   ];
   return (
     <>
-      <h2 className="mb-[30px] text-center text-3xl font-bold text-[#F9F9F9] lg:mb-[60px] lg:text-start lg:text-5xl">
+      <h2 className="mb-[30px] text-center font-bold text-[#F9F9F9] lg:mb-[60px] lg:text-start lg:text-5xl xl:text-3xl">
         Esports
       </h2>
       <div className="grid items-center justify-center lg:grid-cols-2">
