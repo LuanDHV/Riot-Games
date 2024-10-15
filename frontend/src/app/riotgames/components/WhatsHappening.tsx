@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { IWhatsHappening } from "../types/riotgames.interface";
 
 export default function WhatsHappening() {
-  const thumbs = [
+  const thumbs: IWhatsHappening[] = [
     {
       title: "Watch, Play, Experience: Here’s How We’re Celebrating Arcane...",
       icon: "/imgs/riotgames/whatshappening/arcane-icon.png",
@@ -58,7 +59,7 @@ export default function WhatsHappening() {
         {/* Main Thumb */}
         {thumbs
           .filter((thumb) => thumb.thumbMain)
-          .map((thumb, index) => (
+          .map((thumb: IWhatsHappening, index: number) => (
             <Link key={index} href={thumb.link} className="rounded-xl xl:w-3/5">
               <div className="flex flex-col">
                 <div className="h-auto w-full overflow-hidden rounded-xl">
@@ -93,7 +94,7 @@ export default function WhatsHappening() {
         <div className="mx-auto grid w-full gap-5 md:grid-cols-2 xl:w-2/5 xl:grid-cols-1">
           {thumbs
             .filter((thumb) => !thumb.thumbMain)
-            .map((thumb, index) => (
+            .map((thumb: IWhatsHappening, index: number) => (
               <Link
                 key={index}
                 href={thumb.link}

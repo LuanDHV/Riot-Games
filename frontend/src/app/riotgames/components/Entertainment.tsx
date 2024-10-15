@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { IEntertainments } from "../types/riotgames.interface";
 
 export default function Entertainment() {
-  const entertainments = [
+  const entertainments: IEntertainments[] = [
     {
       img: "/imgs/riotgames/entertainment/arcane-card.png",
       logo: "/imgs/riotgames/entertainment/arcane-logo.png",
@@ -19,7 +20,7 @@ export default function Entertainment() {
         Entertainments
       </h2>
       <div className="grid items-center justify-center gap-5 md:grid-cols-2">
-        {entertainments.map((entertainment, index) => (
+        {entertainments.map((entertainment: IEntertainments, index: number) => (
           <Link key={index} href={entertainment.link}>
             <div className="relative h-auto w-full cursor-pointer">
               <img

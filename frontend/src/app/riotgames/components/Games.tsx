@@ -1,7 +1,8 @@
 import Link from "next/link";
+import { IGames } from "../types/riotgames.interface";
 
 export default function Games() {
-  const games = [
+  const games: IGames[] = [
     {
       launchImg: "/imgs/riotgames/games/lol-launch.png",
       logotype: "/imgs/riotgames/games/lol-logotype.png",
@@ -54,7 +55,7 @@ export default function Games() {
         Games
       </h2>
       <div className="grid items-center justify-center gap-5 md:grid-cols-2 md:pb-5">
-        {games.map((game, index) => (
+        {games.map((game: IGames, index: number) => (
           <Link key={index} href={game.link}>
             <div className="relative h-auto w-full cursor-pointer">
               <img

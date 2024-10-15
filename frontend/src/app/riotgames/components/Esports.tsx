@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { IEsports } from "../types/riotgames.interface";
+
 export default function Esports() {
-  const esports = [
+  const esports: IEsports[] = [
     {
       img: "/imgs/riotgames/esports/lol-esports-img.png",
       logo: "/imgs/riotgames/esports/lol-esports-logo.png",
@@ -12,13 +14,14 @@ export default function Esports() {
       link: "#",
     },
   ];
+
   return (
     <>
       <h2 className="my-[30px] text-center text-3xl font-bold text-[#F9F9F9] md:my-[60px] md:text-start md:text-5xl">
         Esports
       </h2>
       <div className="grid items-center justify-center gap-5 md:grid-cols-2 md:pb-5">
-        {esports.map((esport, index) => (
+        {esports.map((esport: IEsports, index: number) => (
           <Link key={index} href={esport.link}>
             <div className="relative h-auto w-full cursor-pointer">
               <img

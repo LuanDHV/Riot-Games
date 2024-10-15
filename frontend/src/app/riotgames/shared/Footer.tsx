@@ -1,16 +1,10 @@
 "use client";
 import Link from "next/link";
+import useScrollToTop from "../../hooks/useScrollToTop";
+import { IMenusFooter, ISocialIcons } from "../types/riotgames.interface";
 
 export default function Footer() {
-  // Hàm cuộn lên đầu trang
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const footerData = [
+  const footerData: IMenusFooter[] = [
     { title: "Press", link: "#" },
     { title: "Security", link: "#" },
     { title: "Legal", link: "#" },
@@ -24,7 +18,7 @@ export default function Footer() {
     { title: "Annual Reports", link: "#" },
   ];
 
-  const socialIconsData = [
+  const socialIconsData: ISocialIcons[] = [
     {
       white: "/imgs/riotgames/footer/social-x-white.png",
       red: "/imgs/riotgames/footer/social-x-red.png",
@@ -68,7 +62,7 @@ export default function Footer() {
       <div className="mx-auto max-w-[1440px]">
         <div className="justify-between lg:flex lg:py-10">
           <div className="flex flex-col items-center lg:flex-row lg:gap-5">
-            {/* Icon Chính */}
+            {/* Riot Games Icon */}
             <div className="group relative mx-auto h-auto w-10 cursor-pointer">
               <img
                 src="/imgs/riotgames/footer/icon-riotgames-white.png"
@@ -82,12 +76,12 @@ export default function Footer() {
               />
             </div>
 
-            {/* Các Liên Kết */}
+            {/* Links */}
             <ul
               className="flex flex-col items-center justify-center pt-[30px] md:flex-row md:flex-wrap lg:justify-start lg:pt-0"
               style={{ width: "calc(100% - 40px)" }}
             >
-              {footerData.map((data, index) => (
+              {footerData.map((data: IMenusFooter, index: number) => (
                 <li className="py-2" key={index}>
                   <Link
                     href={data.link}
@@ -100,9 +94,9 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Các Icon Mạng Xã Hội */}
+          {/* Social Network Icons */}
           <div className="flex justify-center pb-[30px] pt-5 lg:pb-0 lg:pt-0">
-            {socialIconsData.map((icon, index) => (
+            {socialIconsData.map((icon: ISocialIcons, index: number) => (
               <Link
                 href={icon.link}
                 key={index}
@@ -111,23 +105,23 @@ export default function Footer() {
                 <img
                   src={icon.white}
                   alt={`${icon.alt} White`}
-                  className={`absolute h-4 w-4 object-contain transition-opacity duration-300`}
+                  className="absolute h-4 w-4 object-contain transition-opacity duration-300"
                 />
                 <img
                   src={icon.red}
                   alt={`${icon.alt} Red`}
-                  className={`absolute h-4 w-4 object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100`}
+                  className="absolute h-4 w-4 object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                 />
               </Link>
             ))}
           </div>
         </div>
 
-        {/* Đường phân cách */}
+        {/* Dividing line */}
         <div className="mx-auto h-[2px] max-w-[1440px] bg-[url('/imgs/riotgames/footer/hr-bg.svg')] bg-repeat-x"></div>
 
         <div className="justify-between lg:flex">
-          {/* Thông Tin Bổ Sung */}
+          {/* Additional Information */}
           <div className="flex flex-col items-center justify-center md:flex-row">
             <span className="cursor-pointer p-[30px] text-center text-xs text-white hover:underline md:px-0 md:py-20 lg:py-[30px]">
               Cookie Preferences
@@ -142,13 +136,13 @@ export default function Footer() {
             </span>
           </div>
 
-          {/* Đường phân cách */}
+          {/* Dividing line */}
           <div className="mx-auto h-[2px] max-w-[1440px] bg-[url('/imgs/riotgames/footer/hr-bg.svg')] bg-repeat-x lg:hidden"></div>
 
           {/* To the Surface */}
           <div
             className="group mt-[30px] flex cursor-pointer items-center justify-center text-sm uppercase text-white"
-            onClick={scrollToTop}
+            onClick={useScrollToTop}
           >
             To the Surface
             <div className="group relative ml-2 h-2 w-7">
