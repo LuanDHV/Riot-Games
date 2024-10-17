@@ -1,7 +1,7 @@
 export interface IMenusHeader {
   title: string;
   href?: string;
-  subMenuData?: ISubMenusHeader[];
+  subMenuRight?: ISubMenusHeader[];
 }
 
 export interface ISubMenusHeader {

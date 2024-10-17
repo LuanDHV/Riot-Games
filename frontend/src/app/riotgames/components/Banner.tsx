@@ -34,7 +34,7 @@ export default function Banner() {
           <button>
             <Link
               href="/leagueoflegends"
-              className="flex h-[50px] w-[184px] items-center justify-evenly rounded-2xl bg-gradient-to-br from-blue-500 to-blue-400 px-3 duration-300 ease-in-out hover:shadow-lg hover:shadow-blue-500 hover:brightness-125 lg:h-[72px] lg:w-[244px]"
+              className="flex h-[50px] w-[184px] items-center justify-evenly rounded-2xl bg-gradient-to-r from-[#2c8cc2] to-[#0bc4e2] px-3 duration-300 ease-in-out hover:shadow-lg hover:shadow-blue-500 hover:brightness-125 lg:h-[72px] lg:w-[244px]"
             >
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-black lg:h-12 lg:w-12">
                 <img

@@ -1,20 +1,20 @@
 import Link from "next/link";
 import { IEsports } from "../types/riotgames.interface";
 
-export default function Esports() {
-  const esports: IEsports[] = [
-    {
-      img: "/imgs/riotgames/esports/lol-esports-img.png",
-      logo: "/imgs/riotgames/esports/lol-esports-logo.png",
-      link: "#",
-    },
-    {
-      img: "/imgs/riotgames/esports/vlr-esports-img.png",
-      logo: "/imgs/riotgames/esports/vlr-esports-logo.png",
-      link: "#",
-    },
-  ];
+const esports: IEsports[] = [
+  {
+    img: "/imgs/riotgames/esports/lol-esports-img.png",
+    logo: "/imgs/riotgames/esports/lol-esports-logo.png",
+    link: "#",
+  },
+  {
+    img: "/imgs/riotgames/esports/vlr-esports-img.png",
+    logo: "/imgs/riotgames/esports/vlr-esports-logo.png",
+    link: "#",
+  },
+];
 
+export default function Esports() {
   return (
     <>
       <h2 className="my-[30px] text-center text-3xl font-bold text-[#F9F9F9] md:my-[60px] md:text-start md:text-5xl">

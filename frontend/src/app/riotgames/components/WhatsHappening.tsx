@@ -1,45 +1,45 @@
 import Link from "next/link";
 import { IWhatsHappening } from "../types/riotgames.interface";
 
-export default function WhatsHappening() {
-  const thumbs: IWhatsHappening[] = [
-    {
-      title: "Watch, Play, Experience: Here’s How We’re Celebrating Arcane...",
-      icon: "/imgs/riotgames/whatshappening/arcane-icon.png",
-      image: "/imgs/riotgames/whatshappening/thumb1.png",
-      link: "#",
-      thumbMain: true,
-    },
-    {
-      title: "Heavy Is The Crown ft. Linkin Park",
-      icon: "/imgs/riotgames/whatshappening/leagueoflegends-icon.png",
-      image: "/imgs/riotgames/whatshappening/thumb2.png",
-      link: "#",
-      thumbMain: false,
-    },
-    {
-      title: "LoL Player Days",
-      icon: "/imgs/riotgames/whatshappening/leagueoflegends-icon.png",
-      image: "/imgs/riotgames/whatshappening/thumb3.png",
-      link: "#",
-      thumbMain: false,
-    },
-    {
-      title: "LoL Player Days",
-      icon: "/imgs/riotgames/whatshappening/valorant-icon.png",
-      image: "/imgs/riotgames/whatshappening/thumb4.png",
-      link: "#",
-      thumbMain: false,
-    },
-    {
-      title: "Worlds 2024 | Make Them Believe",
-      icon: "/imgs/riotgames/whatshappening/leagueoflegends-icon.png",
-      image: "/imgs/riotgames/whatshappening/thumb5.png",
-      link: "#",
-      thumbMain: false,
-    },
-  ];
+const thumbs: IWhatsHappening[] = [
+  {
+    title: "Watch, Play, Experience: Here’s How We’re Celebrating Arcane...",
+    icon: "/imgs/riotgames/whatshappening/arcane-icon.png",
+    image: "/imgs/riotgames/whatshappening/thumb1.png",
+    link: "#",
+    thumbMain: true,
+  },
+  {
+    title: "Heavy Is The Crown ft. Linkin Park",
+    icon: "/imgs/riotgames/whatshappening/leagueoflegends-icon.png",
+    image: "/imgs/riotgames/whatshappening/thumb2.png",
+    link: "#",
+    thumbMain: false,
+  },
+  {
+    title: "LoL Player Days",
+    icon: "/imgs/riotgames/whatshappening/leagueoflegends-icon.png",
+    image: "/imgs/riotgames/whatshappening/thumb3.png",
+    link: "#",
+    thumbMain: false,
+  },
+  {
+    title: "LoL Player Days",
+    icon: "/imgs/riotgames/whatshappening/valorant-icon.png",
+    image: "/imgs/riotgames/whatshappening/thumb4.png",
+    link: "#",
+    thumbMain: false,
+  },
+  {
+    title: "Worlds 2024 | Make Them Believe",
+    icon: "/imgs/riotgames/whatshappening/leagueoflegends-icon.png",
+    image: "/imgs/riotgames/whatshappening/thumb5.png",
+    link: "#",
+    thumbMain: false,
+  },
+];
 
+export default function WhatsHappening() {
   return (
     <div className="relative h-auto w-full bg-[#0a0a0a] px-5 py-20 md:px-10 lg:py-[100px] xl:px-20">
       <div className="mb-[30px] flex items-center justify-center text-[#F9F9F9] md:mb-[60px] md:justify-between">
@@ -138,7 +138,7 @@ export default function WhatsHappening() {
       </Link>
 
       {/* Background Blur */}
-      <div className="absolute left-1/2 top-1/2 z-0 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500 opacity-50 blur-[160px]"></div>
+      <div className="absolute left-1/2 top-1/2 z-0 h-1/2 w-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#2c8cc2] opacity-70 blur-[160px]"></div>
     </div>
   );
 }

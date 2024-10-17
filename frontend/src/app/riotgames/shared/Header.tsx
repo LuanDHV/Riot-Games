@@ -3,10 +3,58 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IMenusHeader, ISubMenusHeader } from "../types/riotgames.interface";
 
-const menuData: IMenusHeader[] = [
+const menuLeft = [
+  {
+    title: "Games",
+    subMenuLeft: [
+      { title: "League of Legends", img: "", href: "#" },
+      { title: "Valorant", img: "", href: "#" },
+      { title: "TeamFight Tatic", img: "", href: "#" },
+      { title: "Legends Of Runeterra", img: "", href: "#" },
+      { title: "LoL: Wild Rift", img: "", href: "#" },
+    ],
+  },
+  {
+    title: "Forge",
+    subMenuLeft: [
+      { title: "Conv/Rgence", img: "", href: "#" },
+      { title: "Hextech Mayhem", img: "", href: "#" },
+      { title: "The Mageseeker", img: "", href: "#" },
+      { title: "Ruined King", img: "", href: "#" },
+      { title: "Song Of Nunu", img: "", href: "#" },
+      { title: "Riot Forge Games", img: "", href: "#" },
+    ],
+  },
+  {
+    title: "Esports",
+    subMenuLeft: [
+      { title: "LoL Esposts", img: "", href: "#" },
+      { title: "Valorant Esports", img: "", href: "#" },
+    ],
+  },
+  {
+    title: "Entertainment",
+    subMenuLeft: [
+      { title: "Arcane", img: "", href: "#" },
+      { title: "Universe", img: "", href: "#" },
+      { title: "Riot Games Music", img: "", href: "#" },
+    ],
+  },
+  {
+    title: "Business",
+    subMenuLeft: [
+      { title: "Riot Games", img: "", href: "#" },
+      { title: "Riot Merch", img: "", href: "#" },
+      { title: "Riot Mobile", img: "", href: "#" },
+      { title: "Riot Support", img: "", href: "#" },
+    ],
+  },
+];
+
+const menuRight: IMenusHeader[] = [
   {
     title: "Who We Are",
-    subMenuData: [
+    subMenuRight: [
       { title: "About Riot", href: "#" },
       { title: "Diversity & Inclusion", href: "#" },
       { title: "Social Impact", href: "#" },
@@ -14,7 +62,7 @@ const menuData: IMenusHeader[] = [
   },
   {
     title: "Work with us",
-    subMenuData: [
+    subMenuRight: [
       { title: "Jobs", href: "#" },
       { title: "Benefits", href: "#" },
       { title: "Life at Riot", href: "#" },
@@ -25,15 +73,21 @@ const menuData: IMenusHeader[] = [
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [openSubMenu, setOpenSubMenu] = useState<number | null>(null);
+  const [isMenuLeftOpen, setIsMenuLeftOpen] = useState(false);
+  const [isMenuRightOpen, setIsMenuRightOpen] = useState(false);
+  const [openSubMenuRight, setOpenSubMenuRight] = useState<number | null>(null);
 
-  const handleMenuToggle = () => {
-    setIsMenuOpen((prev) => !prev);
+  const handleMenuLeftToggle = () => {
+    setIsMenuLeftOpen(!isMenuLeftOpen);
+  };
+
+  const handleMenuRightToggle = () => {
+    setIsMenuRightOpen(!isMenuRightOpen);
+    setIsMenuLeftOpen(false);
   };
 
   const handleSubMenuToggle = (index: number) => {
-    setOpenSubMenu(openSubMenu === index ? null : index);
+    setOpenSubMenuRight(openSubMenuRight === index ? null : index);
   };
 
   useEffect(() => {
@@ -45,9 +99,63 @@ export default function Header() {
 
   return (
     <>
-      {/* Menu Desktop */}
+      {/* Menu Left Desktop */}
+
+      {/* Menu Left Mobile */}
       <div
-        className={`fixed z-50 flex h-20 w-full items-center justify-between px-5 transition-colors duration-300 ease-in-out md:px-10 ${
+        className={`${
+          isMenuLeftOpen ? "block" : "hidden"
+        } fixed left-0 z-50 h-screen w-full bg-white md:w-[55%] lg:hidden`}
+      >
+        <div className="flex items-center justify-between px-4">
+          {/* Logo Riot Games & Arrow Down */}
+          <div className="group relative flex h-20 cursor-pointer items-center">
+            {/* Logo Riot Games */}
+            <img
+              src="imgs/riotgames/header/riotgames-black.png"
+              alt="Riot Games"
+              className="h-10 w-24 object-contain duration-300"
+            />
+            <img
+              src="imgs/riotgames/header/riotgames-red.png"
+              alt="Riot Games"
+              className="absolute h-10 w-24 object-contain opacity-0 duration-300 ease-out group-hover:opacity-100"
+              onClick={handleMenuLeftToggle}
+            />
+
+            {/* Arrow Up */}
+            <div className="relative ml-3">
+              <img
+                src="imgs/riotgames/header/arrow-up-black.png"
+                alt="Arrow Up"
+                className="object-cover duration-300"
+              />
+              <img
+                src="imgs/riotgames/header/arrow-up-red.png"
+                alt="Arrow Up"
+                className="absolute top-0 object-cover opacity-0 duration-300 ease-out group-hover:opacity-100"
+              />
+            </div>
+          </div>
+          <img
+            src="imgs/riotgames/header/menu-close-black.png"
+            alt="menu-close"
+            className="cursor-pointer object-contain lg:hidden"
+            onClick={handleMenuLeftToggle}
+          />
+        </div>
+        {/* Overlay */}
+        {isMenuLeftOpen && (
+          <div
+            className="fixed right-0 top-0 z-40 hidden h-screen w-[45%] bg-black opacity-50 md:block"
+            onClick={handleMenuLeftToggle}
+          ></div>
+        )}
+      </div>
+
+      {/* Menu Right Desktop */}
+      <div
+        className={`fixed z-40 flex h-20 w-full items-center justify-between px-4 transition-colors duration-300 ease-in-out lg:px-8 ${
           isScrolled ? "bg-[#111111]" : "bg-transparent"
         }`}
       >
@@ -57,26 +165,29 @@ export default function Header() {
             {/* Logo Riot Games */}
             <img
               src="imgs/riotgames/header/riotgames-white.png"
-              alt="Riot Games White"
+              alt="Riot Games"
               className="h-10 w-24 object-contain duration-300"
             />
             <img
               src="imgs/riotgames/header/riotgames-red.png"
-              alt="Riot Games Red"
-              className="absolute left-0 h-10 w-24 object-contain opacity-0 duration-300 ease-out group-hover:opacity-100"
+              alt="Riot Games"
+              className="absolute h-10 w-24 object-contain opacity-0 duration-300 ease-out group-hover:opacity-100"
+              onClick={handleMenuLeftToggle}
             />
 
             {/* Arrow Down */}
-            <img
-              src="imgs/riotgames/header/arrow-down-white.png"
-              alt="Arrow Down White"
-              className="ml-3 object-cover duration-300"
-            />
-            <img
-              src="imgs/riotgames/header/arrow-down-red.png"
-              alt="Arrow Down Red"
-              className="absolute right-0 ml-3 object-cover opacity-0 duration-300 ease-out group-hover:opacity-100"
-            />
+            <div className="relative ml-3">
+              <img
+                src="imgs/riotgames/header/arrow-down-white.png"
+                alt="Arrow Down"
+                className="object-cover duration-300"
+              />
+              <img
+                src="imgs/riotgames/header/arrow-down-red.png"
+                alt="Arrow Down"
+                className="absolute top-0 object-cover opacity-0 duration-300 ease-out group-hover:opacity-100"
+              />
+            </div>
           </div>
 
           {/* Icon Riot Games & Menu */}
@@ -91,31 +202,31 @@ export default function Header() {
             </Link>
 
             {/* Menu */}
-            {menuData.map((menuItem: IMenusHeader, index: number) => (
+            {menuRight.map((menuItem: IMenusHeader, index: number) => (
               <div key={index} className="group relative flex items-center">
                 <div className="flex h-20 cursor-pointer items-center">
                   <div className="relative flex items-center rounded-lg px-4 py-2 hover:bg-[#8080804d]">
                     <span className="text-sm font-bold uppercase text-[#f9f9f9]">
                       {menuItem.title}
                     </span>
-                    {/* Show arrow if data sub menu is available*/}
-                    {menuItem.subMenuData ? (
+                    {/* Show arrow if data sub menu is available */}
+                    {menuItem.subMenuRight ? (
                       <img
                         src="imgs/riotgames/header/arrow-down-white.png"
                         alt="Arrow"
                         className="ml-3 object-cover"
                       />
                     ) : null}
+                    {/* Sub Menu Underline */}
+                    <div className="absolute -bottom-[14px] left-0 right-0 hidden h-1 rounded-sm bg-[#d13639] group-hover:block"></div>
                   </div>
                 </div>
 
                 {/* Dropdown Sub Menu */}
-                {menuItem.subMenuData ? (
-                  <div className="absolute left-0 top-16 hidden bg-[#292929] group-hover:block">
-                    {/* Sub Menu Underline */}
-                    <div className="hidden h-1 rounded-tl-[2px] rounded-tr-[2px] bg-[#d13639] group-hover:block"></div>
+                {menuItem.subMenuRight ? (
+                  <div className="absolute top-[72px] hidden bg-[#292929] group-hover:block">
                     <ul className="mx-3 my-4 flex min-w-[200px] flex-col rounded-bl-[2px] rounded-br-[2px] bg-[#292929]">
-                      {menuItem.subMenuData.map(
+                      {menuItem.subMenuRight.map(
                         (subMenuItem: ISubMenusHeader, subIndex: number) => (
                           <li
                             key={subIndex}
@@ -161,7 +272,7 @@ export default function Header() {
           <div className="mx-auto w-full">
             <Link
               href="#"
-              className="flex justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-400 p-2 text-xs font-bold uppercase text-[#f9f9f9] duration-300 ease-in-out hover:brightness-125"
+              className="flex justify-center rounded-2xl bg-[#d13639] p-2 text-xs font-bold uppercase text-[#f1111] duration-300 ease-in-out"
             >
               Sign In
             </Link>
@@ -173,14 +284,14 @@ export default function Header() {
           src="imgs/riotgames/header/menu-open.png"
           alt="menu"
           className="cursor-pointer object-cover lg:hidden"
-          onClick={handleMenuToggle}
+          onClick={handleMenuRightToggle}
         />
       </div>
 
-      {/* Menu Mobile */}
+      {/* Menu Right Mobile */}
       <div
         className={`${
-          isMenuOpen ? "block" : "hidden"
+          isMenuRightOpen ? "block" : "hidden"
         } fixed right-0 z-50 h-screen w-full bg-[#1f1f1f] md:w-[55%] lg:hidden`}
       >
         {/* Header Menu */}
@@ -193,16 +304,16 @@ export default function Header() {
             />
           </Link>
           <img
-            src="imgs/riotgames/header/menu-close.png"
-            alt="menu"
+            src="imgs/riotgames/header/menu-close-white.png"
+            alt="menu-close"
             className="cursor-pointer object-cover lg:hidden"
-            onClick={handleMenuToggle}
+            onClick={handleMenuRightToggle}
           />
         </div>
 
         {/* Menu  */}
         <div className="mx-auto flex h-auto flex-col pt-5">
-          {menuData.map((menuItem: IMenusHeader, index: number) => (
+          {menuRight.map((menuItem: IMenusHeader, index: number) => (
             <div key={index}>
               <Link
                 href="#"
@@ -213,10 +324,10 @@ export default function Header() {
                   {menuItem.title}
                 </p>
                 {/* Show arrow if data sub menu is available*/}
-                {menuItem.subMenuData ? (
+                {menuItem.subMenuRight ? (
                   <img
                     src={`imgs/riotgames/header/arrow-${
-                      openSubMenu === index ? "up" : "down"
+                      openSubMenuRight === index ? "up" : "down"
                     }-white.png`}
                     alt="Arrow"
                     className="object-cover"
@@ -225,9 +336,9 @@ export default function Header() {
               </Link>
 
               {/* Sub Menu */}
-              {openSubMenu === index && menuItem.subMenuData ? (
+              {openSubMenuRight === index && menuItem.subMenuRight ? (
                 <div className="flex flex-col">
-                  {menuItem.subMenuData.map(
+                  {menuItem.subMenuRight.map(
                     (subMenuItem: ISubMenusHeader, index: number) => (
                       <Link
                         key={index}
@@ -270,17 +381,17 @@ export default function Header() {
         <div className="mx-auto mt-10 w-full px-5">
           <Link
             href="#"
-            className="flex justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-400 p-2 text-xs font-bold uppercase text-[#f9f9f9] duration-300 ease-in-out hover:brightness-125"
+            className="flex justify-center rounded-2xl bg-[#d13639] p-2 text-xs font-bold uppercase text-[#f1111] duration-300 ease-in-out"
           >
             Sign In
           </Link>
         </div>
 
         {/* Overlay */}
-        {isMenuOpen && (
+        {isMenuRightOpen && (
           <div
             className="fixed left-0 top-0 z-40 hidden h-screen w-[45%] bg-black opacity-50 md:block"
-            onClick={handleMenuToggle}
+            onClick={handleMenuRightToggle}
           ></div>
         )}
       </div>

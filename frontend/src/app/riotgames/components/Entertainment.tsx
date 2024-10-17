@@ -1,19 +1,20 @@
 import Link from "next/link";
 import { IEntertainments } from "../types/riotgames.interface";
 
+const entertainments: IEntertainments[] = [
+  {
+    img: "/imgs/riotgames/entertainment/arcane-card.png",
+    logo: "/imgs/riotgames/entertainment/arcane-logo.png",
+    link: "#",
+  },
+  {
+    img: "/imgs/riotgames/entertainment/riot-music-card.png",
+    logo: "/imgs/riotgames/entertainment/riot-music-logo.png",
+    link: "#",
+  },
+];
+
 export default function Entertainment() {
-  const entertainments: IEntertainments[] = [
-    {
-      img: "/imgs/riotgames/entertainment/arcane-card.png",
-      logo: "/imgs/riotgames/entertainment/arcane-logo.png",
-      link: "#",
-    },
-    {
-      img: "/imgs/riotgames/entertainment/riot-music-card.png",
-      logo: "/imgs/riotgames/entertainment/riot-music-logo.png",
-      link: "#",
-    },
-  ];
   return (
     <>
       <h2 className="my-[30px] text-center text-3xl font-bold text-[#F9F9F9] md:my-[60px] md:text-start md:text-5xl">
