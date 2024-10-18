@@ -75,6 +75,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuLeftOpen, setIsMenuLeftOpen] = useState(false);
   const [isMenuRightOpen, setIsMenuRightOpen] = useState(false);
+  const [openSubMenuLeft, setOpenSubMenuLeft] = useState<number | null>(null);
   const [openSubMenuRight, setOpenSubMenuRight] = useState<number | null>(null);
 
   const handleMenuLeftToggle = () => {
@@ -86,7 +87,11 @@ export default function Header() {
     setIsMenuLeftOpen(false);
   };
 
-  const handleSubMenuToggle = (index: number) => {
+  const handleSubMenuLeftToggle = (index: number) => {
+    setOpenSubMenuLeft(openSubMenuLeft === index ? null : index);
+  };
+
+  const handleSubMenuRightToggle = (index: number) => {
     setOpenSubMenuRight(openSubMenuRight === index ? null : index);
   };
 
@@ -105,10 +110,10 @@ export default function Header() {
       <div
         className={`${
           isMenuLeftOpen ? "block" : "hidden"
-        } fixed left-0 z-50 h-screen w-full bg-white md:w-[55%] lg:hidden`}
+        } fixed left-0 z-50 h-screen w-full overflow-y-auto bg-white px-4 md:w-[55%] lg:hidden`}
       >
-        <div className="flex items-center justify-between px-4">
-          {/* Logo Riot Games & Arrow Down */}
+        {/* Logo Riot Games & Arrow Up */}
+        <div className="flex items-center justify-between">
           <div className="group relative flex h-20 cursor-pointer items-center">
             {/* Logo Riot Games */}
             <img
@@ -143,6 +148,77 @@ export default function Header() {
             className="cursor-pointer object-contain lg:hidden"
             onClick={handleMenuLeftToggle}
           />
+        </div>
+
+        {/* Data */}
+        <div className="mt-5 flex flex-col gap-3">
+          {menuLeft.map((menuItems, index: number) => (
+            <div
+              key={index}
+              className={`${
+                openSubMenuLeft === index
+                  ? "bg-[#1f1f1f] text-[#fcfcfc]"
+                  : "bg-[#bababa1a] text-[#0a0a0a]"
+              } rounded-lg duration-300 ease-in-out`}
+            >
+              {/* Main menu item */}
+              <div
+                className="flex cursor-pointer justify-between rounded-lg p-3"
+                onClick={() => handleSubMenuLeftToggle(index)}
+              >
+                <p className="font-bold uppercase">{menuItems.title}</p>
+                <img
+                  src={`imgs/riotgames/header/arrow-${
+                    openSubMenuLeft === index ? "up" : "down"
+                  }-grey.png`}
+                  alt={`Arrow ${openSubMenuLeft === index ? "UP" : "DOWN"}`}
+                  className="object-contain"
+                />
+              </div>
+
+              {/* Sub Menu */}
+              {openSubMenuLeft === index && menuItems.subMenuLeft ? (
+                <div className="flex flex-col bg-white p-3">
+                  {menuItems.subMenuLeft.map(
+                    (subMenuItems: ISubMenusHeader, index: number) => (
+                      <Link
+                        key={index}
+                        href={subMenuItems.href}
+                        className="my-3 cursor-pointer rounded-lg px-4 py-2 uppercase text-[#4a4a4a] hover:bg-[#bababa4d]"
+                      >
+                        <span className=""> {subMenuItems.title}</span>
+                      </Link>
+                    ),
+                  )}
+                </div>
+              ) : null}
+            </div>
+          ))}
+        </div>
+
+        {/* Default Thumb */}
+        <div className="mb-5 mt-10 flex flex-col gap-4">
+          <Link href="#" className="cursor-pointer">
+            <img
+              src="/imgs/riotgames/header/tft-thumb.png"
+              alt=""
+              className="h-full w-full rounded-lg object-cover duration-500 ease-in-out hover:shadow-2xl"
+            />
+            <p className="mt-4 text-sm font-light text-[#0a0a0a]">
+              Conjure up some chaos and master your magic in TFT’s latest set.
+            </p>
+          </Link>
+          <Link href="#" className="cursor-pointer">
+            <img
+              src="/imgs/riotgames/header/vlr-thumb.png"
+              alt=""
+              className="h-full w-full rounded-lg object-cover"
+            />
+            <p className="mt-4 text-sm font-light text-[#0a0a0a]">
+              Defy your limits with VALORANT // Live on Xbox Series X|S, PS5®,
+              and PC.
+            </p>
+          </Link>
         </div>
         {/* Overlay */}
         {isMenuLeftOpen && (
@@ -202,15 +278,15 @@ export default function Header() {
             </Link>
 
             {/* Menu */}
-            {menuRight.map((menuItem: IMenusHeader, index: number) => (
+            {menuRight.map((menuItems: IMenusHeader, index: number) => (
               <div key={index} className="group relative flex items-center">
                 <div className="flex h-20 cursor-pointer items-center">
                   <div className="relative flex items-center rounded-lg px-4 py-2 hover:bg-[#8080804d]">
                     <span className="text-sm font-bold uppercase text-[#f9f9f9]">
-                      {menuItem.title}
+                      {menuItems.title}
                     </span>
                     {/* Show arrow if data sub menu is available */}
-                    {menuItem.subMenuRight ? (
+                    {menuItems.subMenuRight ? (
                       <img
                         src="imgs/riotgames/header/arrow-down-white.png"
                         alt="Arrow"
@@ -223,17 +299,17 @@ export default function Header() {
                 </div>
 
                 {/* Dropdown Sub Menu */}
-                {menuItem.subMenuRight ? (
+                {menuItems.subMenuRight ? (
                   <div className="absolute top-[72px] hidden bg-[#292929] group-hover:block">
                     <ul className="mx-3 my-4 flex min-w-[200px] flex-col rounded-bl-[2px] rounded-br-[2px] bg-[#292929]">
-                      {menuItem.subMenuRight.map(
-                        (subMenuItem: ISubMenusHeader, subIndex: number) => (
+                      {menuItems.subMenuRight.map(
+                        (subMenuItems: ISubMenusHeader, subIndex: number) => (
                           <li
                             key={subIndex}
                             className="cursor-pointer rounded-lg px-4 py-2 text-sm font-medium text-[#c7c7c7] hover:bg-[#8080804d]"
                           >
-                            <Link href={subMenuItem.href}>
-                              {subMenuItem.title}
+                            <Link href={subMenuItems.href}>
+                              {subMenuItems.title}
                             </Link>
                           </li>
                         ),
@@ -313,18 +389,18 @@ export default function Header() {
 
         {/* Menu  */}
         <div className="mx-auto flex h-auto flex-col pt-5">
-          {menuRight.map((menuItem: IMenusHeader, index: number) => (
+          {menuRight.map((menuItems: IMenusHeader, index: number) => (
             <div key={index}>
               <Link
                 href="#"
                 className="mx-4 my-2 flex items-center justify-between rounded-lg px-[18px] py-[12px] duration-300 ease-in-out hover:bg-[#80808033]"
-                onClick={() => handleSubMenuToggle(index)}
+                onClick={() => handleSubMenuRightToggle(index)}
               >
                 <p className="font-semibold uppercase text-[#f9f9f9]">
-                  {menuItem.title}
+                  {menuItems.title}
                 </p>
                 {/* Show arrow if data sub menu is available*/}
-                {menuItem.subMenuRight ? (
+                {menuItems.subMenuRight ? (
                   <img
                     src={`imgs/riotgames/header/arrow-${
                       openSubMenuRight === index ? "up" : "down"
@@ -336,17 +412,17 @@ export default function Header() {
               </Link>
 
               {/* Sub Menu */}
-              {openSubMenuRight === index && menuItem.subMenuRight ? (
+              {openSubMenuRight === index && menuItems.subMenuRight ? (
                 <div className="flex flex-col">
-                  {menuItem.subMenuRight.map(
-                    (subMenuItem: ISubMenusHeader, index: number) => (
+                  {menuItems.subMenuRight.map(
+                    (subMenuItems: ISubMenusHeader, index: number) => (
                       <Link
                         key={index}
-                        href={subMenuItem.href}
+                        href={subMenuItems.href}
                         className="mx-4 my-2 rounded-lg px-[18px] duration-300 ease-in-out hover:bg-[#80808033]"
                       >
                         <p className="py-2 font-bold text-[#fcfcfc]">
-                          {subMenuItem.title}
+                          {subMenuItems.title}
                         </p>
                       </Link>
                     ),
