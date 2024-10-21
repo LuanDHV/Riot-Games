@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["FF Mark W05", "Arial", "sans-serif"],
+        sans: ["Mark Pro", "Arial", "sans-serif"],
       },
       colors: {
         background: "var(--background)",
