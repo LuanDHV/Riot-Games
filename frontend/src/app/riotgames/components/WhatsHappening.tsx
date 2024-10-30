@@ -24,7 +24,7 @@ const thumbs: IWhatsHappening[] = [
     thumbMain: false,
   },
   {
-    title: "LoL Player Days",
+    title: "Vanguard x VALORANT",
     icon: "/imgs/riotgames/whatshappening/valorant-icon.png",
     image: "/imgs/riotgames/whatshappening/thumb4.png",
     link: "#",

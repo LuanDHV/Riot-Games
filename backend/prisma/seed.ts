@@ -1,46 +1,32 @@
 import { PrismaClient } from '@prisma/client';
+import { whatshappening } from './seed-data/riotgames/whatshappening';
+import { games } from './seed-data/riotgames/games';
 
 const prisma = new PrismaClient();
 
-const whatshappening = [
-  {
-    title: 'Watch, Play, Experience: Here’s How We’re Celebrating Arcane...',
-    icon: '/imgs/riotgames/whatshappening/arcane-icon.png',
-    image: '/imgs/riotgames/whatshappening/thumb1.png',
-    link: '#',
-  },
-  {
-    title: 'Heavy Is The Crown ft. Linkin Park',
-    icon: '/imgs/riotgames/whatshappening/leagueoflegends-icon.png',
-    image: '/imgs/riotgames/whatshappening/thumb2.png',
-    link: '#',
-  },
-  {
-    title: 'LoL Player Days',
-    icon: '/imgs/riotgames/whatshappening/leagueoflegends-icon.png',
-    image: '/imgs/riotgames/whatshappening/thumb3.png',
-    link: '#',
-  },
-  {
-    title: 'LoL Player Days',
-    icon: '/imgs/riotgames/whatshappening/valorant-icon.png',
-    image: '/imgs/riotgames/whatshappening/thumb4.png',
-    link: '#',
-  },
-  {
-    title: 'Worlds 2024 | Make Them Believe',
-    icon: '/imgs/riotgames/whatshappening/leagueoflegends-icon.png',
-    image: '/imgs/riotgames/whatshappening/thumb5.png',
-    link: '#',
-  },
-];
-
 async function main() {
+  // // Xóa tất cả dữ liệu trước khi thêm mới
+  // await prisma.whatsHappening.deleteMany({});
+  // // Reset lại sequence
+  // await prisma.$executeRaw`ALTER SEQUENCE "WhatsHappening_id_seq" RESTART WITH 1;`;
+
+  // Seed data for Riot Games
   for (const item of whatshappening) {
-    await prisma.whatsHappening.create({
-      data: item,
+    await prisma.whatsHappening.upsert({
+      where: { title: item.title },
+      update: item,
+      create: item,
     });
   }
+
+  for (const item of games) {
+    await prisma.games.upsert({
+      where: { launchImg: item.launchImg },
+      update: item,
+      create: item,
+    });
+  }
+
   console.log('Data has been seeded successfully.');
 }
 

@@ -2,17 +2,33 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-async function deleteAll() {
+async function deleteAllWhatsHappening() {
   try {
     const deletedItems = await prisma.whatsHappening.deleteMany({});
-    console.log(`Deleted ${deletedItems.count} items.`);
+    console.log(`Deleted ${deletedItems.count} items from WhatsHappening.`);
+
+    // Reset sequence
+    await prisma.$executeRaw`ALTER SEQUENCE "WhatsHappening_id_seq" RESTART WITH 1;`;
   } catch (error) {
-    console.error('Error deleting items:', error);
+    console.error('Error deleting WhatsHappening items:', error);
+  }
+}
+
+async function deleteAllGames() {
+  try {
+    const deletedItems = await prisma.games.deleteMany({});
+    console.log(`Deleted ${deletedItems.count} items from Games.`);
+
+    // Reset sequence
+    await prisma.$executeRaw`ALTER SEQUENCE "Games_id_seq" RESTART WITH 1;`;
+  } catch (error) {
+    console.error('Error deleting Games items:', error);
   }
 }
 
 async function main() {
-  await deleteAll();
+  await deleteAllWhatsHappening();
+  await deleteAllGames();
 }
 
 main()
