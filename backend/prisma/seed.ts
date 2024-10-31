@@ -1,15 +1,11 @@
 import { PrismaClient } from '@prisma/client';
 import { whatshappening } from './seed-data/riotgames/whatshappening';
 import { games } from './seed-data/riotgames/games';
+import { esports } from './seed-data/riotgames/esports';
 
 const prisma = new PrismaClient();
 
 async function main() {
-  // // Xóa tất cả dữ liệu trước khi thêm mới
-  // await prisma.whatsHappening.deleteMany({});
-  // // Reset lại sequence
-  // await prisma.$executeRaw`ALTER SEQUENCE "WhatsHappening_id_seq" RESTART WITH 1;`;
-
   // Seed data for Riot Games
   for (const item of whatshappening) {
     await prisma.whatsHappening.upsert({
@@ -22,6 +18,14 @@ async function main() {
   for (const item of games) {
     await prisma.games.upsert({
       where: { launchImg: item.launchImg },
+      update: item,
+      create: item,
+    });
+  }
+
+  for (const item of esports) {
+    await prisma.esports.upsert({
+      where: { img: item.img },
       update: item,
       create: item,
     });

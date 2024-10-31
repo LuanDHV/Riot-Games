@@ -11,3 +11,9 @@ export interface IGames {
   platforms: string[];
   link: string;
 }
+
+export interface IEsports {
+  img: string;
+  logo: string;
+  link: string;
+}
