@@ -17,3 +17,9 @@ export interface IEsports {
   logo: string;
   link: string;
 }
+
+export interface IEntertainments {
+  img: string;
+  logo: string;
+  link: string;
+}

@@ -2,6 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import { whatshappening } from './seed-data/riotgames/whatshappening';
 import { games } from './seed-data/riotgames/games';
 import { esports } from './seed-data/riotgames/esports';
+import { entertainments } from './seed-data/riotgames/entertainments';
 
 const prisma = new PrismaClient();
 
@@ -25,6 +26,14 @@ async function main() {
 
   for (const item of esports) {
     await prisma.esports.upsert({
+      where: { img: item.img },
+      update: item,
+      create: item,
+    });
+  }
+
+  for (const item of entertainments) {
+    await prisma.entertainments.upsert({
       where: { img: item.img },
       update: item,
       create: item,
