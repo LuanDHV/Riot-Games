@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { userApi } from "./api/userApi";
+import * as riotGamesApi from "./api/riotgamesApi";
 
 export const store = configureStore({
   reducer: {
-    [userApi.reducerPath]: userApi.reducer,
+    [riotGamesApi.whatshappeningApi.reducerPath]:
+      riotGamesApi.whatshappeningApi.reducer,
   },
-
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(userApi.middleware),
+    getDefaultMiddleware().concat(riotGamesApi.whatshappeningApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
