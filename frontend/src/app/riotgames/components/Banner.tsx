@@ -5,7 +5,7 @@ export default function Banner() {
     <div className="relative h-screen overflow-hidden">
       {/* Banner */}
       <video
-        src="/imgs/riotgames/banner/banner-video.mp4"
+        src="/imgs/riotgames/banner/riotgames-banner-video.mp4"
         className="h-full w-full object-cover"
         autoPlay
         loop

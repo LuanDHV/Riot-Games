@@ -475,9 +475,12 @@ export default function Header() {
               <div key={index} className="group relative flex items-center">
                 <div className="flex h-20 cursor-pointer items-center">
                   <div className="relative flex items-center rounded-lg px-4 py-2 hover:bg-[#8080804d]">
-                    <span className="text-sm font-bold uppercase text-[#f9f9f9]">
+                    <a
+                      href={menuItems.href}
+                      className="text-sm font-bold uppercase text-[#f9f9f9]"
+                    >
                       {menuItems.title}
-                    </span>
+                    </a>
                     {/* Show arrow if data sub menu is available */}
                     {menuItems.subMenuRight ? (
                       <img

@@ -1,3 +1,9 @@
+import Banner from "./components/Banner";
+
 export default function LeagueOfLegendsPage() {
-  return <div>League Of Legends Page</div>;
+  return (
+    <>
+      <Banner />
+    </>
+  );
 }
