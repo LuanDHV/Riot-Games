@@ -1,12 +1,10 @@
-import Link from "next/link";
-
 export default function Banner() {
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative h-auto overflow-hidden">
       {/* Banner */}
       <video
         src="/imgs/leagueoflegends/banner/leagueoflegends-banner-video.mp4"
-        className="h-full w-full object-cover"
+        className="min-h-[580px] w-full object-cover lg:max-h-[640px]"
         autoPlay
         loop
         muted

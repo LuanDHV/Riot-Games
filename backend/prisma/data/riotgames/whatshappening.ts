@@ -26,8 +26,8 @@ export const whatshappening: IWhatsHappening[] = [
     link: '#',
   },
   {
-    title: 'Worlds 2024 | Make Them Believe',
-    icon: '/imgs/riotgames/whatshappening/leagueoflegends-icon.png',
+    title: 'VALORANT x Arcane: The Season 2 Arcane Collector’s Set is coming',
+    icon: '/imgs/riotgames/whatshappening/valorant-icon.png',
     image: '/imgs/riotgames/whatshappening/thumb5.png',
     link: '#',
   },
