@@ -1,27 +1,27 @@
-/* Custom Progress Bar */
-.swiper-pagination-progressbar-fill {
-  background-color: #ffcc00; /* Màu vàng cho progress */
-  height: 5px; /* Chiều cao của thanh progress */
-  border-radius: 2px; /* Bo góc */
+/* Custom Swiper Pagination  */
+.swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  color: #000;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.2);
 }
 
-/* Custom Navigation Buttons */
-.swiper-button-next,
-.swiper-button-prev {
-  color: #ffcc00; /* Màu vàng cho nút điều hướng */
-  width: 50px;
-  height: 50px;
+.custom-swiper-pagination .swiper-pagination-bullet {
+  width: var(--swiper-pagination-bullet-width, 20px);
+  height: var(--swiper-pagination-bullet-height, 4px);
+  background: var(--swiper-pagination-bullet-inactive-color, #bcbcbc);
+  border-radius: var(--swiper-pagination-bullet-border-radius, 10px);
+  transition:
+    width 0.3s,
+    height 0.3s; /* Smooth transition for size change */
 }
 
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-size: 20px; /* Kích thước icon của nút điều hướng */
-}
-
-.swiper-button-next {
-  right: 20px; /* Đặt vị trí nút ở xa hơn bên phải */
-}
-
-.swiper-button-prev {
-  left: 20px; /* Đặt vị trí nút ở xa hơn bên trái */
+.custom-swiper-pagination .swiper-pagination-bullet-active {
+  width: var(--swiper-pagination-bullet-active-width, 30px);
+  height: var(--swiper-pagination-bullet-active-height, 8px);
+  background: var(--swiper-pagination-color, #c8aa6e);
 }

@@ -16,21 +16,23 @@ export default function Banner() {
 
       {/* Layer Banner */}
       <div className="absolute inset-0 h-full w-full bg-black opacity-30"></div>
+
       {/* Content */}
       <div className="absolute inset-0 flex h-full w-full flex-row items-start justify-center px-5 text-white md:px-20">
         <div className="flex h-full w-full flex-col items-center justify-center gap-10 lg:w-2/6">
           <img
             src="/imgs/riotgames/banner/arcane-logo.png"
             alt="logo"
-            className="max-w-[325px] object-cover lg:max-w-[500px]"
+            className="max-w-[325px] object-cover xl:max-w-[500px]"
           />
-          <h1 className="text-center text-[27px] font-bold md:xl:text-3xl">
+          <h1 className="text-center text-[27px] font-bold xl:text-3xl">
             Final Season Starts November 9
           </h1>
-          <p className="hidden text-center text-xl text-gray-200 md:block">
-            Jinx’s attack on the Council sets the stage for a dire <br />{" "}
+          <p className="hidden text-center text-xl text-gray-200 xl:block">
+            Jinx’s attack on the Council sets the stage for a dire <br />
             escalation of the conflict between Piltover and Zaun.
           </p>
+
           {/* Button Play Now */}
           <button>
             <Link
@@ -49,7 +51,7 @@ export default function Banner() {
             </Link>
           </button>
         </div>
-        <div className="h-full lg:w-4/6"></div>
+        <div className="h-full xl:w-4/6"></div>
       </div>
     </div>
   );
