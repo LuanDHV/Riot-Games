@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../../../SwiperCustom.css";
 import { IChooseYourChampion } from "../types/leagueoflegends.interface";
+import { useState } from "react";
 
 export default function ChooseYourChampion() {
   const ChooseYourChampion: IChooseYourChampion[] = [
@@ -72,9 +73,23 @@ export default function ChooseYourChampion() {
     },
   ];
 
+  const [selectedRole, setSelectedRole] = useState<IChooseYourChampion>(
+    ChooseYourChampion[0],
+  );
+
+  const handleSelectRole = (role: IChooseYourChampion) => {
+    setSelectedRole(role);
+    console.log("selectedRole", role);
+  };
+
   return (
     <>
-      <div className="flex h-auto flex-col items-center justify-center gap-4 bg-[url('/imgs/leagueoflegends/chooseyourchampion/assassins-background.png')] bg-cover bg-center p-6 md:p-8 lg:flex-row lg:p-12 xl:px-[200px]">
+      <div
+        className="flex h-auto flex-col items-center justify-center gap-4 bg-cover bg-center p-6 md:p-8 lg:flex-row lg:p-12 xl:px-[200px]"
+        style={{
+          backgroundImage: `url(${selectedRole.background})`,
+        }}
+      >
         <div className="w-full lg:w-1/2">
           <div className="flex w-full flex-col items-center text-[#0a1428]">
             <p className="mb-2 text-base font-medium uppercase md:text-lg lg:text-[22px]">
@@ -123,16 +138,19 @@ export default function ChooseYourChampion() {
             }}
             className="custom-swiper-pagination"
           >
-            {ChooseYourChampion.map((champion: IChooseYourChampion, index) => (
+            {ChooseYourChampion.map((items: IChooseYourChampion, index) => (
               <SwiperSlide key={index} className="mb-[50px]">
-                <div className="flex cursor-pointer flex-col items-center justify-center duration-300 ease-in-out hover:scale-110">
+                <div
+                  className="flex cursor-pointer flex-col items-center justify-center duration-300 ease-in-out hover:scale-110"
+                  onClick={() => handleSelectRole(items)}
+                >
                   <img
-                    src={champion.icon}
-                    alt={champion.role}
-                    className="h-12 w-12 object-cover brightness-50 lg:h-16 lg:w-16"
+                    src={items.icon}
+                    alt={items.role}
+                    className={`h-12 w-12 object-cover lg:h-16 lg:w-16 ${selectedRole?.role === items.role ? "brightness-100" : "brightness-50"} duration-300 ease-in-out`}
                   />
                   <p className="mt-2 text-[10px] font-semibold uppercase text-[#0a1428] md:mt-4 md:text-xs lg:mt-6 lg:text-sm">
-                    {champion.role}
+                    {items.role}
                   </p>
                 </div>
               </SwiperSlide>
@@ -140,28 +158,19 @@ export default function ChooseYourChampion() {
           </Swiper>
         </div>
         <div className="w-full lg:w-1/2">
-          {/* {ChooseYourChampion.map((champion: IChooseYourChampion, index) => (
-            <div className="" key={index}>
-              <img
-                src="/imgs/leagueoflegends/chooseyourchampion/assassins-champion.png"
-                alt={champion.champion}
-                className="h-full w-full object-cover"
-              />
-            </div>
-          ))} */}
-
           <div className="">
             <img
-              src="/imgs/leagueoflegends/chooseyourchampion/assassins-champion.png"
-              alt=""
+              src={selectedRole.imgChampion}
+              alt={selectedRole.champion}
               className="h-full w-full object-cover"
             />
+
             <div className="flex flex-col items-center">
               <p className="mb-4 text-xl font-bold uppercase italic text-[#0a1428] lg:text-2xl">
-                Akali
+                {selectedRole.champion}
               </p>
               <p className="mb-1 text-xs font-semibold text-[#6c727e] md:text-sm lg:text-base">
-                The Rogue Assassin
+                {selectedRole.description}
               </p>
             </div>
           </div>
