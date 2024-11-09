@@ -6,6 +6,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../../../SwiperCustom.css"; //
 import { IFeaturedNews } from "../types/leagueoflegends.interface";
+import Link from "next/link";
 
 export default function FeaturedNews() {
   const FeaturedNews: IFeaturedNews[] = [
@@ -36,8 +37,8 @@ export default function FeaturedNews() {
 
   return (
     <>
-      <div className="h-auto min-h-[500px] bg-[url('/imgs/leagueoflegends/featurednews/background.png')] bg-cover bg-center px-6 md:px-8 lg:min-h-[550px] lg:px-12 xl:min-h-[600px] xl:px-[200px]">
-        <h2 className="flex w-full justify-start py-5 text-2xl font-bold uppercase italic text-[#0A1428] md:py-8 md:text-[32px]">
+      <div className="h-auto bg-[url('/imgs/leagueoflegends/featurednews/background.png')] bg-cover bg-center px-6 md:px-8 lg:px-12 xl:px-[200px]">
+        <h2 className="flex w-full justify-start py-5 text-2xl font-bold uppercase italic text-[#0a1428] md:py-8 md:text-[32px]">
           Featured News
         </h2>
 
@@ -68,7 +69,10 @@ export default function FeaturedNews() {
         >
           {FeaturedNews.map((news, index) => (
             <SwiperSlide key={index}>
-              <div className="mb-[50px] flex h-auto cursor-pointer flex-col">
+              <Link
+                href="#"
+                className="mb-[50px] flex h-auto cursor-pointer flex-col"
+              >
                 <div className="h-auto w-full overflow-hidden">
                   <img
                     src={news.img}
@@ -78,7 +82,7 @@ export default function FeaturedNews() {
                 </div>
                 <div className="">
                   <p className="mb-2 mt-4 flex gap-1 text-[10px] md:text-xs lg:text-sm">
-                    <span className="font-bold uppercase text-[#C8AA6E]">
+                    <span className="font-bold uppercase text-[#c8aa6e]">
                       {news.type}
                     </span>
                     <span>|</span>
@@ -88,9 +92,11 @@ export default function FeaturedNews() {
                   <h3 className="mb-1 text-base font-bold md:text-lg lg:text-[22px]">
                     {news.title}
                   </h3>
-                  <p className="text-xs text-[#0A1428]">{news.description}</p>
+                  <p className="text-xs font-medium text-[#0a1428]">
+                    {news.description}
+                  </p>
                 </div>
-              </div>
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>
