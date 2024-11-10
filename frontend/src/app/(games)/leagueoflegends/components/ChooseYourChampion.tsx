@@ -147,7 +147,7 @@ export default function ChooseYourChampion() {
                   <img
                     src={items.icon}
                     alt={items.role}
-                    className={`h-12 w-12 object-cover lg:h-16 lg:w-16 ${selectedRole?.role === items.role ? "brightness-100" : "brightness-50"} duration-300 ease-in-out`}
+                    className={`h-12 w-12 object-cover lg:h-16 lg:w-16 ${selectedRole.role === items.role ? "brightness-100" : "brightness-50"} duration-300 ease-in-out`}
                   />
                   <p className="mt-2 text-[10px] font-semibold uppercase text-[#0a1428] md:mt-4 md:text-xs lg:mt-6 lg:text-sm">
                     {items.role}
