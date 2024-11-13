@@ -42,8 +42,7 @@ export interface IMenusFooter {
 }
 
 export interface ISocialIcons {
-  white: string;
-  red: string;
+  icon: string;
   alt: string;
   link: string;
 }

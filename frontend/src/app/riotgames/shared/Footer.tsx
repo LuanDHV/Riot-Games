@@ -20,38 +20,32 @@ export default function Footer() {
 
   const socialIconsData: ISocialIcons[] = [
     {
-      white: "/imgs/riotgames/footer/social-x-white.png",
-      red: "/imgs/riotgames/footer/social-x-red.png",
+      icon: "/imgs/footer/x-icon.png",
       alt: "X",
       link: "#",
     },
     {
-      white: "/imgs/riotgames/footer/social-instagram-white.png",
-      red: "/imgs/riotgames/footer/social-instagram-red.png",
+      icon: "/imgs/footer/instagram-icon.png",
       alt: "Instagram",
       link: "#",
     },
     {
-      white: "/imgs/riotgames/footer/social-tiktok-white.png",
-      red: "/imgs/riotgames/footer/social-tiktok-red.png",
+      icon: "/imgs/footer/tiktok-icon.png",
       alt: "TikTok",
       link: "#",
     },
     {
-      white: "/imgs/riotgames/footer/social-linked-white.png",
-      red: "/imgs/riotgames/footer/social-linked-red.png",
+      icon: "/imgs/footer/linkedin-icon.png",
       alt: "LinkedIn",
       link: "#",
     },
     {
-      white: "/imgs/riotgames/footer/social-facebook-white.png",
-      red: "/imgs/riotgames/footer/social-facebook-red.png",
+      icon: "/imgs/footer/facebook-icon.png",
       alt: "Facebook",
       link: "#",
     },
     {
-      white: "/imgs/riotgames/footer/social-youtube-white.png",
-      red: "/imgs/riotgames/footer/social-youtube-red.png",
+      icon: "/imgs/footer/youtube-icon.png",
       alt: "YouTube",
       link: "#",
     },
@@ -81,13 +75,13 @@ export default function Footer() {
               className="flex flex-col items-center justify-center pt-[30px] md:flex-row md:flex-wrap lg:justify-start lg:pt-0"
               style={{ width: "calc(100% - 40px)" }}
             >
-              {footerData.map((data: IMenusFooter, index: number) => (
+              {footerData.map((items: IMenusFooter, index: number) => (
                 <li className="py-2" key={index}>
                   <Link
-                    href={data.link}
+                    href={items.link}
                     className="mt-[5px] p-[10px] text-[11px] font-extrabold uppercase text-white hover:underline md:mt-0"
                   >
-                    {data.title}
+                    {items.title}
                   </Link>
                 </li>
               ))}
@@ -96,21 +90,16 @@ export default function Footer() {
 
           {/* Social Network Icons */}
           <div className="flex justify-center pb-[30px] pt-5 lg:pb-0 lg:pt-0">
-            {socialIconsData.map((icon: ISocialIcons, index: number) => (
+            {socialIconsData.map((items: ISocialIcons, index: number) => (
               <Link
-                href={icon.link}
+                href={items.link}
                 key={index}
-                className="group relative flex h-10 w-10 items-center justify-center"
+                className="relative flex h-10 w-10 items-center justify-center"
               >
                 <img
-                  src={icon.white}
-                  alt={`${icon.alt} White`}
-                  className="absolute h-4 w-4 object-contain transition-opacity duration-300"
-                />
-                <img
-                  src={icon.red}
-                  alt={`${icon.alt} Red`}
-                  className="absolute h-4 w-4 object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  src={items.icon}
+                  alt={items.alt}
+                  className="absolute h-4 w-4 object-contain"
                 />
               </Link>
             ))}
@@ -141,20 +130,15 @@ export default function Footer() {
 
           {/* To the Surface */}
           <div
-            className="group mt-[30px] flex cursor-pointer items-center justify-center text-sm uppercase text-white"
+            className="mt-[30px] flex cursor-pointer items-center justify-center text-sm uppercase text-white"
             onClick={useScrollToTop}
           >
             To the Surface
-            <div className="group relative ml-2 h-2 w-7">
+            <div className="relative ml-2 h-2 w-7">
               <img
-                src="/imgs/riotgames/footer/arrow-top-white.png"
+                src="/imgs/riotgames/footer/arrow-top.png"
                 alt="Arrow to top"
                 className="h-[7px] w-2 object-cover"
-              />
-              <img
-                src="/imgs/riotgames/footer/arrow-top-red.png"
-                alt="Arrow to top Red"
-                className="absolute left-0 top-0 h-[7px] w-2 object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
               />
             </div>
           </div>
