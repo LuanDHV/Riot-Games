@@ -1,5 +1,7 @@
+"use client";
 import Link from "next/link";
 import { IFooterGames } from "./footer.interface";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const lolFooter: IFooterGames[] = [
@@ -85,9 +87,66 @@ export default function Footer() {
       ],
     },
   ];
+
+  const valorantFooter: IFooterGames[] = [
+    {
+      section1: [
+        { title: "Download Game Client", link: "#" },
+        { title: "Download Riot Mobile Companion App", link: "#" },
+      ],
+      socials: [
+        { icon: "/imgs/footer/x-icon.png", alt: "X", link: "#" },
+        { icon: "/imgs/footer/youtube-icon.png", alt: "YouTube", link: "#" },
+        {
+          icon: "/imgs/footer/instagram-icon.png",
+          alt: "Instagram",
+          link: "#",
+        },
+        { icon: "/imgs/footer/tiktok-icon.png", alt: "Tiktok", link: "#" },
+
+        { icon: "/imgs/footer/facebook-icon.png", alt: "Facebook", link: "#" },
+        { icon: "/imgs/footer/discord-icon.png", alt: "Discord", link: "#" },
+      ],
+      icons: [
+        {
+          icon: "/imgs/footer/riotgames-icon.png",
+          alt: "Riot Games",
+          link: "#",
+        },
+        {
+          icon: "/imgs/footer/valorant-icon.png",
+          alt: "Valorant",
+          link: "#",
+        },
+      ],
+      descriptions: [
+        {
+          text: "© 2020-2024 Riot Games, Inc. RIOT GAMES, VALORANT and any associated logos are trademarks, service marks, and/or registered trademarks of Riot Games, Inc.",
+        },
+      ],
+      section2: [
+        { title: "Privacy Notice", link: "#" },
+        { title: "Terms of Service", link: "#" },
+        { title: "Cookie Preferences", link: "#" },
+      ],
+    },
+  ];
+
+  const pathname = usePathname();
+
+  const currentFooter = pathname.startsWith("/leagueoflegends")
+    ? lolFooter
+    : pathname.startsWith("/valorant")
+      ? valorantFooter
+      : null;
+
+  if (!currentFooter) {
+    return <div>Data Not Available</div>;
+  }
+
   return (
     <>
-      {lolFooter.map((items) => (
+      {currentFooter.map((items) => (
         <div className="h-auto">
           <div className="justify-center bg-[#292929] p-6 lg:flex">
             {items.section1.map((section1, index) => (
@@ -119,17 +178,17 @@ export default function Footer() {
               ))}
             </div>
 
-            <div className="py-6">
+            <div className="flex flex-col justify-center gap-5 py-6 lg:flex-row">
               {items.icons.map((icons, index) => (
                 <Link
                   key={index}
                   href={icons.link}
-                  className="flex justify-center"
+                  className="flex items-end justify-center"
                 >
                   <img
                     src={icons.icon}
                     alt={icons.alt}
-                    className="max-w-[100px] object-cover brightness-50 duration-300 ease-in-out hover:brightness-100"
+                    className="max-w-[100px] object-contain brightness-50 duration-300 ease-in-out hover:brightness-100"
                   />
                 </Link>
               ))}
