@@ -17,11 +17,11 @@
   border-radius: var(--swiper-pagination-bullet-border-radius, 10px);
   transition:
     width 0.3s,
-    height 0.3s; /* Smooth transition for size change */
+    height 0.3s;
 }
 
 .custom-swiper-pagination .swiper-pagination-bullet-active {
   width: var(--swiper-pagination-bullet-active-width, 30px);
   height: var(--swiper-pagination-bullet-active-height, 8px);
-  background: var(--swiper-pagination-color, #c8aa6e);
+  background: var(--swiper-pagination-color, #0f1923);
 }

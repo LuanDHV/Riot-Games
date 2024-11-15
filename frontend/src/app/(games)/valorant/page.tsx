@@ -1,3 +1,13 @@
+import Banner from "./components/Banner";
+import Collision from "./components/Collision";
+import TheLatest from "./components/TheLatest";
+
 export default function ValorantPage() {
-  return <div>Valorant Page</div>;
+  return (
+    <>
+      <Banner />
+      <TheLatest />
+      <Collision />
+    </>
+  );
 }
