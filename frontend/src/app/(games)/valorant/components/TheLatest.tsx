@@ -38,7 +38,7 @@ export default function TheLatest() {
 
   return (
     <>
-      <div className="h-auto bg-[url('/imgs/valorant/thelatest/background.png')] bg-cover bg-center px-6 md:px-8 lg:px-12 xl:px-[200px]">
+      <div className="h-auto bg-[url('/imgs/valorant/thelatest/background.png')] bg-cover bg-center p-6 md:p-8 lg:p-12 xl:px-[200px]">
         <h2 className="flex w-full justify-start py-5 text-2xl font-bold uppercase italic text-[#0a1428] md:py-8 md:text-[32px]">
           The Latest
         </h2>
