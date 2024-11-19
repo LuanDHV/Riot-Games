@@ -1,3 +1,5 @@
+import Banner from "./components/Banner";
+
 export default function TeamFightTacticsPage() {
-  return <div>Team Fight Tactics Page</div>;
+  return <Banner />;
 }
