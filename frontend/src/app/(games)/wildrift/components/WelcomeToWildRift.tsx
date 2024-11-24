@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function WelcomeToWildRift() {
   return (
     <>
@@ -12,6 +14,14 @@ export default function WelcomeToWildRift() {
             the high-skill competition you crave, designed especially for mobile
             with revamped controls and streamlined matches.
           </p>
+          <div className="my-6 flex w-full flex-col justify-start gap-4 sm:flex-row lg:my-12">
+            <Link
+              href="#"
+              className="w-full bg-[#141e37] px-8 py-5 text-center text-xs font-medium uppercase duration-300 ease-in-out hover:bg-[#ffffff] hover:text-[#141e37] sm:max-w-[165px] md:text-sm"
+            >
+              Learn More
+            </Link>
+          </div>
         </div>
         <div className="w-full lg:w-1/2">
           {/* Responsive Video Wrapper */}
