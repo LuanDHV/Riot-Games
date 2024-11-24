@@ -189,45 +189,6 @@ export default function Footer() {
     },
   ];
 
-  const runeterraFooter: IFooterGames[] = [
-    {
-      section1: [
-        { title: "Support", link: "#" },
-        { title: "For Developers", link: "#" },
-        { title: "Media", link: "#" },
-        { title: "Download Riot Mobile Companion App", link: "#" },
-      ],
-      socials: [
-        { icon: "/imgs/footer/facebook-icon.png", alt: "Facebook", link: "#" },
-        {
-          icon: "/imgs/footer/instagram-icon.png",
-          alt: "Instagram",
-          link: "#",
-        },
-        { icon: "/imgs/footer/youtube-icon.png", alt: "YouTube", link: "#" },
-        { icon: "/imgs/footer/x-icon.png", alt: "X", link: "#" },
-        { icon: "/imgs/footer/discord-icon.png", alt: "Discord", link: "#" },
-      ],
-      icons: [
-        {
-          icon: "/imgs/footer/riotgames-icon.png",
-          alt: "Riot Games",
-          link: "#",
-        },
-      ],
-      descriptions: [
-        {
-          text: "©2024 Riot Games, Inc.",
-        },
-      ],
-      section2: [
-        { title: "Privacy Notice", link: "#" },
-        { title: "Terms of Service", link: "#" },
-        { title: "Cookie Preferences", link: "#" },
-      ],
-    },
-  ];
-
   const pathname = usePathname();
 
   const currentFooter = pathname.startsWith("/leagueoflegends")
@@ -238,9 +199,7 @@ export default function Footer() {
         ? tftFooter
         : pathname.startsWith("/wildrift")
           ? wildriftFooter
-          : pathname.startsWith("/runeterra")
-            ? runeterraFooter
-            : null;
+          : null;
 
   if (!currentFooter) {
     return <div>Data Not Available</div>;

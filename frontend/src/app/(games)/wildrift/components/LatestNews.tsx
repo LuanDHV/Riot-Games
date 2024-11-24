@@ -11,7 +11,7 @@ import { ILatestNews } from "../types/wildrift.interface";
 export default function LatestNews() {
   const LatestNews: ILatestNews[] = [
     {
-      img: "/imgs/wildrift/latestnews/wildrift-news-1.png",
+      img: "/imgs/wildrift/latestnews/wild-rift-news-1.png",
       type: "Game Updates",
       date: "09/26/2024",
       title: "Patch 5.3 Preview",
@@ -19,7 +19,7 @@ export default function LatestNews() {
         "Final patch of the season means final season of Arcane and final chance to celebrate! David, John, and some special guests take you along for the Ultimate Arc in patch 5.3! Coming to you on October 17th UTC.",
     },
     {
-      img: "/imgs/wildrift/latestnews/wildrift-news-2.png",
+      img: "/imgs/wildrift/latestnews/wild-rift-news-2.png",
       type: "Game Updates",
       date: "10/10/2024",
       title: "Heimerdinger Champion Overview",
@@ -27,7 +27,7 @@ export default function LatestNews() {
         "It might not be rocket science, but we think  it’s smart to cover all your bases before the professor's arrival on October 17th UTC!",
     },
     {
-      img: "/imgs/wildrift/latestnews/wildrift-news-3.png",
+      img: "/imgs/wildrift/latestnews/wild-rift-news-3.png",
       type: "Game Updates",
       date: "10/17/2024",
       title: "Need to live",
@@ -74,7 +74,7 @@ export default function LatestNews() {
                 href="#"
                 className="mb-[50px] flex h-auto cursor-pointer flex-col text-[#141e37]"
               >
-                <div className="h-auto w-full overflow-hidden">
+                <div className="h-full w-full">
                   <img
                     src={news.img}
                     alt={news.title}

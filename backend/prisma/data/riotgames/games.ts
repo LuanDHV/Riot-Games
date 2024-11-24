@@ -36,13 +36,4 @@ export const games: IGames[] = [
     platforms: ['/imgs/riotgames/games/platforms-phone.png'],
     link: '/wildrift',
   },
-  {
-    launchImg: '/imgs/riotgames/games/runeterra-launch.png',
-    logotype: '/imgs/riotgames/games/runeterra-logotype.png',
-    platforms: [
-      '/imgs/riotgames/games/platforms-window.png',
-      '/imgs/riotgames/games/platforms-phone.png',
-    ],
-    link: '/runeterra',
-  },
 ];

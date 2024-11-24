@@ -10,7 +10,6 @@ const menuLeft = [
       { title: "League of Legends", img: "", href: "#" },
       { title: "Valorant", img: "", href: "#" },
       { title: "TeamFight Tatic", img: "", href: "#" },
-      { title: "Legends Of Runeterra", img: "", href: "#" },
       { title: "LoL: Wild Rift", img: "", href: "#" },
     ],
   },
