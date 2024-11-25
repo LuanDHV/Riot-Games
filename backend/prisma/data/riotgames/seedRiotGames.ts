@@ -1,16 +1,16 @@
 import { PrismaClient } from '@prisma/client';
-import { whatshappening } from './whatshappening';
-import { games } from './games';
-import { esports } from './esports';
-import { entertainments } from './entertainments';
+import { WhatsHappening } from './whatshappening';
+import { Games } from './games';
+import { Esports } from './esports';
+import { Entertainments } from './entertainments';
 
 const prisma = new PrismaClient();
 
 export async function seedRiotGames() {
-  await seedData(prisma.whatsHappening, whatshappening, 'title');
-  await seedData(prisma.games, games, 'launchImg');
-  await seedData(prisma.esports, esports, 'img');
-  await seedData(prisma.entertainments, entertainments, 'img');
+  await seedData(prisma.whatsHappening, WhatsHappening, 'title');
+  await seedData(prisma.games, Games, 'launchImg');
+  await seedData(prisma.esports, Esports, 'img');
+  await seedData(prisma.entertainments, Entertainments, 'img');
 
   console.log('Riot Games data seeded successfully.');
 }

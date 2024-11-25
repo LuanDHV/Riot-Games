@@ -1,6 +1,6 @@
 import { IEntertainments } from 'src/modules/riotgames/types/interface';
 
-export const entertainments: IEntertainments[] = [
+export const Entertainments: IEntertainments[] = [
   {
     img: '/imgs/riotgames/entertainment/arcane-card.png',
     logo: '/imgs/riotgames/entertainment/arcane-logo.png',

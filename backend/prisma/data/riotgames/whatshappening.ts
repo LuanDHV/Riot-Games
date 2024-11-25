@@ -1,6 +1,6 @@
 import { IWhatsHappening } from 'src/modules/riotgames/types/interface';
 
-export const whatshappening: IWhatsHappening[] = [
+export const WhatsHappening: IWhatsHappening[] = [
   {
     title: 'Watch, Play, Experience: Here’s How We’re Celebrating Arcane...',
     icon: '/imgs/riotgames/whatshappening/arcane-icon.png',

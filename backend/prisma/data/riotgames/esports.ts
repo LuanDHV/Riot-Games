@@ -1,6 +1,6 @@
 import { IEsports } from 'src/modules/riotgames/types/interface';
 
-export const esports: IEsports[] = [
+export const Esports: IEsports[] = [
   {
     img: '/imgs/riotgames/esports/lol-esports-img.png',
     logo: '/imgs/riotgames/esports/lol-esports-logo.png',
