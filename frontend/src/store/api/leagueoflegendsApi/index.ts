@@ -1,0 +1,1 @@
+export { featurednewsApi } from "./featurednewsApi";

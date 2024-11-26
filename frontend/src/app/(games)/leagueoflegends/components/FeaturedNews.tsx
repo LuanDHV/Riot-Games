@@ -7,33 +7,18 @@ import "swiper/css/pagination";
 import "../../../SwiperCustom.css"; //
 import { IFeaturedNews } from "../types/leagueoflegends.interface";
 import Link from "next/link";
+import { useGetFeaturedNewsQuery } from "@/store/api/leagueoflegendsApi/featurednewsApi";
 
 export default function FeaturedNews() {
-  const FeaturedNews: IFeaturedNews[] = [
-    {
-      img: "/imgs/leagueoflegends/featurednews/lol-news-1.png",
-      type: "Media",
-      date: "10/26/2024",
-      title: "Blood Sweat & Tears",
-      description:
-        "Wounded and near death, Ambessa sees a vision of what awaits her as a follower of the Wolf.",
-    },
-    {
-      img: "/imgs/leagueoflegends/featurednews/lol-news-2.png",
-      type: "Esports",
-      date: "11/1/2024",
-      title: "Looking Ahead LoL Esports 2025",
-      description:
-        "First Stand Tournament, Fearless Draft, MSI & Worlds 2025, plus regional league updates.",
-    },
-    {
-      img: "/imgs/leagueoflegends/featurednews/lol-news-3.png",
-      type: "Game Updates",
-      date: "11/7/2024",
-      title: "Ambessa Champion Trailer",
-      description: "You think yourself a wolf? Prove it.",
-    },
-  ];
+  const {
+    data: news,
+    error,
+    isLoading,
+    isSuccess,
+  } = useGetFeaturedNewsQuery(undefined);
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading data</div>;
 
   return (
     <>
@@ -67,38 +52,39 @@ export default function FeaturedNews() {
           }}
           className="custom-swiper-pagination"
         >
-          {FeaturedNews.map((news, index) => (
-            <SwiperSlide key={index}>
-              <Link
-                href="#"
-                className="mb-[50px] flex h-auto cursor-pointer flex-col"
-              >
-                <div className="h-auto w-full overflow-hidden">
-                  <img
-                    src={news.img}
-                    alt={news.title}
-                    className="w-full cursor-pointer object-cover transition-transform duration-500 ease-in-out hover:scale-110"
-                  />
-                </div>
-                <div className="">
-                  <p className="mb-2 mt-4 flex gap-1 text-[10px] md:text-xs lg:text-sm">
-                    <span className="font-bold uppercase text-[#c8aa6e]">
-                      {news.type}
-                    </span>
-                    <span>|</span>
-                    <span>{news.date}</span>
-                  </p>
+          {isSuccess &&
+            news.map((news: IFeaturedNews, index: number) => (
+              <SwiperSlide key={index}>
+                <Link
+                  href="#"
+                  className="mb-[50px] flex h-auto cursor-pointer flex-col"
+                >
+                  <div className="h-auto w-full overflow-hidden">
+                    <img
+                      src={news.img}
+                      alt={news.title}
+                      className="w-full cursor-pointer object-cover transition-transform duration-500 ease-in-out hover:scale-110"
+                    />
+                  </div>
+                  <div className="">
+                    <p className="mb-2 mt-4 flex gap-1 text-[10px] md:text-xs lg:text-sm">
+                      <span className="font-bold uppercase text-[#c8aa6e]">
+                        {news.type}
+                      </span>
+                      <span>|</span>
+                      <span>{news.date}</span>
+                    </p>
 
-                  <h3 className="mb-1 text-base font-bold md:text-lg lg:text-[22px]">
-                    {news.title}
-                  </h3>
-                  <p className="text-xs font-medium text-[#0a1428]">
-                    {news.description}
-                  </p>
-                </div>
-              </Link>
-            </SwiperSlide>
-          ))}
+                    <h3 className="mb-1 text-base font-bold md:text-lg lg:text-[22px]">
+                      {news.title}
+                    </h3>
+                    <p className="text-xs font-medium text-[#0a1428]">
+                      {news.description}
+                    </p>
+                  </div>
+                </Link>
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </>

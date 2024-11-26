@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import { useGetWhathappeningQuery } from "../../../store/api/riotgamesApi/whatshappeningApi";
 import { IWhatsHappening } from "../types/riotgames.interface";
+import { useGetWhatsHappeningQuery } from "@/store/api/riotgamesApi/whatshappeningApi";
 
 export default function WhatsHappening() {
   const {
@@ -9,7 +9,7 @@ export default function WhatsHappening() {
     error,
     isLoading,
     isSuccess,
-  } = useGetWhathappeningQuery(undefined);
+  } = useGetWhatsHappeningQuery(undefined);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;

@@ -4,10 +4,10 @@ export const whatshappeningApi = createApi({
   reducerPath: "whatshappeningApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/riotgames" }),
   endpoints: (builder) => ({
-    getWhathappening: builder.query({
+    getWhatsHappening: builder.query({
       query: () => "/whatshappening",
     }),
   }),
 });
 
-export const { useGetWhathappeningQuery } = whatshappeningApi;
+export const { useGetWhatsHappeningQuery } = whatshappeningApi;
