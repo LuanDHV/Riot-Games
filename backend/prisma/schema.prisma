@@ -58,3 +58,13 @@ model ChooseYourChampion {
   description String
   imgChampion String
 }
+
+model MultipleWaysToPlay {
+  id          Int    @id @default(autoincrement())
+  way         String @unique
+  background  String
+  icon        String
+  video       String
+  title       String
+  description String
+}

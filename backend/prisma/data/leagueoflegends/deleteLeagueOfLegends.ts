@@ -5,6 +5,7 @@ const prisma = new PrismaClient();
 export async function deleteLeagueOfLegends() {
   await deleteAll(prisma.featuredNews, 'FeaturedNews');
   await deleteAll(prisma.chooseYourChampion, 'ChooseYourChampion');
+  await deleteAll(prisma.multipleWaysToPlay, 'MultipleWaysToPlay');
 
   console.log('All League Of Legends data deleted.');
 }

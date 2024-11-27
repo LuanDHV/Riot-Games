@@ -17,6 +17,8 @@ export const store = configureStore({
       leagueoflegendsApi.featurednewsApi.reducer,
     [leagueoflegendsApi.chooseyourchampionApi.reducerPath]:
       leagueoflegendsApi.chooseyourchampionApi.reducer,
+    [leagueoflegendsApi.multiplewaystoplayApi.reducerPath]:
+      leagueoflegendsApi.multiplewaystoplayApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -28,7 +30,8 @@ export const store = configureStore({
 
       // Riot Games API middleware
       .concat(leagueoflegendsApi.featurednewsApi.middleware)
-      .concat(leagueoflegendsApi.chooseyourchampionApi.middleware),
+      .concat(leagueoflegendsApi.chooseyourchampionApi.middleware)
+      .concat(leagueoflegendsApi.multiplewaystoplayApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

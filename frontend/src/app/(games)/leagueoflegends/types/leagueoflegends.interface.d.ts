@@ -15,7 +15,7 @@ export interface IChooseYourChampion {
   imgChampion: string;
 }
 
-export interface IMutipleWaysToPlay {
+export interface IMultipleWaysToPlay {
   way: string;
   background: string;
   icon: string;

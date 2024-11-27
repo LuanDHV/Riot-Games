@@ -2,7 +2,7 @@ import BackDrop from "./components/Backdrop";
 import Banner from "./components/Banner";
 import ChooseYourChampion from "./components/ChooseYourChampion";
 import FeaturedNews from "./components/FeaturedNews";
-import MutipleWaysToPlay from "./components/MutipleWaysToPlay";
+import MultipleWaysToPlay from "./components/MultipleWaysToPlay";
 import SlayWithStyle from "./components/SlayWithStyle";
 
 export default function LeagueOfLegendsPage() {
@@ -12,7 +12,7 @@ export default function LeagueOfLegendsPage() {
       <FeaturedNews />
       <ChooseYourChampion />
       <SlayWithStyle />
-      <MutipleWaysToPlay />
+      <MultipleWaysToPlay />
       <BackDrop />
     </>
   );

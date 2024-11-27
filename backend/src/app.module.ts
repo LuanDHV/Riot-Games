@@ -7,6 +7,7 @@ import { EsportsModule } from './modules/riotgames/esports/esports.module';
 import { EntertainmentsModule } from './modules/riotgames/entertainments/entertainments.module';
 import { FeaturedNewsModule } from './modules/leagueoflegends/featurednews/featurednews.module';
 import { ChooseYourChampionModule } from './modules/leagueoflegends/chooseyourchampion/chooseyourchampion.module';
+import { MultipleWaysToPlayModule } from './modules/leagueoflegends/multiplewaystoplay/multiplewaystoplay.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { ChooseYourChampionModule } from './modules/leagueoflegends/chooseyourch
     // League of Legends Module
     FeaturedNewsModule,
     ChooseYourChampionModule,
+    MultipleWaysToPlayModule,
   ],
   controllers: [AppController],
   providers: [AppService],
