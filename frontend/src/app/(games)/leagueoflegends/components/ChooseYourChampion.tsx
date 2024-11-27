@@ -7,87 +7,41 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../../../SwiperCustom.css";
 import { IChooseYourChampion } from "../types/leagueoflegends.interface";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useGetChooseYourChampionQuery } from "@/store/api/leagueoflegendsApi/chooseyourchampionApi";
 
 export default function ChooseYourChampion() {
-  const ChooseYourChampion: IChooseYourChampion[] = [
-    {
-      role: "Assassins",
-      background:
-        "/imgs/leagueoflegends/chooseyourchampion/assassins-background.png",
-      icon: "/imgs/leagueoflegends/chooseyourchampion/assassins-icon.png",
-      champion: "Akali",
-      description: "The Rogue Assassin",
-      imgChampion:
-        "/imgs/leagueoflegends/chooseyourchampion/assassins-champion.png",
-    },
-    {
-      role: "Fighters",
-      background:
-        "/imgs/leagueoflegends/chooseyourchampion/fighters-background.png",
-      icon: "/imgs/leagueoflegends/chooseyourchampion/fighters-icon.png",
-      champion: "Yasuo",
-      description: "The Unforgiven",
-      imgChampion:
-        "/imgs/leagueoflegends/chooseyourchampion/fighters-champion.png",
-    },
-    {
-      role: "Mages",
-      background:
-        "/imgs/leagueoflegends/chooseyourchampion/mages-background.png",
-      icon: "/imgs/leagueoflegends/chooseyourchampion/mages-icon.png",
-      champion: "Lux",
-      description: "The Lady of Luminosity",
-      imgChampion:
-        "/imgs/leagueoflegends/chooseyourchampion/mages-champion.png",
-    },
-    {
-      role: "Marksmen",
-      background:
-        "/imgs/leagueoflegends/chooseyourchampion/marksmen-background.png",
-      icon: "/imgs/leagueoflegends/chooseyourchampion/marksmen-icon.png",
-      champion: "Jinx",
-      description: "The Loose Cannon",
-      imgChampion:
-        "/imgs/leagueoflegends/chooseyourchampion/marksmen-champion.png",
-    },
-    {
-      role: "Supports",
-      background:
-        "/imgs/leagueoflegends/chooseyourchampion/supports-background.png",
-      icon: "/imgs/leagueoflegends/chooseyourchampion/supports-icon.png",
-      champion: "Thresh",
-      description: "The Chain Warden",
-      imgChampion:
-        "/imgs/leagueoflegends/chooseyourchampion/supports-champion.png",
-    },
-    {
-      role: "Tanks",
-      background:
-        "/imgs/leagueoflegends/chooseyourchampion/tanks-background.png",
-      icon: "/imgs/leagueoflegends/chooseyourchampion/tanks-icon.png",
-      champion: "Leona",
-      description: "The Radiant Dawn",
-      imgChampion:
-        "/imgs/leagueoflegends/chooseyourchampion/tanks-champion.png",
-    },
-  ];
+  const {
+    data: ChooseYourChampion,
+    error,
+    isLoading,
+    isSuccess,
+  } = useGetChooseYourChampionQuery(undefined);
 
-  const [selectedRole, setSelectedRole] = useState<IChooseYourChampion>(
-    ChooseYourChampion[0],
+  const [selectedRole, setSelectedRole] = useState<IChooseYourChampion | null>(
+    null,
   );
+
+  useEffect(() => {
+    if (isSuccess && ChooseYourChampion.length > 0) {
+      setSelectedRole(ChooseYourChampion[0]);
+    }
+  }, [isSuccess, ChooseYourChampion]);
 
   const handleSelectRole = (role: IChooseYourChampion) => {
     setSelectedRole(role);
     console.log("selectedRole", role);
   };
 
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading data</div>;
+
   return (
     <>
       <div
         className="flex h-auto flex-col items-center justify-center gap-4 bg-cover bg-center p-6 md:p-8 lg:flex-row lg:p-12 xl:px-[200px]"
         style={{
-          backgroundImage: `url(${selectedRole.background})`,
+          backgroundImage: `url(${selectedRole?.background})`,
         }}
       >
         <div className="w-full lg:w-1/2">
@@ -138,39 +92,42 @@ export default function ChooseYourChampion() {
             }}
             className="custom-swiper-pagination"
           >
-            {ChooseYourChampion.map((items: IChooseYourChampion, index) => (
-              <SwiperSlide key={index} className="mb-[50px]">
-                <div
-                  className="flex cursor-pointer flex-col items-center justify-center duration-300 ease-in-out hover:scale-110"
-                  onClick={() => handleSelectRole(items)}
-                >
-                  <img
-                    src={items.icon}
-                    alt={items.role}
-                    className={`h-12 w-12 object-cover lg:h-16 lg:w-16 ${selectedRole.role === items.role ? "brightness-100" : "brightness-50"} duration-300 ease-in-out`}
-                  />
-                  <p className="mt-2 text-[10px] font-semibold uppercase text-[#0a1428] md:mt-4 md:text-xs lg:mt-6 lg:text-sm">
-                    {items.role}
-                  </p>
-                </div>
-              </SwiperSlide>
-            ))}
+            {isSuccess &&
+              ChooseYourChampion.map(
+                (items: IChooseYourChampion, index: number) => (
+                  <SwiperSlide key={index} className="mb-[50px]">
+                    <div
+                      className="flex cursor-pointer flex-col items-center justify-center duration-300 ease-in-out hover:scale-110"
+                      onClick={() => handleSelectRole(items)}
+                    >
+                      <img
+                        src={items.icon}
+                        alt={items.role}
+                        className={`h-12 w-12 object-cover lg:h-16 lg:w-16 ${selectedRole?.role === items.role ? "brightness-100" : "brightness-50"} duration-300 ease-in-out`}
+                      />
+                      <p className="mt-2 text-[10px] font-semibold uppercase text-[#0a1428] md:mt-4 md:text-xs lg:mt-6 lg:text-sm">
+                        {items.role}
+                      </p>
+                    </div>
+                  </SwiperSlide>
+                ),
+              )}
           </Swiper>
         </div>
         <div className="w-full lg:w-1/2">
           <div className="">
             <img
-              src={selectedRole.imgChampion}
-              alt={selectedRole.champion}
+              src={selectedRole?.imgChampion}
+              alt={selectedRole?.champion}
               className="h-full w-full object-cover"
             />
 
             <div className="flex flex-col items-center">
               <p className="mb-4 text-xl font-bold uppercase italic text-[#0a1428] lg:text-2xl">
-                {selectedRole.champion}
+                {selectedRole?.champion}
               </p>
               <p className="mb-1 text-xs font-semibold text-[#6c727e] md:text-sm lg:text-base">
-                {selectedRole.description}
+                {selectedRole?.description}
               </p>
             </div>
           </div>

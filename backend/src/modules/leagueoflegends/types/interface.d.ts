@@ -5,3 +5,12 @@ export interface IFeaturedNews {
   title: string;
   description: string;
 }
+
+export interface IChooseYourChampion {
+  role: string;
+  background: string;
+  icon: string;
+  champion: string;
+  description: string;
+  imgChampion: string;
+}

@@ -48,3 +48,13 @@ model FeaturedNews {
   title       String
   description String
 }
+
+model ChooseYourChampion {
+  id          Int    @id @default(autoincrement())
+  role        String @unique
+  background  String
+  icon        String
+  champion    String
+  description String
+  imgChampion String
+}

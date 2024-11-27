@@ -15,6 +15,8 @@ export const store = configureStore({
     // League of Legends API
     [leagueoflegendsApi.featurednewsApi.reducerPath]:
       leagueoflegendsApi.featurednewsApi.reducer,
+    [leagueoflegendsApi.chooseyourchampionApi.reducerPath]:
+      leagueoflegendsApi.chooseyourchampionApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -25,7 +27,8 @@ export const store = configureStore({
       .concat(riotGamesApi.entertainmentsApi.middleware)
 
       // Riot Games API middleware
-      .concat(leagueoflegendsApi.featurednewsApi.middleware),
+      .concat(leagueoflegendsApi.featurednewsApi.middleware)
+      .concat(leagueoflegendsApi.chooseyourchampionApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
