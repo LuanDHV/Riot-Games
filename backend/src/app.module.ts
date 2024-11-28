@@ -8,6 +8,7 @@ import { EntertainmentsModule } from './modules/riotgames/entertainments/enterta
 import { FeaturedNewsModule } from './modules/leagueoflegends/featurednews/featurednews.module';
 import { ChooseYourChampionModule } from './modules/leagueoflegends/chooseyourchampion/chooseyourchampion.module';
 import { MultipleWaysToPlayModule } from './modules/leagueoflegends/multiplewaystoplay/multiplewaystoplay.module';
+import { TheLatestModule } from './modules/valorant/thelatest/thelatest.module';
 
 @Module({
   imports: [
@@ -21,6 +22,9 @@ import { MultipleWaysToPlayModule } from './modules/leagueoflegends/multipleways
     FeaturedNewsModule,
     ChooseYourChampionModule,
     MultipleWaysToPlayModule,
+
+    //Valorant Module
+    TheLatestModule,
   ],
   controllers: [AppController],
   providers: [AppService],

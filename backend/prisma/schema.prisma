@@ -68,3 +68,13 @@ model MultipleWaysToPlay {
   title       String
   description String
 }
+
+// Models Valorant
+model TheLatest {
+  id          Int    @id @default(autoincrement())
+  img         String @unique
+  type        String
+  date        String
+  title       String
+  description String
+}

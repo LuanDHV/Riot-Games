@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import * as riotGamesApi from "./api/riotgamesApi";
 import * as leagueoflegendsApi from "./api/leagueoflegendsApi";
+import * as valorantApi from "./api/valorantApi";
 
 export const store = configureStore({
   reducer: {
@@ -19,6 +20,9 @@ export const store = configureStore({
       leagueoflegendsApi.chooseyourchampionApi.reducer,
     [leagueoflegendsApi.multiplewaystoplayApi.reducerPath]:
       leagueoflegendsApi.multiplewaystoplayApi.reducer,
+
+    //Valorant API
+    [valorantApi.theLatestApi.reducerPath]: valorantApi.theLatestApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -31,7 +35,10 @@ export const store = configureStore({
       // Riot Games API middleware
       .concat(leagueoflegendsApi.featurednewsApi.middleware)
       .concat(leagueoflegendsApi.chooseyourchampionApi.middleware)
-      .concat(leagueoflegendsApi.multiplewaystoplayApi.middleware),
+      .concat(leagueoflegendsApi.multiplewaystoplayApi.middleware)
+
+      //Valorant API middleware
+      .concat(valorantApi.theLatestApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
