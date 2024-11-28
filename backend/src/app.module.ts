@@ -9,6 +9,7 @@ import { FeaturedNewsModule } from './modules/leagueoflegends/featurednews/featu
 import { ChooseYourChampionModule } from './modules/leagueoflegends/chooseyourchampion/chooseyourchampion.module';
 import { MultipleWaysToPlayModule } from './modules/leagueoflegends/multiplewaystoplay/multiplewaystoplay.module';
 import { TheLatestModule } from './modules/valorant/thelatest/thelatest.module';
+import { LatestNewsModule } from './modules/teamfighttactics/latestnews/latenews.module';
 
 @Module({
   imports: [
@@ -25,6 +26,9 @@ import { TheLatestModule } from './modules/valorant/thelatest/thelatest.module';
 
     //Valorant Module
     TheLatestModule,
+
+    //Team Fight Tactics Module
+    LatestNewsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

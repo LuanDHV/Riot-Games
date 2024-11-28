@@ -78,3 +78,13 @@ model TheLatest {
   title       String
   description String
 }
+
+// Models Teamfight Tactics
+model LatestNews {
+  id          Int    @id @default(autoincrement())
+  img         String @unique
+  type        String
+  date        String
+  title       String
+  description String
+}
