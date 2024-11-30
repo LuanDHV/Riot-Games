@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
-import { IMultipleWaysToPlay } from "../types/leagueoflegends.interface";
 import { useEffect, useState } from "react";
 import { useGetMultipleWaysToPlayQuery } from "@/store/api/leagueoflegendsApi/multiplewaystoplayApi";
+import { IMultipleWaysToPlay } from "../types/interface";
 
 export default function MultipleWaysToPlay() {
   const {

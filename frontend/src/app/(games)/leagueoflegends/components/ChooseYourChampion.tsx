@@ -6,9 +6,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../../../SwiperCustom.css";
-import { IChooseYourChampion } from "../types/leagueoflegends.interface";
 import { useEffect, useState } from "react";
 import { useGetChooseYourChampionQuery } from "@/store/api/leagueoflegendsApi/chooseyourchampionApi";
+import { IChooseYourChampion } from "../types/interface";
 
 export default function ChooseYourChampion() {
   const {

@@ -10,6 +10,7 @@ import { ChooseYourChampionModule } from './modules/leagueoflegends/chooseyourch
 import { MultipleWaysToPlayModule } from './modules/leagueoflegends/multiplewaystoplay/multiplewaystoplay.module';
 import { TheLatestModule } from './modules/valorant/thelatest/thelatest.module';
 import { LatestNewsModule } from './modules/teamfighttactics/latestnews/latenews.module';
+import { NewsModule } from './modules/wildrift/news/news.module';
 
 @Module({
   imports: [
@@ -29,6 +30,9 @@ import { LatestNewsModule } from './modules/teamfighttactics/latestnews/latenews
 
     //Team Fight Tactics Module
     LatestNewsModule,
+
+    //Wild Rifts Module
+    NewsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

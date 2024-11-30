@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import { IWhatsHappening } from "../types/riotgames.interface";
 import { useGetWhatsHappeningQuery } from "@/store/api/riotgamesApi/whatshappeningApi";
+import { IWhatsHappening } from "../types/interface";
 
 export default function WhatsHappening() {
   const {

@@ -5,9 +5,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../../../SwiperCustom.css"; //
-import { IFeaturedNews } from "../types/leagueoflegends.interface";
 import Link from "next/link";
 import { useGetFeaturedNewsQuery } from "@/store/api/leagueoflegendsApi/featurednewsApi";
+import { IFeaturedNews } from "../types/interface";
 
 export default function FeaturedNews() {
   const {

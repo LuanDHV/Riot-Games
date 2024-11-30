@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import { IEsports } from "../types/riotgames.interface";
 import { useGetEsportsQuery } from "@/store/api/riotgamesApi/esportsApi";
+import { IEsports } from "../types/interface";
 
 export default function Esports() {
   const {

@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import { IEntertainments } from "../types/riotgames.interface";
 import { useGetEntertainmentsQuery } from "@/store/api/riotgamesApi/entertainmentsApi";
+import { IEntertainments } from "../types/interface";
 
 export default function Entertainment() {
   const {

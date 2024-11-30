@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import { IGames } from "../types/riotgames.interface";
 import { useGetGamesQuery } from "@/store/api/riotgamesApi/gamesApi";
+import { IGames } from "../types/interface";
 
 export default function Games() {
   const {

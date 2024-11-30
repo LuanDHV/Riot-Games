@@ -1,4 +1,4 @@
-export interface ILatestNews {
+export interface INews {
   img: string;
   type: string;
   date: string;

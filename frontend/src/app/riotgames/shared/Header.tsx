@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { IMenusHeader, ISubMenusHeader } from "../types/riotgames.interface";
+import { IMenusHeader, ISubMenusHeader } from "../types/interface";
 
 const menuLeft = [
   {

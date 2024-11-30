@@ -88,3 +88,13 @@ model LatestNews {
   title       String
   description String
 }
+
+//Models Wild Rift
+model News {
+  id          Int    @id @default(autoincrement())
+  img         String @unique
+  type        String
+  date        String
+  title       String
+  description String
+}

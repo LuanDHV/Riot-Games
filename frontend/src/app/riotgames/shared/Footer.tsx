@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import useScrollToTop from "../../hooks/useScrollToTop";
-import { IMenusFooter, ISocialIcons } from "../types/riotgames.interface";
+import { IMenusFooter, ISocialIcons } from "../types/interface";
 
 export default function Footer() {
   const footerData: IMenusFooter[] = [

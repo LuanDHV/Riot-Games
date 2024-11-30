@@ -6,8 +6,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../../../SwiperCustom.css"; //
 import Link from "next/link";
-import { ITheLatest } from "../types/valorant.interface";
+
 import { useGetTheLatestQuery } from "@/store/api/valorantApi/thelatestApi";
+import { ITheLatest } from "../types/interface";
 
 export default function TheLatest() {
   const {
