@@ -1,5 +1,5 @@
-import Header from "./shared/Header";
-import Footer from "./shared/Footer";
+import Header from "../shared/Header";
+import Footer from "./layout/Footer";
 
 export default function GamesLayout({
   children,
