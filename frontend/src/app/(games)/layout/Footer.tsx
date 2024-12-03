@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
-import { IFooterGames } from "./footer.interface";
+
 import { usePathname } from "next/navigation";
+import { IFooterData } from "../types/interface";
 
 export default function Footer() {
-  const lolFooter: IFooterGames[] = [
+  const lolFooter: IFooterData[] = [
     {
       section1: [
         {
@@ -88,7 +89,7 @@ export default function Footer() {
     },
   ];
 
-  const valorantFooter: IFooterGames[] = [
+  const valorantFooter: IFooterData[] = [
     {
       section1: [
         { title: "Download Game Client", link: "#" },
@@ -132,7 +133,7 @@ export default function Footer() {
     },
   ];
 
-  const tftFooter: IFooterGames[] = [
+  const tftFooter: IFooterData[] = [
     {
       section1: [{ title: "Download Riot Mobile Companion App", link: "#" }],
       socials: [],
@@ -156,7 +157,7 @@ export default function Footer() {
     },
   ];
 
-  const wildriftFooter: IFooterGames[] = [
+  const wildriftFooter: IFooterData[] = [
     {
       section1: [],
       socials: [
@@ -207,7 +208,7 @@ export default function Footer() {
 
   return (
     <>
-      {currentFooter.map((items) => (
+      {currentFooter.map((items: IFooterData) => (
         <div className="h-auto">
           <div className="justify-center bg-[#292929] p-6 lg:flex">
             {items.section1.map((section1, index) => (

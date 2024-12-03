@@ -1,20 +1,20 @@
 "use client";
 import { useEffect, useState } from "react";
-import MenuLeft from "./MenuLeft";
-import MenuRight from "./MenuRight";
+import HeaderLeft from "./HeaderLeft";
+import HeaderRight from "./HeaderRight";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuLeftOpen, setIsMenuLeftOpen] = useState(false);
-  const [isMenuRightOpen, setIsMenuRightOpen] = useState(false);
+  const [isHeaderLeftOpen, setIsHeaderLeftOpen] = useState(false);
+  const [isHeaderRightOpen, setIsHeaderRightOpen] = useState(false);
 
-  const handleMenuLeftToggle = () => {
-    setIsMenuLeftOpen(!isMenuLeftOpen);
+  const handleHeaderLeftToggle = () => {
+    setIsHeaderLeftOpen(!isHeaderLeftOpen);
   };
 
-  const handleMenuRightToggle = () => {
-    setIsMenuRightOpen(!isMenuRightOpen);
-    setIsMenuLeftOpen(false);
+  const handleHeaderRightToggle = () => {
+    setIsHeaderRightOpen(!isHeaderRightOpen);
+    setIsHeaderLeftOpen(false);
   };
 
   useEffect(() => {
@@ -26,15 +26,15 @@ export default function Header() {
 
   return (
     <div>
-      <MenuLeft
-        isMenuLeftOpen={isMenuLeftOpen}
-        handleMenuLeftToggle={handleMenuLeftToggle}
+      <HeaderLeft
+        isHeaderLeftOpen={isHeaderLeftOpen}
+        handleHeaderLeftToggle={handleHeaderLeftToggle}
       />
-      <MenuRight
+      <HeaderRight
         isScrolled={isScrolled}
-        isMenuRightOpen={isMenuRightOpen}
-        handleMenuRightToggle={handleMenuRightToggle}
-        handleMenuLeftToggle={handleMenuLeftToggle}
+        isHeaderRightOpen={isHeaderRightOpen}
+        handleHeaderRightToggle={handleHeaderRightToggle}
+        handleHeaderLeftToggle={handleHeaderLeftToggle}
       />
     </div>
   );

@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
 import useScrollToTop from "../../hooks/useScrollToTop";
-import { IMenusFooter, ISocialIcons } from "../types/interface";
+import { IFooterData, ISocialIcons } from "../types/interface";
 
 export default function Footer() {
-  const footerData: IMenusFooter[] = [
+  const FooterData: IFooterData[] = [
     { title: "Press", link: "#" },
     { title: "Security", link: "#" },
     { title: "Legal", link: "#" },
@@ -75,7 +75,7 @@ export default function Footer() {
               className="flex flex-col items-center justify-center pt-[30px] md:flex-row md:flex-wrap lg:justify-start lg:pt-0"
               style={{ width: "calc(100% - 40px)" }}
             >
-              {footerData.map((items: IMenusFooter, index: number) => (
+              {FooterData.map((items: IFooterData, index: number) => (
                 <li className="py-2" key={index}>
                   <Link
                     href={items.link}

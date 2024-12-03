@@ -1,14 +1,3 @@
-export interface IMenusHeader {
-  title: string;
-  href?: string;
-  subMenuRight?: ISubMenusHeader[];
-}
-
-export interface ISubMenusHeader {
-  title: string;
-  href: string;
-}
-
 export interface IWhatsHappening {
   title: string;
   icon: string;
@@ -36,7 +25,7 @@ export interface IEntertainments {
   link: string;
 }
 
-export interface IMenusFooter {
+export interface IFooterData {
   title: string;
   link: string;
 }

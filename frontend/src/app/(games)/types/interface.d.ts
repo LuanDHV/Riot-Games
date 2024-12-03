@@ -24,7 +24,7 @@ export interface ISection2 {
   link: string;
 }
 
-export interface IFooterGames {
+export interface IFooterData {
   section1: ISection1[];
   socials: ISocials[];
   icons: IIcons[];

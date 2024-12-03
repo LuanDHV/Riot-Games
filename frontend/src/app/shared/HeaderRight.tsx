@@ -1,11 +1,17 @@
 "use client";
-import { useEffect, useState } from "react";
-import { IMenusHeader, ISubMenusHeader } from "../riotgames/types/interface";
+import { useState } from "react";
 import Link from "next/link";
-const menuRight: IMenusHeader[] = [
+import {
+  IHeaderData,
+  IHeaderRightProps,
+  ISubHeaderData,
+} from "./types/interface";
+import { usePathname } from "next/navigation";
+
+const riotgamesHeader: IHeaderData[] = [
   {
     title: "Who We Are",
-    subMenuRight: [
+    subHeader: [
       { title: "About Riot", href: "#" },
       { title: "Diversity & Inclusion", href: "#" },
       { title: "Social Impact", href: "#" },
@@ -13,7 +19,7 @@ const menuRight: IMenusHeader[] = [
   },
   {
     title: "Work with us",
-    subMenuRight: [
+    subHeader: [
       { title: "Jobs", href: "#" },
       { title: "Benefits", href: "#" },
       { title: "Life at Riot", href: "#" },
@@ -22,28 +28,97 @@ const menuRight: IMenusHeader[] = [
   { title: "News", href: "#" },
 ];
 
-type MenuRightProps = {
-  isScrolled: boolean;
-  isMenuRightOpen: boolean;
-  handleMenuRightToggle: () => void;
-  handleMenuLeftToggle: () => void;
-};
+const lolHeader: IHeaderData[] = [
+  {
+    title: "Games",
+  },
+  {
+    title: "Champions",
+  },
+  {
+    title: "News",
+    subHeader: [
+      { title: "All", href: "#" },
+      { title: "Game Updates", href: "#" },
+      { title: "Esports", href: "#" },
+      { title: "Dev", href: "#" },
+      { title: "Lore", href: "#" },
+      { title: "Media", href: "#" },
+      { title: "Merch", href: "#" },
+      { title: "Community", href: "#" },
+      { title: "Riot Games", href: "#" },
+    ],
+  },
+  {
+    title: "Path Notes",
+  },
+  {
+    title: "Discover",
+    subHeader: [
+      { title: "Community", href: "#" },
+      { title: "Hall of Legends", href: "#" },
+      { title: "League Displays", href: "#" },
+      { title: "Riot Mobile", href: "#" },
+    ],
+  },
+  {
+    title: "Esports",
+  },
+  {
+    title: "Universe",
+  },
+  {
+    title: "Shop",
+  },
+  {
+    title: "Support",
+  },
+  {
+    title: "PBE",
+  },
+];
 
-export default function MenuRight({
+export default function HeaderRight({
   isScrolled,
-  isMenuRightOpen,
-  handleMenuRightToggle,
-  handleMenuLeftToggle,
-}: MenuRightProps) {
-  const [openSubMenuRight, setOpenSubMenuRight] = useState<number | null>(null);
+  isHeaderRightOpen,
+  handleHeaderRightToggle,
+  handleHeaderLeftToggle,
+}: IHeaderRightProps) {
+  const [openSubHeaderRight, setOpenSubHeaderRight] = useState<number | null>(
+    null,
+  );
 
-  const handleSubMenuRightToggle = (index: number) => {
-    setOpenSubMenuRight(openSubMenuRight === index ? null : index);
+  const handleSubHeaderRightToggle = (index: number) => {
+    setOpenSubHeaderRight(openSubHeaderRight === index ? null : index);
   };
+
+  const pathname = usePathname();
+
+  const CurrentHeader = pathname.startsWith("/riotgames")
+    ? riotgamesHeader
+    : pathname.startsWith("/leagueoflegends")
+      ? lolHeader
+      : // : pathname.startsWith("/valorant")
+        //   ? valorantHeader
+        //   : pathname.startsWith("/teamfighttactics")
+        //     ? tftHeader
+        //     : pathname.startsWith("/wildrift")
+        //       ? wildriftHeader
+        null;
+
+  const bgColor = pathname.startsWith("/riotgames")
+    ? "#d13639"
+    : pathname.startsWith("/leagueoflegends")
+      ? "#59c1de"
+      : "transparent";
+
+  if (!CurrentHeader) {
+    return <div>Data Not Available</div>;
+  }
 
   return (
     <>
-      {/* Menu Right Desktop */}
+      {/* Header Right Desktop */}
       <div
         className={`fixed z-40 flex h-20 w-full items-center justify-between px-4 transition-colors duration-300 ease-in-out lg:px-8 ${
           isScrolled ? "bg-[#111111]" : "bg-transparent"
@@ -62,7 +137,7 @@ export default function MenuRight({
               src="imgs/riotgames/header/riotgames-red.png"
               alt="Riot Games"
               className="absolute h-10 w-24 object-contain opacity-0 duration-300 ease-out group-hover:opacity-100"
-              onClick={handleMenuLeftToggle}
+              onClick={handleHeaderLeftToggle}
             />
 
             {/* Arrow Down */}
@@ -80,7 +155,7 @@ export default function MenuRight({
             </div>
           </div>
 
-          {/* Icon Riot Games & Menu */}
+          {/* Icon Riot Games & Header */}
           <div className="ml-7 hidden items-center justify-start gap-2 lg:flex">
             {/* Icon Riot Games */}
             <Link href="#">
@@ -91,42 +166,45 @@ export default function MenuRight({
               />
             </Link>
 
-            {/* Menu */}
-            {menuRight.map((menuItems: IMenusHeader, index: number) => (
+            {/* Header */}
+            {CurrentHeader?.map((HeaderItems: IHeaderData, index: number) => (
               <div key={index} className="group relative flex items-center">
                 <div className="flex h-20 cursor-pointer items-center">
                   <div className="relative flex items-center rounded-lg px-4 py-2 hover:bg-[#8080804d]">
                     <a
-                      href={menuItems.href}
+                      href={HeaderItems.href}
                       className="text-sm font-bold uppercase text-[#f9f9f9]"
                     >
-                      {menuItems.title}
+                      {HeaderItems.title}
                     </a>
-                    {/* Show arrow if data sub menu is available */}
-                    {menuItems.subMenuRight ? (
+                    {/* Show arrow if data sub Header is available */}
+                    {HeaderItems.subHeader ? (
                       <img
                         src="imgs/riotgames/header/arrow-down-white.png"
                         alt="Arrow"
                         className="ml-3 object-cover"
                       />
                     ) : null}
-                    {/* Sub Menu Underline */}
-                    <div className="absolute -bottom-[14px] left-0 right-0 hidden h-1 rounded-sm bg-[#d13639] group-hover:block"></div>
+                    {/* Sub Header Underline */}
+                    <div
+                      className="absolute -bottom-[14px] left-0 right-0 hidden h-1 rounded-sm group-hover:block"
+                      style={{ backgroundColor: bgColor }}
+                    ></div>
                   </div>
                 </div>
 
-                {/* Dropdown Sub Menu */}
-                {menuItems.subMenuRight ? (
+                {/* Dropdown Sub Header */}
+                {HeaderItems.subHeader ? (
                   <div className="absolute top-[72px] hidden bg-[#292929] group-hover:block">
                     <ul className="mx-3 my-4 flex min-w-[200px] flex-col rounded-bl-[2px] rounded-br-[2px] bg-[#292929]">
-                      {menuItems.subMenuRight.map(
-                        (subMenuItems: ISubMenusHeader, subIndex: number) => (
+                      {HeaderItems.subHeader.map(
+                        (subHeaderItems: ISubHeaderData, subIndex: number) => (
                           <li
                             key={subIndex}
                             className="cursor-pointer rounded-lg px-4 py-2 text-sm font-medium text-[#c7c7c7] hover:bg-[#8080804d]"
                           >
-                            <Link href={subMenuItems.href}>
-                              {subMenuItems.title}
+                            <Link href={subHeaderItems.href}>
+                              {subHeaderItems.title}
                             </Link>
                           </li>
                         ),
@@ -165,29 +243,30 @@ export default function MenuRight({
           <div className="mx-auto w-full">
             <Link
               href="#"
-              className="flex justify-center rounded-2xl bg-[#d13639] p-2 text-xs font-bold uppercase text-[#f1111] duration-300 ease-in-out"
+              className="flex justify-center rounded-2xl p-2 text-xs font-bold uppercase text-[#f1111] duration-300 ease-in-out"
+              style={{ backgroundColor: bgColor }}
             >
               Sign In
             </Link>
           </div>
         </div>
 
-        {/* Menu Open Mobile */}
+        {/* Header Open Mobile */}
         <img
-          src="imgs/riotgames/header/menu-open.png"
-          alt="menu"
+          src="imgs/riotgames/header/Header-open.png"
+          alt="Header"
           className="cursor-pointer object-cover lg:hidden"
-          onClick={handleMenuRightToggle}
+          onClick={handleHeaderRightToggle}
         />
       </div>
 
-      {/* Menu Right Mobile */}
+      {/* Header Right Mobile */}
       <div
         className={`${
-          isMenuRightOpen ? "block" : "hidden"
+          isHeaderRightOpen ? "block" : "hidden"
         } fixed right-0 z-50 h-screen w-full bg-[#1f1f1f] md:w-[55%] lg:hidden`}
       >
-        {/* Header Menu */}
+        {/* Header Header */}
         <div className="flex h-20 items-center justify-between px-5">
           <Link href="#">
             <img
@@ -197,30 +276,30 @@ export default function MenuRight({
             />
           </Link>
           <img
-            src="imgs/riotgames/header/menu-close-white.png"
-            alt="menu-close"
+            src="imgs/riotgames/header/Header-close-white.png"
+            alt="Header-close"
             className="cursor-pointer object-cover lg:hidden"
-            onClick={handleMenuRightToggle}
+            onClick={handleHeaderRightToggle}
           />
         </div>
 
-        {/* Menu  */}
+        {/* Header  */}
         <div className="mx-auto flex h-auto flex-col pt-5">
-          {menuRight.map((menuItems: IMenusHeader, index: number) => (
+          {CurrentHeader?.map((HeaderItems: IHeaderData, index: number) => (
             <div key={index}>
               <Link
                 href="#"
                 className="mx-4 my-2 flex items-center justify-between rounded-lg px-[18px] py-[12px] duration-300 ease-in-out hover:bg-[#80808033]"
-                onClick={() => handleSubMenuRightToggle(index)}
+                onClick={() => handleSubHeaderRightToggle(index)}
               >
                 <p className="font-semibold uppercase text-[#f9f9f9]">
-                  {menuItems.title}
+                  {HeaderItems.title}
                 </p>
-                {/* Show arrow if data sub menu is available*/}
-                {menuItems.subMenuRight ? (
+                {/* Show arrow if data sub Header is available*/}
+                {HeaderItems.subHeader ? (
                   <img
                     src={`imgs/riotgames/header/arrow-${
-                      openSubMenuRight === index ? "up" : "down"
+                      openSubHeaderRight === index ? "up" : "down"
                     }-white.png`}
                     alt="Arrow"
                     className="object-cover"
@@ -228,18 +307,18 @@ export default function MenuRight({
                 ) : null}
               </Link>
 
-              {/* Sub Menu */}
-              {openSubMenuRight === index && menuItems.subMenuRight ? (
+              {/* Sub Header */}
+              {openSubHeaderRight === index && HeaderItems.subHeader ? (
                 <div className="flex flex-col">
-                  {menuItems.subMenuRight.map(
-                    (subMenuItems: ISubMenusHeader, index: number) => (
+                  {HeaderItems.subHeader.map(
+                    (subHeaderItems: ISubHeaderData, index: number) => (
                       <Link
                         key={index}
-                        href={subMenuItems.href}
+                        href={subHeaderItems.href}
                         className="mx-4 my-2 rounded-lg px-[18px] duration-300 ease-in-out hover:bg-[#80808033]"
                       >
                         <p className="py-2 font-bold text-[#fcfcfc]">
-                          {subMenuItems.title}
+                          {subHeaderItems.title}
                         </p>
                       </Link>
                     ),
@@ -274,17 +353,18 @@ export default function MenuRight({
         <div className="mx-auto mt-10 w-full px-5">
           <Link
             href="#"
-            className="flex justify-center rounded-2xl bg-[#d13639] p-2 text-xs font-bold uppercase text-[#f1111] duration-300 ease-in-out"
+            className="flex justify-center rounded-2xl p-2 text-xs font-bold uppercase text-[#f1111] duration-300 ease-in-out"
+            style={{ backgroundColor: bgColor }}
           >
             Sign In
           </Link>
         </div>
 
         {/* Overlay */}
-        {isMenuRightOpen && (
+        {isHeaderRightOpen && (
           <div
             className="fixed left-0 top-0 z-40 hidden h-screen w-[45%] bg-black opacity-50 md:block"
-            onClick={handleMenuRightToggle}
+            onClick={handleHeaderRightToggle}
           ></div>
         )}
       </div>
