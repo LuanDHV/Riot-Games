@@ -78,6 +78,95 @@ const lolHeader: IHeaderData[] = [
   },
 ];
 
+const valorantHeader: IHeaderData[] = [
+  {
+    title: "Game Infor",
+    subHeader: [
+      { title: "Agents", href: "#" },
+      { title: "Maps", href: "#" },
+      { title: "Arsenal", href: "#" },
+      { title: "Premier", href: "#" },
+    ],
+  },
+  {
+    title: "Media",
+  },
+  {
+    title: "News",
+  },
+  {
+    title: "LeaderBoards",
+  },
+  {
+    title: "Support",
+    subHeader: [
+      { title: "Specs", href: "#" },
+      { title: "Support", href: "#" },
+      { title: "Community Code", href: "#" },
+    ],
+  },
+  {
+    title: "Our Socials",
+    subHeader: [
+      { title: "X", href: "#" },
+      { title: "Youtube", href: "#" },
+      { title: "Instagram", href: "#" },
+      { title: "TikTok", href: "#" },
+      { title: "Facebook", href: "#" },
+      { title: "Discord", href: "#" },
+    ],
+  },
+  {
+    title: "Esports",
+  },
+  {
+    title: "PBE SignUp",
+  },
+];
+
+const tftHeader: IHeaderData[] = [
+  {
+    title: "News",
+  },
+  {
+    title: "Set Overview",
+  },
+  {
+    title: "Labs",
+    subHeader: [
+      { title: "Double Up", href: "#" },
+      { title: "Hyper Roll", href: "#" },
+    ],
+  },
+];
+
+const wildriftHeader: IHeaderData[] = [
+  {
+    title: "Game Overview",
+  },
+  {
+    title: "News",
+  },
+  {
+    title: "Champions",
+  },
+  {
+    title: "Find Your Champion",
+  },
+  {
+    title: "Support",
+  },
+  {
+    title: "Socials",
+    subHeader: [
+      { title: "Facebook", href: "#" },
+      { title: "Instagram", href: "#" },
+      { title: "X", href: "#" },
+      { title: "Youtube", href: "#" },
+    ],
+  },
+];
+
 export default function HeaderRight({
   isScrolled,
   isHeaderRightOpen,
@@ -98,30 +187,42 @@ export default function HeaderRight({
     ? riotgamesHeader
     : pathname.startsWith("/leagueoflegends")
       ? lolHeader
-      : // : pathname.startsWith("/valorant")
-        //   ? valorantHeader
-        //   : pathname.startsWith("/teamfighttactics")
-        //     ? tftHeader
-        //     : pathname.startsWith("/wildrift")
-        //       ? wildriftHeader
-        null;
+      : pathname.startsWith("/valorant")
+        ? valorantHeader
+        : pathname.startsWith("/teamfighttactics")
+          ? tftHeader
+          : pathname.startsWith("/wildrift")
+            ? wildriftHeader
+            : null;
 
-  const bgColor = pathname.startsWith("/riotgames")
+  const Color = pathname.startsWith("/riotgames")
     ? "#d13639"
     : pathname.startsWith("/leagueoflegends")
       ? "#59c1de"
-      : "transparent";
+      : pathname.startsWith("/valorant")
+        ? "#ff4655"
+        : pathname.startsWith("/teamfighttactics")
+          ? "#ff6807"
+          : pathname.startsWith("/wildrift")
+            ? "#32c8ff"
+            : "null";
 
   if (!CurrentHeader) {
     return <div>Data Not Available</div>;
   }
+
+  const isRiotGamesPage = pathname.startsWith("/riotgames");
 
   return (
     <>
       {/* Header Right Desktop */}
       <div
         className={`fixed z-40 flex h-20 w-full items-center justify-between px-4 transition-colors duration-300 ease-in-out lg:px-8 ${
-          isScrolled ? "bg-[#111111]" : "bg-transparent"
+          isRiotGamesPage
+            ? isScrolled
+              ? "bg-[#111111]"
+              : "bg-transparent"
+            : "bg-[#111111]"
         }`}
       >
         <div className="flex">
@@ -170,10 +271,18 @@ export default function HeaderRight({
             {CurrentHeader?.map((HeaderItems: IHeaderData, index: number) => (
               <div key={index} className="group relative flex items-center">
                 <div className="flex h-20 cursor-pointer items-center">
-                  <div className="relative flex items-center rounded-lg px-4 py-2 hover:bg-[#8080804d]">
+                  <div
+                    className="relative flex items-center rounded-lg px-4 py-2 text-[#f9f9f9] group-hover:bg-[#8080804d]"
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = Color;
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "#f9f9f9";
+                    }}
+                  >
                     <a
                       href={HeaderItems.href}
-                      className="text-sm font-bold uppercase text-[#f9f9f9]"
+                      className="text-sm font-bold uppercase duration-300 ease-in-out"
                     >
                       {HeaderItems.title}
                     </a>
@@ -188,7 +297,7 @@ export default function HeaderRight({
                     {/* Sub Header Underline */}
                     <div
                       className="absolute -bottom-[14px] left-0 right-0 hidden h-1 rounded-sm group-hover:block"
-                      style={{ backgroundColor: bgColor }}
+                      style={{ backgroundColor: Color }}
                     ></div>
                   </div>
                 </div>
@@ -244,7 +353,7 @@ export default function HeaderRight({
             <Link
               href="#"
               className="flex justify-center rounded-2xl p-2 text-xs font-bold uppercase text-[#f1111] duration-300 ease-in-out"
-              style={{ backgroundColor: bgColor }}
+              style={{ backgroundColor: Color }}
             >
               Sign In
             </Link>
@@ -354,7 +463,7 @@ export default function HeaderRight({
           <Link
             href="#"
             className="flex justify-center rounded-2xl p-2 text-xs font-bold uppercase text-[#f1111] duration-300 ease-in-out"
-            style={{ backgroundColor: bgColor }}
+            style={{ backgroundColor: Color }}
           >
             Sign In
           </Link>
