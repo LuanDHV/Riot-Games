@@ -11,10 +11,10 @@ const HeaderData: IHeaderData[] = [
   {
     title: "Games",
     subHeader: [
-      { title: "League of Legends", href: "#" },
-      { title: "Valorant", href: "#" },
-      { title: "TeamFight Tatic", href: "#" },
-      { title: "LoL: Wild Rift", href: "#" },
+      { title: "League of Legends", href: "/leagueoflegends" },
+      { title: "Valorant", href: "/valorant" },
+      { title: "TeamFight Tatic", href: "/teamfighttactics" },
+      { title: "LoL: Wild Rift", href: "/wildrift" },
     ],
   },
   {
@@ -104,8 +104,8 @@ export default function HeaderLeft({
             </div>
           </div>
           <img
-            src="imgs/riotgames/header/Header-close-black.png"
-            alt="Header-close"
+            src="imgs/riotgames/header/header-close-black.png"
+            alt="Header Close"
             className="hidden h-8 w-8 cursor-pointer object-contain lg:block"
             onClick={handleHeaderLeftToggle}
           />
@@ -298,8 +298,8 @@ export default function HeaderLeft({
             </div>
           </div>
           <img
-            src="imgs/riotgames/header/Header-close-black.png"
-            alt="Header-close"
+            src="imgs/riotgames/header/header-close-black.png"
+            alt="Header Close"
             className="cursor-pointer object-contain lg:hidden"
             onClick={handleHeaderLeftToggle}
           />

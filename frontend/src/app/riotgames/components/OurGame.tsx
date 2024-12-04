@@ -1,6 +1,7 @@
 import Entertainment from "./Entertainment";
 import Esports from "./Esports";
 import Games from "./Games";
+import RiotForge from "./RiotForge";
 
 export default function OurGame() {
   return (
@@ -9,6 +10,7 @@ export default function OurGame() {
         <Games />
         <Esports />
         <Entertainment />
+        <RiotForge />
       </div>
     </>
   );

@@ -362,7 +362,7 @@ export default function HeaderRight({
 
         {/* Header Open Mobile */}
         <img
-          src="imgs/riotgames/header/Header-open.png"
+          src="imgs/riotgames/header/header-open.png"
           alt="Header"
           className="cursor-pointer object-cover lg:hidden"
           onClick={handleHeaderRightToggle}
@@ -385,8 +385,8 @@ export default function HeaderRight({
             />
           </Link>
           <img
-            src="imgs/riotgames/header/Header-close-white.png"
-            alt="Header-close"
+            src="imgs/riotgames/header/header-close-white.png"
+            alt="Header Close"
             className="cursor-pointer object-cover lg:hidden"
             onClick={handleHeaderRightToggle}
           />

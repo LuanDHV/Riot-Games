@@ -25,6 +25,13 @@ export interface IEntertainments {
   link: string;
 }
 
+export interface IForge {
+  card: string;
+  logotype: string;
+  platforms: string[];
+  link: string;
+}
+
 export interface IFooterData {
   title: string;
   link: string;
