@@ -23,3 +23,10 @@ export interface IEntertainments {
   logo: string;
   link: string;
 }
+
+export interface IForge {
+  card: string;
+  logotype: string;
+  platforms: string[];
+  link: string;
+}

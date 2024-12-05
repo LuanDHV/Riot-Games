@@ -5,6 +5,7 @@ import { WhatsHappeningModule } from './modules/riotgames/whatshappening/whatsha
 import { GamesModule } from './modules/riotgames/games/games.module';
 import { EsportsModule } from './modules/riotgames/esports/esports.module';
 import { EntertainmentsModule } from './modules/riotgames/entertainments/entertainments.module';
+import { ForgeModule } from './modules/riotgames/forge/forge.module';
 import { FeaturedNewsModule } from './modules/leagueoflegends/featurednews/featurednews.module';
 import { ChooseYourChampionModule } from './modules/leagueoflegends/chooseyourchampion/chooseyourchampion.module';
 import { MultipleWaysToPlayModule } from './modules/leagueoflegends/multiplewaystoplay/multiplewaystoplay.module';
@@ -19,6 +20,7 @@ import { NewsModule } from './modules/wildrift/news/news.module';
     GamesModule,
     EsportsModule,
     EntertainmentsModule,
+    ForgeModule,
 
     // League of Legends Module
     FeaturedNewsModule,

@@ -7,6 +7,7 @@ export async function deleteRiotGames() {
   await deleteAll(prisma.games, 'Games');
   await deleteAll(prisma.esports, 'Esports');
   await deleteAll(prisma.entertainments, 'Entertainments');
+  await deleteAll(prisma.forge, 'Forge');
 
   console.log('All Riot Games data deleted.');
 }

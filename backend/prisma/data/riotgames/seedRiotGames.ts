@@ -3,6 +3,7 @@ import { WhatsHappening } from './whatshappening';
 import { Games } from './games';
 import { Esports } from './esports';
 import { Entertainments } from './entertainments';
+import { Forge } from './forge';
 
 const prisma = new PrismaClient();
 
@@ -11,6 +12,7 @@ export async function seedRiotGames() {
   await seedData(prisma.games, Games, 'launchImg');
   await seedData(prisma.esports, Esports, 'img');
   await seedData(prisma.entertainments, Entertainments, 'img');
+  await seedData(prisma.forge, Forge, 'card');
 
   console.log('Riot Games data seeded successfully.');
 }

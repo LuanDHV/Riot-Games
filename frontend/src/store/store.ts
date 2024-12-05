@@ -14,6 +14,7 @@ export const store = configureStore({
     [RiotGamesApi.esportsApi.reducerPath]: RiotGamesApi.esportsApi.reducer,
     [RiotGamesApi.entertainmentsApi.reducerPath]:
       RiotGamesApi.entertainmentsApi.reducer,
+    [RiotGamesApi.forgeApi.reducerPath]: RiotGamesApi.forgeApi.reducer,
 
     // League of Legends API
     [LeagueOfLegendsApi.featurednewsApi.reducerPath]:
@@ -40,6 +41,7 @@ export const store = configureStore({
       .concat(RiotGamesApi.gamesApi.middleware)
       .concat(RiotGamesApi.esportsApi.middleware)
       .concat(RiotGamesApi.entertainmentsApi.middleware)
+      .concat(RiotGamesApi.forgeApi.middleware)
 
       // Riot Games API middleware
       .concat(LeagueOfLegendsApi.featurednewsApi.middleware)

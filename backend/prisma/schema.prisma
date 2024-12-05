@@ -39,6 +39,14 @@ model Entertainments {
   link String
 }
 
+model Forge {
+  id        Int      @id @default(autoincrement())
+  card      String   @unique
+  logotype  String
+  platforms String[]
+  link      String
+}
+
 // Models League Of Legends
 model FeaturedNews {
   id          Int    @id @default(autoincrement())
