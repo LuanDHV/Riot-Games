@@ -4,7 +4,7 @@ export const Entertainments: IEntertainments[] = [
   {
     img: '/imgs/riotgames/entertainment/arcane-card.png',
     logo: '/imgs/riotgames/entertainment/arcane-logo.png',
-    link: '#',
+    link: '/arcane',
   },
   {
     img: '/imgs/riotgames/entertainment/riot-music-card.png',

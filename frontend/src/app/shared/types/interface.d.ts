@@ -1,4 +1,6 @@
 export interface IHeaderData {
+  icon?: string;
+  color?: string;
   title?: string;
   href?: string;
   subHeader?: ISubHeaderData[];

@@ -10,6 +10,8 @@ import { usePathname } from "next/navigation";
 
 const riotgamesHeader: IHeaderData[] = [
   {
+    icon: "imgs/header/riotgames-header-icon.png",
+    color: "#d13639",
     title: "Who We Are",
     subHeader: [
       { title: "About Riot", href: "#" },
@@ -30,10 +32,13 @@ const riotgamesHeader: IHeaderData[] = [
 
 const lolHeader: IHeaderData[] = [
   {
+    icon: "imgs/header/lol-header-icon.png",
+    color: "#59c1de",
     title: "Games",
   },
   {
     title: "Champions",
+    href: "#",
   },
   {
     title: "News",
@@ -51,6 +56,7 @@ const lolHeader: IHeaderData[] = [
   },
   {
     title: "Path Notes",
+    href: "#",
   },
   {
     title: "Discover",
@@ -63,23 +69,30 @@ const lolHeader: IHeaderData[] = [
   },
   {
     title: "Esports",
+    href: "#",
   },
   {
     title: "Universe",
+    href: "#",
   },
   {
     title: "Shop",
+    href: "#",
   },
   {
     title: "Support",
+    href: "#",
   },
   {
     title: "PBE",
+    href: "#",
   },
 ];
 
 const valorantHeader: IHeaderData[] = [
   {
+    icon: "imgs/header/valorant-header-icon.png",
+    color: "#ff4655",
     title: "Game Infor",
     subHeader: [
       { title: "Agents", href: "#" },
@@ -90,12 +103,15 @@ const valorantHeader: IHeaderData[] = [
   },
   {
     title: "Media",
+    href: "#",
   },
   {
     title: "News",
+    href: "#",
   },
   {
     title: "LeaderBoards",
+    href: "#",
   },
   {
     title: "Support",
@@ -118,18 +134,24 @@ const valorantHeader: IHeaderData[] = [
   },
   {
     title: "Esports",
+    href: "#",
   },
   {
     title: "PBE SignUp",
+    href: "#",
   },
 ];
 
 const tftHeader: IHeaderData[] = [
   {
+    icon: "imgs/header/tft-header-icon.png",
+    color: "#ff6807",
     title: "News",
+    href: "#",
   },
   {
     title: "Set Overview",
+    href: "#",
   },
   {
     title: "Labs",
@@ -142,19 +164,26 @@ const tftHeader: IHeaderData[] = [
 
 const wildriftHeader: IHeaderData[] = [
   {
+    icon: "imgs/header/wildrift-header-icon.png",
+    color: "#32c8ff",
     title: "Game Overview",
+    href: "#",
   },
   {
     title: "News",
+    href: "#",
   },
   {
     title: "Champions",
+    href: "#",
   },
   {
     title: "Find Your Champion",
+    href: "#",
   },
   {
     title: "Support",
+    href: "#",
   },
   {
     title: "Socials",
@@ -164,6 +193,19 @@ const wildriftHeader: IHeaderData[] = [
       { title: "X", href: "#" },
       { title: "Youtube", href: "#" },
     ],
+  },
+];
+
+const arcaneHeader: IHeaderData[] = [
+  {
+    icon: "imgs/header/arcane-header-icon.svg",
+    color: "#ede0ce",
+    title: "News",
+    href: "#",
+  },
+  {
+    title: "Avatar Creator",
+    href: "#",
   },
 ];
 
@@ -193,19 +235,12 @@ export default function HeaderRight({
           ? tftHeader
           : pathname.startsWith("/wildrift")
             ? wildriftHeader
-            : null;
+            : pathname.startsWith("/arcane")
+              ? arcaneHeader
+              : null;
 
-  const Color = pathname.startsWith("/riotgames")
-    ? "#d13639"
-    : pathname.startsWith("/leagueoflegends")
-      ? "#59c1de"
-      : pathname.startsWith("/valorant")
-        ? "#ff4655"
-        : pathname.startsWith("/teamfighttactics")
-          ? "#ff6807"
-          : pathname.startsWith("/wildrift")
-            ? "#32c8ff"
-            : "null";
+  const currentIcon = CurrentHeader?.[0]?.icon || null;
+  const currentColor = CurrentHeader?.[0]?.color || "#f9f9f9";
 
   if (!CurrentHeader) {
     return <div>Data Not Available</div>;
@@ -256,17 +291,19 @@ export default function HeaderRight({
             </div>
           </div>
 
-          {/* Icon Riot Games & Header */}
-          <div className="ml-7 hidden items-center justify-start gap-2 lg:flex">
-            {/* Icon Riot Games */}
-            <Link href="#">
+          {/* Icon  */}
+          <Link href="#" className="ml-7 flex items-center">
+            {currentIcon ? (
               <img
-                src="imgs/riotgames/header/riotgames-icon.png"
-                alt="Riot Games Icon"
-                className="object-cover"
+                src={currentIcon}
+                alt="Current Icon"
+                className="h-[30px] w-[30px] object-cover"
               />
-            </Link>
+            ) : null}
+          </Link>
 
+          {/* Icon  & Header */}
+          <div className="ml-7 hidden xl:flex">
             {/* Header */}
             {CurrentHeader?.map((HeaderItems: IHeaderData, index: number) => (
               <div key={index} className="group relative flex items-center">
@@ -274,7 +311,8 @@ export default function HeaderRight({
                   <div
                     className="relative flex items-center rounded-lg px-4 py-2 text-[#f9f9f9] group-hover:bg-[#8080804d]"
                     onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.color = Color;
+                      (e.currentTarget as HTMLElement).style.color =
+                        currentColor;
                     }}
                     onMouseLeave={(e) => {
                       (e.currentTarget as HTMLElement).style.color = "#f9f9f9";
@@ -297,7 +335,7 @@ export default function HeaderRight({
                     {/* Sub Header Underline */}
                     <div
                       className="absolute -bottom-[14px] left-0 right-0 hidden h-1 rounded-sm group-hover:block"
-                      style={{ backgroundColor: Color }}
+                      style={{ backgroundColor: currentColor }}
                     ></div>
                   </div>
                 </div>
@@ -353,7 +391,7 @@ export default function HeaderRight({
             <Link
               href="#"
               className="flex justify-center rounded-2xl p-2 text-xs font-bold uppercase text-[#f1111] duration-300 ease-in-out"
-              style={{ backgroundColor: Color }}
+              style={{ backgroundColor: currentColor }}
             >
               Sign In
             </Link>
@@ -463,7 +501,7 @@ export default function HeaderRight({
           <Link
             href="#"
             className="flex justify-center rounded-2xl p-2 text-xs font-bold uppercase text-[#f1111] duration-300 ease-in-out"
-            style={{ backgroundColor: Color }}
+            style={{ backgroundColor: currentColor }}
           >
             Sign In
           </Link>
