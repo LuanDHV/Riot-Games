@@ -9,7 +9,7 @@ export default function GamesLayout({
   return (
     <>
       <Header />
-      {children}
+      <main className="pt-20">{children}</main>
       <Footer />
     </>
   );
