@@ -28,7 +28,7 @@ export default function Banner() {
           <h1 className="text-center text-[27px] font-bold xl:text-3xl">
             Final Season Starts November 9
           </h1>
-          <p className="hidden text-center text-xl text-gray-200 xl:block">
+          <p className="hidden text-center text-lg text-gray-200 xl:block">
             Jinx’s attack on the Council sets the stage for a dire <br />
             escalation of the conflict between Piltover and Zaun.
           </p>

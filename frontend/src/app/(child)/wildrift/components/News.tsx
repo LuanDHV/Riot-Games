@@ -49,7 +49,7 @@ export default function News() {
               spaceBetween: 30,
             },
           }}
-          className="valorant custom-swiper-pagination"
+          className="custom-swiper-pagination"
         >
           {isSuccess &&
             News.map((news: INews, index: number) => (

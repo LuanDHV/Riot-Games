@@ -1,4 +1,5 @@
 import Link from "next/link";
+import SliderBanner from "./SliderBanner";
 
 export default function Banner() {
   return (
@@ -43,36 +44,9 @@ export default function Banner() {
             </div>
 
             <div className="flex h-auto w-full flex-col items-center justify-center gap-6 lg:items-end lg:justify-end">
-              <div className="flex w-full snap-x snap-mandatory flex-row gap-4 overflow-x-auto lg:order-2">
-                <div className="flex h-[180px] w-[325px] flex-shrink-0 snap-start items-center justify-center bg-black text-white">
-                  NEWS
-                </div>
-                <div className="flex h-[180px] w-[325px] flex-shrink-0 snap-start items-center justify-center bg-black text-white">
-                  NEWS
-                </div>
-                <div className="flex h-[180px] w-[325px] flex-shrink-0 snap-start items-center justify-center bg-black text-white">
-                  NEWS
-                </div>
-                <div className="flex h-[180px] w-[325px] flex-shrink-0 snap-start items-center justify-center bg-black text-white">
-                  NEWS
-                </div>
-                <div className="flex h-[180px] w-[325px] flex-shrink-0 snap-start items-center justify-center bg-black text-white">
-                  NEWS
-                </div>
-                <div className="flex h-[180px] w-[325px] flex-shrink-0 snap-start items-center justify-center bg-black text-white">
-                  NEWS
-                </div>
-                <div className="flex h-[180px] w-[325px] flex-shrink-0 snap-start items-center justify-center bg-black text-white">
-                  NEWS
-                </div>
-                <div className="flex h-[180px] w-[325px] flex-shrink-0 snap-start items-center justify-center bg-black text-white">
-                  NEWS
-                </div>
-                <div className="flex h-[180px] w-[325px] flex-shrink-0 snap-start items-center justify-center bg-black text-white">
-                  NEWS
-                </div>
+              <div className="w-full lg:order-2">
+                <SliderBanner />
               </div>
-
               <div className="clip-under-right-slant-mobile lg:clip-under-right-slant-desktop flex h-[120px] w-full flex-col items-center justify-center gap-5 bg-[#0a0a0ab8] lg:order-1 lg:h-[115px] lg:w-[240px]">
                 <p className="text-base uppercase text-[#f5f5f5]">Only On</p>
                 <img

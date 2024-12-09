@@ -51,7 +51,7 @@ export default function TheLatest() {
               spaceBetween: 30,
             },
           }}
-          className="valorant custom-swiper-pagination"
+          className="custom-swiper-pagination"
         >
           {isSuccess &&
             TheLatest.map((news: ITheLatest, index: number) => (
