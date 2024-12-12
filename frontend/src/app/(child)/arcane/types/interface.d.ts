@@ -6,6 +6,13 @@ export interface ICelebrate {
   description: string;
 }
 
+export interface ICharacter {
+  character: string;
+  name: string;
+  background: string;
+  description: string;
+}
+
 export interface IPaP {
   img: string;
   type: string;

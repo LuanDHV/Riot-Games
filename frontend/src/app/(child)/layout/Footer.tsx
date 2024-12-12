@@ -246,8 +246,8 @@ export default function Footer() {
 
   return (
     <>
-      {currentFooter.map((items: IFooterData) => (
-        <div className="h-auto">
+      {currentFooter.map((items: IFooterData, index: number) => (
+        <div className="h-auto" key={index}>
           <div className="justify-center bg-[#292929] p-6 lg:flex">
             {items.section1.map((section1, index) => (
               <div key={index} className="flex justify-center">
