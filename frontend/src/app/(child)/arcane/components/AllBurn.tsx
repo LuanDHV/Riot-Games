@@ -15,7 +15,7 @@ export default function AllBurn() {
           </p>
         </div>
         <div className="w-full lg:w-1/2">
-          <img src="/imgs/arcane/allburn/all-burn.png" alt="Your Agents" />
+          <img src="/imgs/arcane/allburn/all-burn.png" alt="All Burn" />
         </div>
       </div>
     </>

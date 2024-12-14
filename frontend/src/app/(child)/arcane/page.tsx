@@ -3,6 +3,7 @@ import Banner from "./components/Banner";
 import Celebrate from "./components/Celebrate";
 import Character from "./components/Character";
 import PaP from "./components/PaP";
+import TheGlobe from "./components/TheGlobe";
 
 export default function ArcanePage() {
   return (
@@ -10,8 +11,9 @@ export default function ArcanePage() {
       <Banner />
       <AllBurn />
       <Celebrate />
-      <Character />
       <PaP />
+      <Character />
+      <TheGlobe />
     </>
   );
 }

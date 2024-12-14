@@ -37,7 +37,7 @@ export default function Banner() {
                 href="https://www.netflix.com/vn-en/title/81435684"
                 className="p-6"
               >
-                <p className="border-2 border-[#3d528f] bg-[#3d528f] bg-gradient-to-b from-[#0a0a0a66] to-[#3d528f00] px-8 py-5 outline outline-2 outline-[#3d528f] duration-300 ease-in-out hover:bg-[#6374a5] lg:text-xl">
+                <p className="border-2 border-[#3d528f] bg-[#3d528f] bg-gradient-to-b from-[#0a0a0a66] to-[#3d528f00] px-8 py-5 font-bold outline outline-2 outline-[#3d528f] duration-300 ease-in-out hover:bg-[#6374a5] lg:text-xl">
                   Watch
                 </p>
               </Link>
