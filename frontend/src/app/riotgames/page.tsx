@@ -1,6 +1,6 @@
 import Banner from "./components/Banner";
 import Career from "./components/Career";
-import OurGame from "./components/OurGame";
+import OurGames from "./components/OurGames";
 import WhatsHappening from "./components/WhatsHappening";
 
 export default function RiotGamesPage() {
@@ -8,7 +8,7 @@ export default function RiotGamesPage() {
     <>
       <Banner />
       <WhatsHappening />
-      <OurGame />
+      <OurGames />
       <Career />
     </>
   );
