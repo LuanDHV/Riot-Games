@@ -1,15 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
-export interface IOurGames {
-  background: string;
-  logo: string;
-  name: string;
-  title: string;
-  description: string;
-  link: string;
-}
+import { IOurGames } from "../types/interface";
 
 export default function OurGames() {
   const OurGames: IOurGames[] = [

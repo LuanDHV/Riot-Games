@@ -13,10 +13,23 @@ export interface ICharacter {
   description: string;
 }
 
+export interface IEpisodeStills {
+  img: string;
+}
+
 export interface IPaP {
   img: string;
   type: string;
   date: string;
   title: string;
   description?: string;
+}
+
+export interface IOurGames {
+  background: string;
+  logo: string;
+  name: string;
+  title: string;
+  description: string;
+  link: string;
 }
