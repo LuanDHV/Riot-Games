@@ -5,6 +5,7 @@ import Character from "./components/Character";
 import EpisodeStills from "./components/EpisodeStills";
 import OurGames from "./components/OurGames";
 import PaP from "./components/PaP";
+import Playlist from "./components/Playlist";
 import TheGlobe from "./components/TheGlobe";
 
 export default function ArcanePage() {
@@ -13,6 +14,7 @@ export default function ArcanePage() {
       <Banner />
       <AllBurn />
       <Celebrate />
+      <Playlist />
       <EpisodeStills />
       <PaP />
       <Character />
