@@ -7,49 +7,26 @@ import "swiper/css/pagination";
 import "../../../SwiperCustom.css";
 import { useState, useRef } from "react";
 import { ISilderBanner } from "../types/interface";
+import { useGetSliderBannerQuery } from "@/store/api/arcaneApi/sliderbannerApi";
 
 export default function SliderBanner() {
+  const {
+    data: SliderBanner,
+    error,
+    isLoading,
+    isSuccess,
+  } = useGetSliderBannerQuery(undefined);
   const [activeVideo, setActiveVideo] = useState("");
   const videoRef = useRef<HTMLDivElement | null>(null);
-
-  const SliderBanner: ISilderBanner[] = [
-    {
-      img: "imgs/arcane/banner/arcane-1.png",
-      title: "The Line | Music video",
-      link: "https://www.youtube.com/embed/E2Rj2gQAyPA",
-    },
-    {
-      img: "imgs/arcane/banner/arcane-2.png",
-      title: "Paint the Town Blue",
-      link: "https://www.youtube.com/embed/pl2K9rvsS74",
-    },
-    {
-      img: "imgs/arcane/banner/arcane-3.png",
-      title: "Come Play",
-      link: "https://www.youtube.com/embed/3jf6xOg6e7Y",
-    },
-    {
-      img: "imgs/arcane/banner/arcane-4.png",
-      title: "Arcane: Season 2 | Official Trailer",
-      link: "https://www.youtube.com/embed/hsffPST-x1k",
-    },
-    {
-      img: "imgs/arcane/banner/arcane-5.png",
-      title: "Arcane: Come Play Series Trailer",
-      link: "https://www.youtube.com/embed/Sl-xmZTH6GE",
-    },
-    {
-      img: "imgs/arcane/banner/arcane-6.png",
-      title: "Arcane In-Game Preview: Come Play",
-      link: "https://www.youtube.com/embed/rR5vyzjGwmk",
-    },
-  ];
 
   const handleOutsideClick = (e: any) => {
     if (videoRef.current && !videoRef.current.contains(e.target)) {
       setActiveVideo("");
     }
   };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading data</div>;
 
   return (
     <>
@@ -108,25 +85,26 @@ export default function SliderBanner() {
         }}
         className="custom-swiper-pagination flex justify-center"
       >
-        {SliderBanner.map((slider: ISilderBanner, index) => (
-          <SwiperSlide key={index}>
-            <div
-              className="mb-[50px] flex h-auto cursor-pointer justify-center gap-2"
-              onClick={() => setActiveVideo(slider.link)}
-            >
-              <div className="relative cursor-pointer duration-500 ease-in-out hover:scale-110">
-                <img
-                  src={slider.img}
-                  alt="Arcane Slider"
-                  className="h-full w-full object-cover"
-                />
-                <p className="absolute bottom-0 w-full px-4 pb-4 text-sm uppercase text-white lg:text-base">
-                  {slider.title}
-                </p>
+        {isSuccess &&
+          SliderBanner.map((slider: ISilderBanner, index: number) => (
+            <SwiperSlide key={index}>
+              <div
+                className="mb-[50px] flex h-auto cursor-pointer justify-center gap-2"
+                onClick={() => setActiveVideo(slider.link)}
+              >
+                <div className="relative cursor-pointer duration-500 ease-in-out hover:scale-110">
+                  <img
+                    src={slider.img}
+                    alt="Arcane Slider"
+                    className="h-full w-full object-cover"
+                  />
+                  <p className="absolute bottom-0 w-full px-4 pb-4 text-sm uppercase text-white lg:text-base">
+                    {slider.title}
+                  </p>
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
+            </SwiperSlide>
+          ))}
       </Swiper>
     </>
   );

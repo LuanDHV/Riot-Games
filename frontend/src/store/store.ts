@@ -4,6 +4,7 @@ import * as LeagueOfLegendsApi from "./api/leagueoflegendsApi";
 import * as ValorantApi from "./api/valorantApi";
 import * as TeamFightTacticsApi from "./api/teamfighttacticsApi";
 import * as WildRiftApi from "./api/wildriftApi";
+import * as ArcaneApi from "./api/arcaneApi";
 
 export const store = configureStore({
   reducer: {
@@ -33,6 +34,9 @@ export const store = configureStore({
 
     //Wild Rift API
     [WildRiftApi.newsApi.reducerPath]: WildRiftApi.newsApi.reducer,
+
+    //Arcane API
+    [ArcaneApi.sliderbannerApi.reducerPath]: ArcaneApi.sliderbannerApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -55,7 +59,10 @@ export const store = configureStore({
       .concat(TeamFightTacticsApi.latestNewsApi.middleware)
 
       //Wild Rift middleware
-      .concat(WildRiftApi.newsApi.middleware),
+      .concat(WildRiftApi.newsApi.middleware)
+
+      //Arcane middleware
+      .concat(ArcaneApi.sliderbannerApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -1,0 +1,1 @@
+export { sliderbannerApi } from "./sliderbannerApi";
