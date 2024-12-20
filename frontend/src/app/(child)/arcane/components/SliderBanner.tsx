@@ -6,12 +6,13 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "../../../SwiperCustom.css";
 import { useState, useRef } from "react";
+import { ISilderBanner } from "../types/interface";
 
 export default function SliderBanner() {
   const [activeVideo, setActiveVideo] = useState("");
   const videoRef = useRef<HTMLDivElement | null>(null);
 
-  const SliderArcane = [
+  const SliderBanner: ISilderBanner[] = [
     {
       img: "imgs/arcane/banner/arcane-1.png",
       title: "The Line | Music video",
@@ -107,7 +108,7 @@ export default function SliderBanner() {
         }}
         className="custom-swiper-pagination flex justify-center"
       >
-        {SliderArcane.map((slider, index) => (
+        {SliderBanner.map((slider: ISilderBanner, index) => (
           <SwiperSlide key={index}>
             <div
               className="mb-[50px] flex h-auto cursor-pointer justify-center gap-2"

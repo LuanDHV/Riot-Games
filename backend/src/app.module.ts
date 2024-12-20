@@ -12,6 +12,7 @@ import { MultipleWaysToPlayModule } from './modules/leagueoflegends/multipleways
 import { TheLatestModule } from './modules/valorant/thelatest/thelatest.module';
 import { LatestNewsModule } from './modules/teamfighttactics/latestnews/latenews.module';
 import { NewsModule } from './modules/wildrift/news/news.module';
+import { SliderBannerModule } from './modules/arcane/sliderbanner/sliderbanner.module';
 
 @Module({
   imports: [
@@ -35,6 +36,9 @@ import { NewsModule } from './modules/wildrift/news/news.module';
 
     //Wild Rifts Module
     NewsModule,
+
+    //Arcane Module
+    SliderBannerModule,
   ],
   controllers: [AppController],
   providers: [AppService],

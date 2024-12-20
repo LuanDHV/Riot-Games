@@ -4,6 +4,7 @@ import { seedLeagueOfLegends } from './data/leagueoflegends/seedLeagueOfLegends'
 import { seedValorant } from './data/valorant/seedValorant';
 import { seedTeamFightTactics } from './data/teamfighttactics/seedTeamfightTactics';
 import { seedWildRift } from './data/wildrift/seedWildRift';
+import { seedArcane } from './data/arcane/seedArcane';
 
 const prisma = new PrismaClient();
 
@@ -13,6 +14,7 @@ async function main() {
   await seedValorant();
   await seedTeamFightTactics();
   await seedWildRift();
+  await seedArcane();
 }
 
 main()

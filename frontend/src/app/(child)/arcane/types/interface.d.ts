@@ -1,3 +1,8 @@
+export interface ISilderBanner {
+  img: string;
+  title: string;
+  link: string;
+}
 export interface ICelebrate {
   img: string;
   type: string;

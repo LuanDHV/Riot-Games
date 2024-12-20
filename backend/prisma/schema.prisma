@@ -106,3 +106,12 @@ model News {
   title       String
   description String
 }
+
+//Models Arcane 
+
+model SliderBanner {
+  id    Int    @id @default(autoincrement())
+  img   String @unique
+  title String
+  link  String
+}
