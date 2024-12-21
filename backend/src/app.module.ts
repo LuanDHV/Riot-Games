@@ -13,6 +13,11 @@ import { TheLatestModule } from './modules/valorant/thelatest/thelatest.module';
 import { LatestNewsModule } from './modules/teamfighttactics/latestnews/latenews.module';
 import { NewsModule } from './modules/wildrift/news/news.module';
 import { SliderBannerModule } from './modules/arcane/sliderbanner/sliderbanner.module';
+import { CelebrateModule } from './modules/arcane/celebrate/celebrate.module';
+import { EpisodeStillsModule } from './modules/arcane/episodestills/episodestills.module';
+import { PaPModule } from './modules/arcane/pap/pap.module';
+import { CharacterModule } from './modules/arcane/character/character.module';
+import { OurGamesModule } from './modules/arcane/ourgames/ourgames.module';
 
 @Module({
   imports: [
@@ -39,6 +44,11 @@ import { SliderBannerModule } from './modules/arcane/sliderbanner/sliderbanner.m
 
     //Arcane Module
     SliderBannerModule,
+    CelebrateModule,
+    EpisodeStillsModule,
+    PaPModule,
+    CharacterModule,
+    OurGamesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

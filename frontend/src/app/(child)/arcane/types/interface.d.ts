@@ -11,13 +11,6 @@ export interface ICelebrate {
   description: string;
 }
 
-export interface ICharacter {
-  character: string;
-  name: string;
-  background: string;
-  description: string;
-}
-
 export interface IEpisodeStills {
   img: string;
 }
@@ -28,6 +21,13 @@ export interface IPaP {
   date: string;
   title: string;
   description?: string;
+}
+
+export interface ICharacter {
+  character: string;
+  name: string;
+  background: string;
+  description: string;
 }
 
 export interface IOurGames {

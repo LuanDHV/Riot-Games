@@ -4,6 +4,11 @@ const prisma = new PrismaClient();
 
 export async function deleteArcane() {
   await deleteAll(prisma.sliderBanner, 'SliderBanner');
+  await deleteAll(prisma.celebrate, 'Celebrate');
+  await deleteAll(prisma.episodeStills, 'EpisodeStills');
+  await deleteAll(prisma.paP, 'PaP');
+  await deleteAll(prisma.character, 'Character');
+  await deleteAll(prisma.ourGames, 'OurGames');
 
   console.log('All Arcane data deleted.');
 }
