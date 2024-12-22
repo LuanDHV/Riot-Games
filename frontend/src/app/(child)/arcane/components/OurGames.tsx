@@ -2,59 +2,33 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IOurGames } from "../types/interface";
+import { useGetOurGamesQuery } from "@/store/api/arcaneApi/ourgamesApi";
 
 export default function OurGames() {
-  const OurGames: IOurGames[] = [
-    {
-      background: "/imgs/arcane/ourgames/lol-background.png",
-      logo: "/imgs/arcane/ourgames/lol-logo.png",
-      name: "League of Legends",
-      title: "League of Legends",
-      description:
-        "League of Legends is a 5v5 team-based game with over 140 champions to make epic plays with. Battle it out on the rift and play free now!",
-      link: "/leagueoflegends",
-    },
-    {
-      background: "/imgs/arcane/ourgames/valorant-background.png",
-      logo: "/imgs/arcane/ourgames/valorant-logo.png",
-      name: "Valorant",
-      title: "Valorant",
-      description:
-        "VALORANT is a character-based 5v5 tactical shooter set on the global stage. Outwit, outplay, and outshine your competition with tactical abilities, precise gunplay, and adaptive teamwork.",
-      link: "/valorant",
-    },
-    {
-      background: "/imgs/arcane/ourgames/tft-background.png",
-      logo: "/imgs/arcane/ourgames/tft-logo.png",
-      name: "Teamfight Tactics",
-      title: "Teamfight Tactics",
-      description:
-        "Teamfight Tactics is a round-based multiplayer auto battler with a revolving roster of League of Legends champions. Draft, deploy, and dominate your opponents.",
-      link: "/teamfighttactics",
-    },
-    {
-      background: "/imgs/arcane/ourgames/wildrift-background.png",
-      logo: "/imgs/arcane/ourgames/wildrift-logo.png",
-      name: "Wild Rift",
-      title: "Wild Rift",
-      description:
-        "Team up with friends and test your skills in 5v5 MOBA combat. All the high-skill competition you crave, designed especially for mobile with revamped controls and streamlined matches.",
-      link: "/wildrift",
-    },
-  ];
+  const {
+    data: OurGames,
+    error,
+    isLoading,
+    isSuccess,
+  } = useGetOurGamesQuery(undefined);
 
   const [selectedOurGames, setSelectedOurGames] = useState<IOurGames | null>(
     null,
   );
 
   useEffect(() => {
-    setSelectedOurGames(OurGames[0]);
-  }, []);
+    if (isSuccess && OurGames.length > 0) {
+      setSelectedOurGames(OurGames[0]);
+    }
+  }, [isSuccess, OurGames]);
 
   const handleSelectOurGames = (game: IOurGames) => {
     setSelectedOurGames(game);
     console.log("selectedGame", game);
   };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading data</div>;
   return (
     <>
       <div className="flex h-auto flex-col gap-4 bg-[url('/imgs/arcane/ourgames/our-games-background.png')] bg-cover bg-center p-6 md:p-8 lg:flex-row lg:items-center lg:gap-10 lg:p-12 xl:px-[200px]">
@@ -69,22 +43,23 @@ export default function OurGames() {
           </div>
 
           <div className="flex justify-center gap-2">
-            {OurGames.map((game: IOurGames, index: number) => (
-              <div
-                key={index}
-                className={`flex w-[100px] cursor-pointer flex-col items-center justify-center ${selectedOurGames?.logo === game.logo ? "brightness-100" : "brightness-50"} duration-300 ease-in-out md:w-[190px] lg:w-[110px]`}
-                onClick={() => handleSelectOurGames(game)}
-              >
-                <img
-                  src={game.logo}
-                  alt={`${game.name} Logo`}
-                  className="h-12 w-12 object-cover lg:h-16 lg:w-16"
-                />
-                <p className="mt-2 text-center text-[10px] uppercase text-white md:mt-4 md:text-xs lg:text-sm">
-                  {game.name}
-                </p>
-              </div>
-            ))}
+            {isSuccess &&
+              OurGames.map((game: IOurGames, index: number) => (
+                <div
+                  key={index}
+                  className={`flex w-[100px] cursor-pointer flex-col items-center justify-center ${selectedOurGames?.logo === game.logo ? "brightness-100" : "brightness-50"} duration-300 ease-in-out md:w-[190px] lg:w-[110px]`}
+                  onClick={() => handleSelectOurGames(game)}
+                >
+                  <img
+                    src={game.logo}
+                    alt={`${game.name} Logo`}
+                    className="h-12 w-12 object-cover lg:h-16 lg:w-16"
+                  />
+                  <p className="mt-2 text-center text-[10px] uppercase text-white md:mt-4 md:text-xs lg:text-sm">
+                    {game.name}
+                  </p>
+                </div>
+              ))}
           </div>
           <div className="my-6 flex w-full flex-col justify-center gap-4 sm:flex-row lg:my-12">
             <Link

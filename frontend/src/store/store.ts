@@ -37,6 +37,12 @@ export const store = configureStore({
 
     //Arcane API
     [ArcaneApi.sliderbannerApi.reducerPath]: ArcaneApi.sliderbannerApi.reducer,
+    [ArcaneApi.celebrateApi.reducerPath]: ArcaneApi.celebrateApi.reducer,
+    [ArcaneApi.episodestillsApi.reducerPath]:
+      ArcaneApi.episodestillsApi.reducer,
+    [ArcaneApi.papApi.reducerPath]: ArcaneApi.papApi.reducer,
+    [ArcaneApi.characterApi.reducerPath]: ArcaneApi.characterApi.reducer,
+    [ArcaneApi.ourgamesApi.reducerPath]: ArcaneApi.ourgamesApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -62,7 +68,12 @@ export const store = configureStore({
       .concat(WildRiftApi.newsApi.middleware)
 
       //Arcane middleware
-      .concat(ArcaneApi.sliderbannerApi.middleware),
+      .concat(ArcaneApi.sliderbannerApi.middleware)
+      .concat(ArcaneApi.celebrateApi.middleware)
+      .concat(ArcaneApi.episodestillsApi.middleware)
+      .concat(ArcaneApi.papApi.middleware)
+      .concat(ArcaneApi.characterApi.middleware)
+      .concat(ArcaneApi.ourgamesApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

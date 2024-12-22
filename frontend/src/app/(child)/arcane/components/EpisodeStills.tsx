@@ -4,34 +4,34 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "../../../SwiperCustom.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IEpisodeStills } from "../types/interface";
+import { useGetEpisodeStillsQuery } from "@/store/api/arcaneApi/episodestillsApi";
 
 export default function EpisodeStills() {
-  const EpisodeStills: IEpisodeStills[] = [
-    { img: "/imgs/arcane/episodestills/es1.png" },
-    { img: "/imgs/arcane/episodestills/es2.png" },
-    { img: "/imgs/arcane/episodestills/es3.png" },
-    { img: "/imgs/arcane/episodestills/es4.png" },
-    { img: "/imgs/arcane/episodestills/es5.png" },
-    { img: "/imgs/arcane/episodestills/es6.png" },
-    { img: "/imgs/arcane/episodestills/es7.png" },
-    { img: "/imgs/arcane/episodestills/es8.png" },
-    { img: "/imgs/arcane/episodestills/es9.png" },
-    { img: "/imgs/arcane/episodestills/es10.png" },
-    { img: "/imgs/arcane/episodestills/es11.png" },
-    { img: "/imgs/arcane/episodestills/es12.png" },
-    { img: "/imgs/arcane/episodestills/es13.png" },
-    { img: "/imgs/arcane/episodestills/es14.png" },
-  ];
+  const {
+    data: EpisodeStills,
+    error,
+    isLoading,
+    isSuccess,
+  } = useGetEpisodeStillsQuery(undefined);
 
-  const [selectedImage, setSelectedImage] = useState<IEpisodeStills>(
-    EpisodeStills[0],
+  const [selectedImage, setSelectedImage] = useState<IEpisodeStills | null>(
+    null,
   );
+
+  useEffect(() => {
+    if (isSuccess && EpisodeStills.length > 0) {
+      setSelectedImage(EpisodeStills[0]);
+    }
+  }, [isSuccess, EpisodeStills]);
 
   const handleSelectedImage = (img: IEpisodeStills) => {
     setSelectedImage(img);
   };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading data</div>;
 
   return (
     <>
@@ -42,7 +42,7 @@ export default function EpisodeStills() {
 
         <div className="mb-5 w-full lg:mb-10">
           <img
-            src={selectedImage.img}
+            src={selectedImage?.img}
             alt="Episode Stills"
             className="h-full w-full object-cover"
           />
@@ -55,22 +55,23 @@ export default function EpisodeStills() {
           slidesPerView={4}
           className="custom-swiper-pagination"
         >
-          {EpisodeStills.map((img: IEpisodeStills, index: number) => (
-            <SwiperSlide key={index}>
-              <div
-                className="mb-[50px] flex h-auto cursor-pointer flex-col"
-                onClick={() => handleSelectedImage(img)}
-              >
-                <div className="h-auto w-full overflow-hidden">
-                  <img
-                    src={img.img}
-                    alt="Episode Stills"
-                    className="h-full w-full cursor-pointer object-cover"
-                  />
+          {isSuccess &&
+            EpisodeStills.map((img: IEpisodeStills, index: number) => (
+              <SwiperSlide key={index}>
+                <div
+                  className="mb-[50px] flex h-auto cursor-pointer flex-col"
+                  onClick={() => handleSelectedImage(img)}
+                >
+                  <div className="h-auto w-full overflow-hidden">
+                    <img
+                      src={img.img}
+                      alt="Episode Stills"
+                      className="h-full w-full cursor-pointer object-cover"
+                    />
+                  </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </>
