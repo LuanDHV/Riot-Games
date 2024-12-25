@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Playlist() {
   return (
     <>
@@ -13,29 +15,46 @@ export default function Playlist() {
             Everything that ends sparks a new beginning. Listen to the music of
             Arcane Season 2, now streaming on Netflix.
           </p>
-          <div className="mt-6 flex items-center gap-5">
+          <div className="mt-6 flex flex-col gap-5 lg:flex-row lg:items-center">
             <p className="text-base font-bold uppercase lg:text-lg">
               Listen On
             </p>
             <div className="flex gap-2">
-              <img src="/imgs/arcane/playlist/spotify.svg" alt="Listen On" />
-              <img src="/imgs/arcane/playlist/appleMusic.svg" alt="Listen On" />
-              <img src="/imgs/arcane/playlist/deezer.svg" alt="Listen On" />
-              <img
-                src="/imgs/arcane/playlist/amazonMusic.svg"
-                alt="Listen On"
-              />
-              <img
-                src="/imgs/arcane/playlist/youtubeMusic.svg"
-                alt="Listen On"
-              />
+              <Link href="#">
+                <img src="/imgs/arcane/playlist/spotify.svg" alt="Listen On" />
+              </Link>
+              <Link href="#">
+                <img
+                  src="/imgs/arcane/playlist/appleMusic.svg"
+                  alt="Listen On"
+                />
+              </Link>
+              <Link href="#">
+                <img src="/imgs/arcane/playlist/deezer.svg" alt="Listen On" />
+              </Link>
+              <Link href="#">
+                <img
+                  src="/imgs/arcane/playlist/amazonMusic.svg"
+                  alt="Listen On"
+                />
+              </Link>
+              <Link href="#">
+                <img
+                  src="/imgs/arcane/playlist/youtubeMusic.svg"
+                  alt="Listen On"
+                />
+              </Link>
             </div>
           </div>
         </div>
         <div className="w-full lg:order-1 lg:w-1/2">
-          <div className="h-full w-full rounded-xl bg-[#006000] p-6 text-[#f5f5f5]">
-            Arcane Official Playlist
-          </div>
+          <iframe
+            src="https://open.spotify.com/embed/playlist/37i9dQZF1DX3KVUsNUmJc2?utm_source=generator"
+            width="100%"
+            height="352"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
         </div>
       </div>
     </>
