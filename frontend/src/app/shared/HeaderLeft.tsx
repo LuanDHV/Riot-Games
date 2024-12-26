@@ -38,7 +38,7 @@ const HeaderData: IHeaderData[] = [
   {
     title: "Entertainment",
     subHeader: [
-      { title: "Arcane", href: "#" },
+      { title: "Arcane", href: "/arcane" },
       { title: "Universe", href: "#" },
       { title: "Riot Games Music", href: "#" },
     ],

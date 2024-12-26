@@ -7,10 +7,5 @@ export default function SignInLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      <div className="">Sign In Layout </div>
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

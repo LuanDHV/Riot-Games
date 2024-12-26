@@ -1,3 +1,9 @@
+import Main from "./components/Main";
+
 export default function RegisterPage() {
-  return <div>Register Page</div>;
+  return (
+    <>
+      <Main />
+    </>
+  );
 }
