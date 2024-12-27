@@ -9,12 +9,12 @@ export default function Main() {
         <Header />
 
         <div className="flex flex-col lg:flex-row">
-          <div className="flex w-full flex-col justify-between lg:w-1/2">
-            <h2 className="mb-7 text-center text-4xl font-extrabold uppercase text-white lg:text-8xl">
+          <div className="flex w-full flex-col justify-end lg:w-1/2">
+            <h2 className="mb-7 text-center text-4xl font-extrabold uppercase text-white lg:text-6xl xl:text-8xl">
               Create An Account
             </h2>
           </div>
-          <div className="w-full lg:w-1/2">
+          <div className="flex w-full justify-center lg:w-1/2">
             <Form />
           </div>
         </div>
