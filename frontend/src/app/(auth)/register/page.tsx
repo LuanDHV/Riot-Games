@@ -1,9 +1,9 @@
-import Main from "./components/Main";
+import MainRegister from "./components/MainRegister";
 
 export default function RegisterPage() {
   return (
     <>
-      <Main />
+      <MainRegister />
     </>
   );
 }

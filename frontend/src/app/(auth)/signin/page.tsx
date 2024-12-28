@@ -1,3 +1,9 @@
+import MainSignIn from "./components/MainSignIn";
+
 export default function SignInPage() {
-  return <div>Sign In Page</div>;
+  return (
+    <>
+      <MainSignIn />
+    </>
+  );
 }
