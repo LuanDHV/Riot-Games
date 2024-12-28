@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <>
-      <div className="absolute bottom-5 flex w-full flex-col justify-center px-5 text-xs font-bold uppercase text-[#adadad]">
+      <div className="flex w-full flex-col justify-center pb-10 pt-5 text-xs font-bold uppercase text-[#adadad]">
         <div className="my-2 flex flex-wrap justify-center gap-x-3 text-xs lg:justify-start lg:text-[10px]">
           <Link href="#" className="p-2">
             Support
