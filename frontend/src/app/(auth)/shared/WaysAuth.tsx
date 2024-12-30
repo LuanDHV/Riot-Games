@@ -60,7 +60,7 @@ export default function WaysAuth() {
         </div>
       </div>
       <div className="hidden md:block">
-        <div className="mt-3 flex justify-between gap-2 lg:mb-20">
+        <div className="mt-3 flex justify-between gap-2">
           <Link
             href="#"
             className="flex w-full justify-center rounded-xl bg-[#1877f2] px-6 py-3 duration-300 ease-in-out hover:bg-[#0966de] lg:px-8 lg:py-2"

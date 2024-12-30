@@ -389,7 +389,7 @@ export default function HeaderRight({
           {/* Button Sign In */}
           <div className="mx-auto w-full">
             <Link
-              href="#"
+              href="/signin"
               className="flex justify-center rounded-2xl p-2 text-xs font-bold uppercase text-[#f1111] duration-300 ease-in-out"
               style={{ backgroundColor: currentColor }}
             >
