@@ -13,4 +13,19 @@
   .clip-under-right-slant-desktop {
     clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 90% 100%, 0% 100%);
   }
+
+  .clip-top-left-slant {
+    clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .clip-button-slant {
+    clip-path: polygon(
+      0 0,
+      calc(100% - 10px) 0,
+      100% 10px,
+      100% 100%,
+      10px 100%,
+      0 calc(100% - 10px)
+    );
+  }
 }
