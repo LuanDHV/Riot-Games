@@ -1,3 +1,10 @@
+interface IShop {
+  bannerDesktop?: string;
+  bannerMobile?: string;
+  name: string;
+  color: string;
+  logo?: string;
+}
 export interface ISubItems {
   title: string;
   link: string;
