@@ -58,15 +58,15 @@ export default function SliderBanner() {
 
       <Swiper
         modules={[Pagination, Autoplay]}
-        pagination={{
-          clickable: true,
-          type: "bullets",
-        }}
         autoplay={{
-          delay: 5000,
+          delay: 3000,
           disableOnInteraction: false,
         }}
         breakpoints={{
+          480: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
           640: {
             slidesPerView: 1,
           },
@@ -83,13 +83,13 @@ export default function SliderBanner() {
             slidesPerView: 5,
           },
         }}
-        className="custom-swiper-pagination flex justify-center"
+        className="flex justify-center"
       >
         {isSuccess &&
           SliderBanner.map((slider: ISilderBanner, index: number) => (
             <SwiperSlide key={index}>
               <div
-                className="mb-[50px] flex h-auto cursor-pointer justify-center gap-2"
+                className="flex h-auto cursor-pointer justify-center gap-2"
                 onClick={() => setActiveVideo(slider.link)}
               >
                 <div className="relative cursor-pointer duration-500 ease-in-out hover:scale-110">

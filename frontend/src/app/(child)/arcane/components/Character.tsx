@@ -50,12 +50,8 @@ export default function Character() {
           </div>
           <Swiper
             modules={[Pagination, Autoplay]}
-            pagination={{
-              clickable: true,
-              type: "bullets",
-            }}
             autoplay={{
-              delay: 5000,
+              delay: 3000,
               disableOnInteraction: false,
             }}
             spaceBetween={20}
@@ -66,11 +62,10 @@ export default function Character() {
                 spaceBetween: 50,
               },
             }}
-            className="custom-swiper-pagination"
           >
             {isSuccess &&
               Character.map((items: ICharacter, index: number) => (
-                <SwiperSlide key={index} className="mb-[50px]">
+                <SwiperSlide key={index}>
                   <div
                     className="flex cursor-pointer flex-col items-center justify-center duration-300 ease-in-out hover:scale-110"
                     onClick={() => handleSelectCharacter(items)}

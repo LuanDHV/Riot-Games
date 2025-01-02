@@ -35,12 +35,8 @@ export default function TheWorldOfWildRift() {
           </p>
           <Swiper
             modules={[Pagination, Autoplay]}
-            pagination={{
-              clickable: true,
-              type: "bullets",
-            }}
             autoplay={{
-              delay: 5000,
+              delay: 3000,
               disableOnInteraction: false,
             }}
             spaceBetween={20}
@@ -56,11 +52,10 @@ export default function TheWorldOfWildRift() {
                 spaceBetween: 50,
               },
             }}
-            className="custom-swiper-pagination"
           >
             {TheWorldOfWildRift.map((world, index) => (
               <SwiperSlide key={index}>
-                <div className="mb-[50px] flex flex-col gap-5">
+                <div className="flex flex-col gap-5">
                   <img src={world.image} alt="World Of Wild Rift" />
                   <p className="text-xs md:text-sm lg:text-base">
                     {world.description}

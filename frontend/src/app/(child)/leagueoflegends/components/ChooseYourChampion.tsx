@@ -74,12 +74,8 @@ export default function ChooseYourChampion() {
           </div>
           <Swiper
             modules={[Pagination, Autoplay]}
-            pagination={{
-              clickable: true,
-              type: "bullets",
-            }}
             autoplay={{
-              delay: 5000,
+              delay: 3000,
               disableOnInteraction: false,
             }}
             spaceBetween={20}
@@ -90,12 +86,11 @@ export default function ChooseYourChampion() {
                 spaceBetween: 50,
               },
             }}
-            className="custom-swiper-pagination"
           >
             {isSuccess &&
               ChooseYourChampion.map(
                 (items: IChooseYourChampion, index: number) => (
-                  <SwiperSlide key={index} className="mb-[50px]">
+                  <SwiperSlide key={index}>
                     <div
                       className="flex cursor-pointer flex-col items-center justify-center duration-300 ease-in-out hover:scale-110"
                       onClick={() => handleSelectRole(items)}

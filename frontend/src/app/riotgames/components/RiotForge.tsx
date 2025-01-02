@@ -31,7 +31,7 @@ export default function RiotForge() {
           type: "bullets",
         }}
         autoplay={{
-          delay: 5000,
+          delay: 3000,
           disableOnInteraction: false,
         }}
         spaceBetween={20}
@@ -47,13 +47,12 @@ export default function RiotForge() {
             spaceBetween: 50,
           },
         }}
-        className="custom-swiper-pagination"
       >
         {isSuccess &&
           forge.map((forge: IForge, index: number) => (
             <SwiperSlide key={index}>
               <Link key={index} href={forge.link}>
-                <div className="relative mb-[50px] h-auto w-full cursor-pointer">
+                <div className="relative h-auto w-full cursor-pointer">
                   <img
                     src={forge.card}
                     alt="forge-launch"

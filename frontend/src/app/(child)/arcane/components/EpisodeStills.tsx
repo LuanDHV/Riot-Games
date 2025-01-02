@@ -48,18 +48,12 @@ export default function EpisodeStills() {
           />
         </div>
 
-        <Swiper
-          modules={[Pagination]}
-          pagination={{ clickable: true, type: "bullets" }}
-          spaceBetween={20}
-          slidesPerView={4}
-          className="custom-swiper-pagination"
-        >
+        <Swiper modules={[Pagination]} spaceBetween={20} slidesPerView={4}>
           {isSuccess &&
             EpisodeStills.map((img: IEpisodeStills, index: number) => (
               <SwiperSlide key={index}>
                 <div
-                  className="mb-[50px] flex h-auto cursor-pointer flex-col"
+                  className="flex h-auto cursor-pointer flex-col"
                   onClick={() => handleSelectedImage(img)}
                 >
                   <div className="h-auto w-full overflow-hidden">

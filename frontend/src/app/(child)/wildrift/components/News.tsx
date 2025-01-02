@@ -28,12 +28,8 @@ export default function News() {
 
         <Swiper
           modules={[Pagination, Autoplay]}
-          pagination={{
-            clickable: true,
-            type: "bullets",
-          }}
           autoplay={{
-            delay: 5000,
+            delay: 3000,
             disableOnInteraction: false,
           }}
           spaceBetween={20}
@@ -49,16 +45,12 @@ export default function News() {
               spaceBetween: 50,
             },
           }}
-          className="custom-swiper-pagination"
         >
           {isSuccess &&
             News.map((news: INews, index: number) => (
               <SwiperSlide key={index}>
-                <Link
-                  href="#"
-                  className="mb-[50px] flex h-auto cursor-pointer flex-col text-[#141e37]"
-                >
-                  <div className="h-full w-full">
+                <Link href="#" className="flex h-auto cursor-pointer flex-col">
+                  <div className="h-auto w-full overflow-hidden">
                     <img
                       src={news.img}
                       alt={news.title}
@@ -77,7 +69,9 @@ export default function News() {
                     <h3 className="mb-1 text-base font-bold md:text-lg lg:text-[22px]">
                       {news.title}
                     </h3>
-                    <p className="text-xs font-medium">{news.description}</p>
+                    <p className="text-xs font-medium text-[#0a1428]">
+                      {news.description}
+                    </p>
                   </div>
                 </Link>
               </SwiperSlide>

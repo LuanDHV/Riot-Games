@@ -105,7 +105,7 @@ export default function Banner() {
                     <SwiperSlide key={index}>
                       <div className="flex h-auto cursor-pointer flex-col">
                         <div
-                          className={`clip-logo-slant flex h-16 w-[150px] items-center justify-center ${items.name === "Shop All" ? "" : "opacity-50"}`}
+                          className={`clip-logo-slant flex h-16 w-[145px] items-center justify-center lg:w-[170px] ${items.name === "Shop All" ? "" : "opacity-50"}`}
                           style={{ backgroundColor: items.color }}
                         >
                           {items.name === "Shop All" ? (
