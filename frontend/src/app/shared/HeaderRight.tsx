@@ -209,6 +209,34 @@ const arcaneHeader: IHeaderData[] = [
   },
 ];
 
+const riotmerchHeader: IHeaderData[] = [
+  {
+    title: "Shop All",
+    href: "#",
+    icon: "imgs/header/riotgames-header-icon.png",
+    color: "#d13639",
+  },
+  {
+    title: "Categories",
+    subHeader: [
+      { title: "League of Legends", href: "#" },
+      { title: "Valorant", href: "#" },
+      { title: "Teamfight Tactics", href: "#" },
+      { title: "Arcane", href: "#" },
+    ],
+  },
+  {
+    title: "Featured",
+    subHeader: [
+      { title: "Arcane", href: "#" },
+      { title: "Worlds 2024", href: "#" },
+      { title: "Valorant Buddies", href: "#" },
+      { title: "VCT24 Champs Seoul", href: "#" },
+    ],
+  },
+  { title: "Sale", href: "#" },
+];
+
 export default function HeaderRight({
   isScrolled,
   isHeaderRightOpen,
@@ -237,7 +265,9 @@ export default function HeaderRight({
             ? wildriftHeader
             : pathname.startsWith("/arcane")
               ? arcaneHeader
-              : null;
+              : pathname.startsWith("/riotmerch")
+                ? riotmerchHeader
+                : null;
 
   const currentIcon = CurrentHeader?.[0]?.icon || null;
   const currentColor = CurrentHeader?.[0]?.color || "#f9f9f9";

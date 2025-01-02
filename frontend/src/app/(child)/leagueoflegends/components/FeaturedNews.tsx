@@ -4,7 +4,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "../../../SwiperCustom.css"; //
+import "../../../SwiperCustom.css";
 import Link from "next/link";
 import { useGetFeaturedNewsQuery } from "@/store/api/leagueoflegendsApi/featurednewsApi";
 import { IFeaturedNews } from "../types/interface";
@@ -47,7 +47,7 @@ export default function FeaturedNews() {
             },
             1024: {
               slidesPerView: 3,
-              spaceBetween: 30,
+              spaceBetween: 50,
             },
           }}
           className="custom-swiper-pagination"

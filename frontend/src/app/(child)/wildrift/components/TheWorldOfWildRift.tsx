@@ -4,7 +4,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "../../../SwiperCustom.css"; //
+import "../../../SwiperCustom.css";
 
 export default function TheWorldOfWildRift() {
   const TheWorldOfWildRift = [
@@ -53,7 +53,7 @@ export default function TheWorldOfWildRift() {
               },
               1024: {
                 slidesPerView: 3,
-                spaceBetween: 30,
+                spaceBetween: 50,
               },
             }}
             className="custom-swiper-pagination"

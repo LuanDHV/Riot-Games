@@ -1,10 +1,12 @@
-import HeaderLeft from "../shared/HeaderLeft";
+import Header from "../shared/Header";
 import Footer from "./Layout/Footer";
+import Banner from "./components/Banner";
 
 export default function RiotMerchPage() {
   return (
     <>
-      <div className="">Riot Merch</div>
+      <Header />
+      <Banner />
       <Footer />
     </>
   );

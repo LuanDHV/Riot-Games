@@ -4,7 +4,7 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "../../../SwiperCustom.css"; //
+import "../../../SwiperCustom.css";
 import Link from "next/link";
 import { useGetNewsQuery } from "@/store/api/wildriftApi/newsApi";
 import { INews } from "../types/interface";
@@ -46,7 +46,7 @@ export default function News() {
             },
             1024: {
               slidesPerView: 3,
-              spaceBetween: 30,
+              spaceBetween: 50,
             },
           }}
           className="custom-swiper-pagination"

@@ -44,7 +44,7 @@ export default function RiotForge() {
           },
           1024: {
             slidesPerView: 3,
-            spaceBetween: 30,
+            spaceBetween: 50,
           },
         }}
         className="custom-swiper-pagination"

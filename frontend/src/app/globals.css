@@ -18,6 +18,20 @@
     clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
   }
 
+  .clip-banner-slant-mobile {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 60%, 0% 80%);
+  }
+
+  .clip-banner-slant-desktop {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 70%);
+  }
+  .clip-logo-slant {
+    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+  }
+  .clip-swiper-slant {
+    clip-path: polygon(0 0, calc(100% - 50px) 0, 100% 100%, 0 100%);
+  }
+
   .clip-button-slant {
     clip-path: polygon(
       0 0,

@@ -1,25 +1,11 @@
 import Link from "next/link";
+import {
+  IFooterDataSection1,
+  IFooterDataSection2,
+  IFormFields,
+} from "../types/interface";
 
 export default function Footer() {
-  interface ISubItems {
-    title: string;
-    link: string;
-  }
-  interface IFooterDataSection1 {
-    title: string;
-    subItems: ISubItems[];
-  }
-
-  interface IFormFields {
-    label: string;
-    type: string;
-  }
-
-  interface IFooterDataSection2 {
-    title: string;
-    link: string;
-  }
-
   const FooterDataSection1: IFooterDataSection1[] = [
     {
       title: "Shop",

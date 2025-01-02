@@ -63,7 +63,7 @@ export default function Character() {
             breakpoints={{
               1024: {
                 slidesPerView: 6,
-                spaceBetween: 30,
+                spaceBetween: 50,
               },
             }}
             className="custom-swiper-pagination"
