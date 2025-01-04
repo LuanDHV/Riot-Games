@@ -180,13 +180,12 @@ export default function Banner() {
                       )}
                     </div>
                   </div>
-                  {logo.name !== "Shop All" && (
-                    <div className="relative h-[2px] w-[130px] bg-gray-300 lg:w-[153px]">
-                      {selectedShop?.name === logo.name && (
+                  {logo.name !== "Shop All" &&
+                    selectedShop?.name === logo.name && (
+                      <div className="relative h-[2px] w-[130px] bg-gray-300 lg:w-[153px]">
                         <div className="animate-progress absolute left-0 top-0 h-1 bg-red-500"></div>
-                      )}
-                    </div>
-                  )}
+                      </div>
+                    )}
                 </SwiperSlide>
               ))}
             </Swiper>
