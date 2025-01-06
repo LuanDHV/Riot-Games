@@ -5,10 +5,32 @@ interface IShop {
   color: string;
   logo?: string;
 }
+interface IProducts {
+  name: string;
+  price: number;
+  logo: string;
+  tags: Tags[];
+  imgs: string[];
+}
+
+export type TypeTags =
+  | "Special Edition"
+  | "Preorder"
+  | "Limited Edition"
+  | "Retired"
+  | "Riot Exclusive";
+interface ILatestCollaborations {
+  numb: string;
+  title: string;
+  description: string;
+  img: string;
+}
+
 export interface ISubItems {
   title: string;
   link: string;
 }
+
 export interface IFooterDataSection1 {
   title: string;
   subItems: ISubItems[];

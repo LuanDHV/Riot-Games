@@ -4,15 +4,9 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { ILatestCollaborations } from "../types/interface";
 
 export default function LatestCollaborations() {
-  interface ILatestCollaborations {
-    numb: string;
-    title: string;
-    description: string;
-    img: string;
-  }
-
   const LatestCollaborations: ILatestCollaborations[] = [
     {
       numb: "01",
