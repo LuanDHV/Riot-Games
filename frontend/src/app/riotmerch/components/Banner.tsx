@@ -4,7 +4,6 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "../../SwiperCustom.css";
 import { useEffect, useState } from "react";
 import { IShop } from "../types/interface";
 

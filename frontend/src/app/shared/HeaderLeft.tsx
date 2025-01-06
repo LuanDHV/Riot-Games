@@ -46,7 +46,7 @@ const HeaderData: IHeaderData[] = [
   {
     title: "Business",
     subHeader: [
-      { title: "Riot Games", href: "#" },
+      { title: "Riot Games", href: "/riotgames" },
       { title: "Riot Merch", href: "/riotmerch" },
       { title: "Riot Mobile", href: "#" },
       { title: "Riot Support", href: "#" },
