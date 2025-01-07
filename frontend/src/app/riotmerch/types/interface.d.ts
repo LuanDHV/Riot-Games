@@ -12,6 +12,10 @@ interface IProducts {
   tags: Tags[];
   imgs: string[];
 }
+interface ProductCardProps {
+  product: IProducts;
+  index: number;
+}
 
 export type TypeTags =
   | "Special Edition"
