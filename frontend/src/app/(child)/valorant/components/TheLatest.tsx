@@ -49,8 +49,8 @@ export default function TheLatest() {
           }}
         >
           {isSuccess &&
-            TheLatest.map((news: ITheLatest, index: number) => (
-              <SwiperSlide key={index}>
+            TheLatest.map((news: ITheLatest) => (
+              <SwiperSlide key={news.id}>
                 <Link href="#" className="flex h-auto cursor-pointer flex-col">
                   <div className="h-auto w-full overflow-hidden">
                     <img

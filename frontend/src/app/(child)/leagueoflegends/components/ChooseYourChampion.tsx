@@ -88,25 +88,23 @@ export default function ChooseYourChampion() {
             }}
           >
             {isSuccess &&
-              ChooseYourChampion.map(
-                (items: IChooseYourChampion, index: number) => (
-                  <SwiperSlide key={index}>
-                    <div
-                      className="flex cursor-pointer flex-col items-center justify-center duration-300 ease-in-out hover:scale-110"
-                      onClick={() => handleSelectRole(items)}
-                    >
-                      <img
-                        src={items.icon}
-                        alt={items.role}
-                        className={`h-12 w-12 object-cover lg:h-16 lg:w-16 ${selectedRole?.role === items.role ? "brightness-100" : "brightness-50"} duration-300 ease-in-out`}
-                      />
-                      <p className="mt-2 text-[10px] font-semibold uppercase text-[#0a1428] md:mt-4 md:text-xs lg:mt-6 lg:text-sm">
-                        {items.role}
-                      </p>
-                    </div>
-                  </SwiperSlide>
-                ),
-              )}
+              ChooseYourChampion.map((items: IChooseYourChampion) => (
+                <SwiperSlide key={items.id}>
+                  <div
+                    className="flex cursor-pointer flex-col items-center justify-center duration-300 ease-in-out hover:scale-110"
+                    onClick={() => handleSelectRole(items)}
+                  >
+                    <img
+                      src={items.icon}
+                      alt={items.role}
+                      className={`h-12 w-12 object-cover lg:h-16 lg:w-16 ${selectedRole?.role === items.role ? "brightness-100" : "brightness-50"} duration-300 ease-in-out`}
+                    />
+                    <p className="mt-2 text-[10px] font-semibold uppercase text-[#0a1428] md:mt-4 md:text-xs lg:mt-6 lg:text-sm">
+                      {items.role}
+                    </p>
+                  </div>
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
         <div className="w-full lg:w-1/2">

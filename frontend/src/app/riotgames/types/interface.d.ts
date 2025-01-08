@@ -1,4 +1,5 @@
 export interface IWhatsHappening {
+  id: number;
   title: string;
   icon: string;
   image: string;
@@ -7,6 +8,7 @@ export interface IWhatsHappening {
 }
 
 export interface IGames {
+  id: number;
   launchImg: string;
   logotype: string;
   platforms: string[];
@@ -14,18 +16,21 @@ export interface IGames {
 }
 
 export interface IEsports {
+  id: number;
   img: string;
   logo: string;
   link: string;
 }
 
 export interface IEntertainments {
+  id: number;
   img: string;
   logo: string;
   link: string;
 }
 
 export interface IForge {
+  id: number;
   card: string;
   logotype: string;
   platforms: string[];

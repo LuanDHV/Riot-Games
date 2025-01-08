@@ -55,33 +55,31 @@ export default function LatestCollaborations() {
               },
             }}
           >
-            {LatestCollaborations.map(
-              (news: ILatestCollaborations, index: number) => (
-                <SwiperSlide key={index}>
-                  <div className="flex flex-col gap-5 lg:flex-row lg:gap-10">
-                    <div className="flex flex-col justify-center gap-5 lg:order-2">
-                      <p className="block text-base text-[#666666] lg:hidden">
-                        {news.numb}
-                      </p>
-                      <img
-                        src={news.img}
-                        alt="Latest Collaborations Images"
-                        className="h-full w-full object-contain"
-                      />
-                    </div>
-                    <div className="flex flex-col items-start gap-5 lg:order-1 lg:gap-10">
-                      <p className="hidden text-base text-[#666666] lg:block">
-                        {news.numb}
-                      </p>
-                      <p className="text-5xl font-semibold">{news.title}</p>
-                      <p className="text-base text-[#666666]">
-                        {news.description}
-                      </p>
-                    </div>
+            {LatestCollaborations.map((news: ILatestCollaborations) => (
+              <SwiperSlide key={news.id}>
+                <div className="flex flex-col gap-5 lg:flex-row lg:gap-10">
+                  <div className="flex flex-col justify-center gap-5 lg:order-2">
+                    <p className="block text-base text-[#666666] lg:hidden">
+                      {news.numb}
+                    </p>
+                    <img
+                      src={news.img}
+                      alt="Latest Collaborations Images"
+                      className="h-full w-full object-contain"
+                    />
                   </div>
-                </SwiperSlide>
-              ),
-            )}
+                  <div className="flex flex-col items-start gap-5 lg:order-1 lg:gap-10">
+                    <p className="hidden text-base text-[#666666] lg:block">
+                      {news.numb}
+                    </p>
+                    <p className="text-5xl font-semibold">{news.title}</p>
+                    <p className="text-base text-[#666666]">
+                      {news.description}
+                    </p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
           </Swiper>
         </div>
       </div>

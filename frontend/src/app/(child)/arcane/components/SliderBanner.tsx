@@ -86,8 +86,8 @@ export default function SliderBanner() {
         className="flex justify-center"
       >
         {isSuccess &&
-          SliderBanner.map((slider: ISilderBanner, index: number) => (
-            <SwiperSlide key={index}>
+          SliderBanner.map((slider: ISilderBanner) => (
+            <SwiperSlide key={slider.id}>
               <div
                 className="flex h-auto cursor-pointer justify-center gap-2"
                 onClick={() => setActiveVideo(slider.link)}

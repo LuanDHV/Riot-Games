@@ -64,8 +64,8 @@ export default function Character() {
             }}
           >
             {isSuccess &&
-              Character.map((items: ICharacter, index: number) => (
-                <SwiperSlide key={index}>
+              Character.map((items: ICharacter) => (
+                <SwiperSlide key={items.id}>
                   <div
                     className="flex cursor-pointer flex-col items-center justify-center duration-300 ease-in-out hover:scale-110"
                     onClick={() => handleSelectCharacter(items)}

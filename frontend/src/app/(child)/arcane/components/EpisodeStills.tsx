@@ -50,8 +50,8 @@ export default function EpisodeStills() {
 
         <Swiper modules={[Pagination]} spaceBetween={20} slidesPerView={4}>
           {isSuccess &&
-            EpisodeStills.map((img: IEpisodeStills, index: number) => (
-              <SwiperSlide key={index}>
+            EpisodeStills.map((img: IEpisodeStills) => (
+              <SwiperSlide key={img.id}>
                 <div
                   className="flex h-auto cursor-pointer flex-col"
                   onClick={() => handleSelectedImage(img)}

@@ -20,8 +20,8 @@ export default function Esports() {
       </h2>
       <div className="grid items-center justify-center gap-5 md:grid-cols-2 md:pb-5">
         {isSuccess &&
-          esports.map((esport: IEsports, index: number) => (
-            <Link key={index} href={esport.link}>
+          esports.map((esport: IEsports) => (
+            <Link key={esport.id} href={esport.link}>
               <div className="relative h-auto w-full cursor-pointer">
                 <img
                   src={esport.img}

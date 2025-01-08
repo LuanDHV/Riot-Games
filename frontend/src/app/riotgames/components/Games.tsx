@@ -20,8 +20,8 @@ export default function Games() {
       </h2>
       <div className="grid items-center justify-center gap-5 md:grid-cols-2 md:pb-5">
         {isSuccess &&
-          games.map((game: IGames, index: number) => (
-            <Link key={index} href={game.link}>
+          games.map((game: IGames) => (
+            <Link key={game.id} href={game.link}>
               <div className="relative h-auto w-full cursor-pointer">
                 <img
                   src={game.launchImg}

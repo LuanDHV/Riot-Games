@@ -34,9 +34,9 @@ export default function WhatsHappening() {
           {/* Main Thumb */}
           {thumbs
             .filter((thumb: IWhatsHappening) => thumb.thumbMain)
-            .map((thumb: IWhatsHappening, index: number) => (
+            .map((thumb: IWhatsHappening) => (
               <Link
-                key={index}
+                key={thumb.id}
                 href={thumb.link}
                 className="rounded-xl xl:w-3/5"
               >
@@ -73,9 +73,9 @@ export default function WhatsHappening() {
           <div className="mx-auto grid w-full gap-5 md:grid-cols-2 xl:w-2/5 xl:grid-cols-1">
             {thumbs
               .filter((thumb: IWhatsHappening) => !thumb.thumbMain)
-              .map((thumb: IWhatsHappening, index: number) => (
+              .map((thumb: IWhatsHappening) => (
                 <Link
-                  key={index}
+                  key={thumb.id}
                   href={thumb.link}
                   className="flex h-[110px] w-full cursor-pointer items-center justify-between rounded-xl bg-[#2e3d6780] transition-transform duration-500 hover:-translate-y-2 lg:h-[140px]"
                 >

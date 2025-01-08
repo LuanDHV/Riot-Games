@@ -1,4 +1,5 @@
 interface IShop {
+  id: number;
   bannerDesktop?: string;
   bannerMobile?: string;
   name: string;
@@ -24,6 +25,7 @@ export type TypeTags =
   | "Retired"
   | "Riot Exclusive";
 interface ILatestCollaborations {
+  id: number;
   numb: string;
   title: string;
   description: string;

@@ -60,24 +60,22 @@ export default function MultipleWaysToPlay() {
           </div>
           <div className="flex justify-center gap-2">
             {isSuccess &&
-              MultipleWaysToPlay.map(
-                (items: IMultipleWaysToPlay, index: number) => (
-                  <div
-                    key={index}
-                    className={`flex w-[100px] cursor-pointer flex-col items-center justify-center ${selectedWay?.way === items.way ? "brightness-100" : "brightness-50"} duration-300 ease-in-out md:w-[190px] lg:w-[110px]`}
-                    onClick={() => handleSelecWay(items)}
-                  >
-                    <img
-                      src={items.icon}
-                      alt={items.way}
-                      className="h-12 w-12 object-cover lg:h-16 lg:w-16"
-                    />
-                    <p className="mt-2 text-center text-[10px] uppercase text-white md:mt-4 md:text-xs lg:text-sm">
-                      {items.way}
-                    </p>
-                  </div>
-                ),
-              )}
+              MultipleWaysToPlay.map((items: IMultipleWaysToPlay) => (
+                <div
+                  key={items.id}
+                  className={`flex w-[100px] cursor-pointer flex-col items-center justify-center ${selectedWay?.way === items.way ? "brightness-100" : "brightness-50"} duration-300 ease-in-out md:w-[190px] lg:w-[110px]`}
+                  onClick={() => handleSelecWay(items)}
+                >
+                  <img
+                    src={items.icon}
+                    alt={items.way}
+                    className="h-12 w-12 object-cover lg:h-16 lg:w-16"
+                  />
+                  <p className="mt-2 text-center text-[10px] uppercase text-white md:mt-4 md:text-xs lg:text-sm">
+                    {items.way}
+                  </p>
+                </div>
+              ))}
           </div>
         </div>
         <div className="w-full lg:w-1/2">

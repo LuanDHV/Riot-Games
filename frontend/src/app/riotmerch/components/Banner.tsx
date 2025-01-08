@@ -145,8 +145,8 @@ export default function Banner() {
                 },
               }}
             >
-              {Shop.map((logo: IShop, index: number) => (
-                <SwiperSlide key={index}>
+              {Shop.map((logo: IShop) => (
+                <SwiperSlide key={logo.id}>
                   <div className="flex h-auto cursor-pointer flex-col">
                     <div
                       className={`clip-logo-slant flex h-16 w-[145px] items-center justify-center lg:w-[170px] ${

@@ -1,9 +1,11 @@
 export interface ISilderBanner {
+  id: number;
   img: string;
   title: string;
   link: string;
 }
 export interface ICelebrate {
+  id: number;
   img: string;
   type: string;
   date: string;
@@ -12,10 +14,12 @@ export interface ICelebrate {
 }
 
 export interface IEpisodeStills {
+  id: number;
   img: string;
 }
 
 export interface IPaP {
+  id: number;
   img: string;
   type: string;
   date: string;
@@ -24,6 +28,7 @@ export interface IPaP {
 }
 
 export interface ICharacter {
+  id: number;
   character: string;
   name: string;
   background: string;
@@ -31,6 +36,7 @@ export interface ICharacter {
 }
 
 export interface IOurGames {
+  id: number;
   background: string;
   logo: string;
   name: string;

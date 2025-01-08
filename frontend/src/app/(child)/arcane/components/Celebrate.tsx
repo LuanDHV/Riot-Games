@@ -47,8 +47,8 @@ export default function Celebrate() {
           }}
         >
           {isSuccess &&
-            Celebrate.map((news: ICelebrate, index: number) => (
-              <SwiperSlide key={index}>
+            Celebrate.map((news: ICelebrate) => (
+              <SwiperSlide key={news.id}>
                 <Link href="#" className="flex h-auto cursor-pointer flex-col">
                   <div className="h-auto w-full overflow-hidden">
                     <img

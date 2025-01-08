@@ -47,8 +47,8 @@ export default function News() {
           }}
         >
           {isSuccess &&
-            News.map((news: INews, index: number) => (
-              <SwiperSlide key={index}>
+            News.map((news: INews) => (
+              <SwiperSlide key={news.id}>
                 <Link href="#" className="flex h-auto cursor-pointer flex-col">
                   <div className="h-auto w-full overflow-hidden">
                     <img

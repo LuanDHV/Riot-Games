@@ -48,8 +48,8 @@ export default function LatestNews() {
           }}
         >
           {isSuccess &&
-            LatestNews.map((news: ILatestNews, index: number) => (
-              <SwiperSlide key={index}>
+            LatestNews.map((news: ILatestNews) => (
+              <SwiperSlide key={news.id}>
                 <Link
                   href="#"
                   className="flex h-auto cursor-pointer flex-col text-[#fffef9]"

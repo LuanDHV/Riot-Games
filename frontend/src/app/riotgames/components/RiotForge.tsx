@@ -49,9 +49,9 @@ export default function RiotForge() {
         }}
       >
         {isSuccess &&
-          forge.map((forge: IForge, index: number) => (
-            <SwiperSlide key={index}>
-              <Link key={index} href={forge.link}>
+          forge.map((forge: IForge) => (
+            <SwiperSlide key={forge.id}>
+              <Link href={forge.link}>
                 <div className="relative h-auto w-full cursor-pointer">
                   <img
                     src={forge.card}

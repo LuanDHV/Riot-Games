@@ -1,4 +1,5 @@
 export interface IFeaturedNews {
+  id: number;
   img: string;
   type: string;
   date: string;
@@ -7,6 +8,7 @@ export interface IFeaturedNews {
 }
 
 export interface IChooseYourChampion {
+  id: number;
   role: string;
   background: string;
   icon: string;
@@ -16,6 +18,7 @@ export interface IChooseYourChampion {
 }
 
 export interface IMultipleWaysToPlay {
+  id: number;
   way: string;
   background: string;
   icon: string;

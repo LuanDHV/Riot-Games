@@ -42,8 +42,8 @@ export default function PaP() {
           }}
         >
           {isSuccess &&
-            PaP.map((news: IPaP, index: number) => (
-              <SwiperSlide key={index}>
+            PaP.map((news: IPaP) => (
+              <SwiperSlide key={news.id}>
                 <Link href="#" className="flex h-auto cursor-pointer flex-col">
                   <div className="h-auto w-full overflow-hidden">
                     <img

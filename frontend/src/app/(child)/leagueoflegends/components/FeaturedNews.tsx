@@ -48,8 +48,8 @@ export default function FeaturedNews() {
           }}
         >
           {isSuccess &&
-            news.map((news: IFeaturedNews, index: number) => (
-              <SwiperSlide key={index}>
+            news.map((news: IFeaturedNews) => (
+              <SwiperSlide key={news.id}>
                 <Link href="#" className="flex h-auto cursor-pointer flex-col">
                   <div className="h-auto w-full overflow-hidden">
                     <img

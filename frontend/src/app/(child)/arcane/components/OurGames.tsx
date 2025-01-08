@@ -44,9 +44,9 @@ export default function OurGames() {
 
           <div className="flex justify-center gap-2">
             {isSuccess &&
-              OurGames.map((game: IOurGames, index: number) => (
+              OurGames.map((game: IOurGames) => (
                 <div
-                  key={index}
+                  key={game.id}
                   className={`flex w-[100px] cursor-pointer flex-col items-center justify-center ${selectedOurGames?.logo === game.logo ? "brightness-100" : "brightness-50"} duration-300 ease-in-out md:w-[190px] lg:w-[110px]`}
                   onClick={() => handleSelectOurGames(game)}
                 >

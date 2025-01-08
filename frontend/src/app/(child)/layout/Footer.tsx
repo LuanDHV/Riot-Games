@@ -2,7 +2,14 @@
 import Link from "next/link";
 
 import { usePathname } from "next/navigation";
-import { IFooterData } from "../types/interface";
+import {
+  IDescriptions,
+  IFooterData,
+  IIcons,
+  ISection1,
+  ISection2,
+  ISocials,
+} from "../types/interface";
 
 export default function Footer() {
   const lolFooter: IFooterData[] = [
@@ -249,7 +256,7 @@ export default function Footer() {
       {currentFooter.map((items: IFooterData, index: number) => (
         <div className="h-auto" key={index}>
           <div className="justify-center bg-[#292929] p-6 lg:flex">
-            {items.section1.map((section1, index) => (
+            {items.section1.map((section1: ISection1, index: number) => (
               <div key={index} className="flex justify-center">
                 <Link
                   href={section1.link}
@@ -263,7 +270,7 @@ export default function Footer() {
 
           <div className="bg-[#111111] px-6 pb-12">
             <div className="flex justify-center py-5">
-              {items.socials.map((socials, index) => (
+              {items.socials.map((socials: ISocials, index: number) => (
                 <Link
                   key={index}
                   href={socials.link}
@@ -279,7 +286,7 @@ export default function Footer() {
             </div>
 
             <div className="flex flex-col justify-center gap-5 py-6 lg:flex-row">
-              {items.icons.map((icons, index) => (
+              {items.icons.map((icons: IIcons, index: number) => (
                 <Link
                   key={index}
                   href={icons.link}
@@ -295,18 +302,20 @@ export default function Footer() {
             </div>
 
             <div className="flex justify-center">
-              {items.descriptions.map((descriptions, index) => (
-                <p
-                  key={index}
-                  className="text-center text-[13px] text-[#7E7E7E]"
-                >
-                  {descriptions.text}
-                </p>
-              ))}
+              {items.descriptions.map(
+                (descriptions: IDescriptions, index: number) => (
+                  <p
+                    key={index}
+                    className="text-center text-[13px] text-[#7E7E7E]"
+                  >
+                    {descriptions.text}
+                  </p>
+                ),
+              )}
             </div>
 
             <div className="justify-center py-6 lg:flex">
-              {items.section2.map((section2, index) => (
+              {items.section2.map((section2: ISection2, index: number) => (
                 <div key={index} className="flex justify-center">
                   <Link
                     href={section2.link}
