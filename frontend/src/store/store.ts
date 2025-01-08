@@ -5,6 +5,7 @@ import * as ValorantApi from "./api/valorantApi";
 import * as TeamFightTacticsApi from "./api/teamfighttacticsApi";
 import * as WildRiftApi from "./api/wildriftApi";
 import * as ArcaneApi from "./api/arcaneApi";
+import * as RiotMerchApi from "./api/riotmerchApi";
 
 export const store = configureStore({
   reducer: {
@@ -43,6 +44,9 @@ export const store = configureStore({
     [ArcaneApi.papApi.reducerPath]: ArcaneApi.papApi.reducer,
     [ArcaneApi.characterApi.reducerPath]: ArcaneApi.characterApi.reducer,
     [ArcaneApi.ourgamesApi.reducerPath]: ArcaneApi.ourgamesApi.reducer,
+
+    //Riot Merch API
+    [RiotMerchApi.bannerApi.reducerPath]: RiotMerchApi.bannerApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -73,7 +77,10 @@ export const store = configureStore({
       .concat(ArcaneApi.episodestillsApi.middleware)
       .concat(ArcaneApi.papApi.middleware)
       .concat(ArcaneApi.characterApi.middleware)
-      .concat(ArcaneApi.ourgamesApi.middleware),
+      .concat(ArcaneApi.ourgamesApi.middleware)
+
+      //Riot Merch middleware
+      .concat(RiotMerchApi.bannerApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

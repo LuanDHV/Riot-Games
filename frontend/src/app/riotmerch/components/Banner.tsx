@@ -5,81 +5,54 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useEffect, useState } from "react";
-import { IShop } from "../types/interface";
+import { IBanner } from "../types/interface";
+import { useGetBannerQuery } from "@/store/api/riotmerchApi/bannerApi";
 
 export default function Banner() {
-  const Shop: IShop[] = [
-    {
-      bannerDesktop: "/imgs/riotmerch/banner/arcane-banner-desktop.png",
-      bannerMobile: "/imgs/riotmerch/banner/arcane-banner-mobile.png",
-      name: "Arcane",
-      color: "#f2eade",
-      logo: "/imgs/riotmerch/banner/arcane-logo.svg",
-    },
-    {
-      bannerDesktop: "/imgs/riotmerch/banner/lol-banner-desktop.png",
-      bannerMobile: "/imgs/riotmerch/banner/lol-banner-mobile.png",
-      name: "League of Legends",
-      color: "#05567c",
-      logo: "/imgs/riotmerch/banner/lol-logo.svg",
-    },
-    {
-      bannerDesktop: "/imgs/riotmerch/banner/lol-esport-banner.mp4",
-      bannerMobile: "/imgs/riotmerch/banner/lol-esport-banner.mp4",
-      name: "LOL Esport Banner",
-      color: "#10e3f7",
-      logo: "/imgs/riotmerch/banner/lol-esport-logo.svg",
-    },
-    {
-      bannerDesktop: "/imgs/riotmerch/banner/valorant-banner-desktop.png",
-      bannerMobile: "/imgs/riotmerch/banner/valorant-banner-mobile.png",
-      name: "Valorant Banner",
-      color: "#ff4654",
-      logo: "/imgs/riotmerch/banner/valorant-logo.svg",
-    },
-    {
-      bannerDesktop: "/imgs/riotmerch/banner/tft-banner-desktop.png",
-      bannerMobile: "/imgs/riotmerch/banner/tft-banner-mobile.png",
-      name: "TFT Banner",
-      color: "#6a55c4",
-      logo: "/imgs/riotmerch/banner/tft-logo.svg",
-    },
-    {
-      color: "#ffffff",
-      name: "Shop All",
-    },
-  ];
+  const {
+    data: Banner,
+    error,
+    isLoading,
+    isSuccess,
+  } = useGetBannerQuery(undefined);
 
-  const [selectedShop, setSelectedShop] = useState<IShop | null>(null);
+  const [selectedBanner, setSelectedBanner] = useState<IBanner | null>(null);
 
   useEffect(() => {
-    setSelectedShop(Shop[0]);
-  }, []);
+    if (isSuccess && Banner.length > 0) {
+      setSelectedBanner(Banner[0]);
+    }
+  }, [isSuccess, Banner]);
 
-  // Automatically switch shops every 3 seconds
+  // Automatically switch Banners every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setSelectedShop((prev) => {
-        if (!prev) return Shop[0];
-        let currentIndex = Shop.findIndex((shop) => shop.name === prev.name);
+      setSelectedBanner((prev) => {
+        if (!prev) return Banner[0];
+        let currentIndex = Banner.findIndex(
+          (banner: { name: string }) => banner.name === prev.name,
+        );
 
         // Find the next logo, skip the 6th logo
-        let nextIndex = (currentIndex + 1) % Shop.length;
-        while (Shop[nextIndex].name === "Shop All") {
-          nextIndex = (nextIndex + 1) % Shop.length;
+        let nextIndex = (currentIndex + 1) % Banner.length;
+        while (Banner[nextIndex].name === "Shop All") {
+          nextIndex = (nextIndex + 1) % Banner.length;
         }
 
-        return Shop[nextIndex];
+        return Banner[nextIndex];
       });
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [Shop]);
+  }, [Banner]);
 
-  const handleSelectShop = (shop: IShop) => {
-    setSelectedShop(shop);
-    console.log("selectedShop", shop);
+  const handleSelectBanner = (banner: IBanner) => {
+    setSelectedBanner(banner);
+    console.log("selectedBanner", banner);
   };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading data</div>;
 
   return (
     <div className="h-auto w-full pt-20 text-black">
@@ -87,9 +60,9 @@ export default function Banner() {
         <div className="lg:clip-banner-slant-desktop clip-banner-slant-mobile absolute inset-0 bg-[url('/imgs/riotmerch/banner/banner-background.png')] bg-cover bg-center"></div>
 
         <div className="relative px-6 pb-6 pt-8 lg:px-10 lg:pb-8 lg:pt-10">
-          {selectedShop?.name === "LOL Esport Banner" ? (
+          {selectedBanner?.name === "LOL Esport Banner" ? (
             <video
-              src={selectedShop?.bannerDesktop}
+              src={selectedBanner?.bannerDesktop}
               className="max-h-[570px] min-h-[435px] w-full object-cover"
               autoPlay
               loop
@@ -99,13 +72,13 @@ export default function Banner() {
           ) : (
             <>
               <img
-                src={selectedShop?.bannerDesktop}
-                alt={selectedShop?.name}
+                src={selectedBanner?.bannerDesktop}
+                alt={selectedBanner?.name}
                 className="hidden h-full w-full object-cover md:block"
               />
               <img
-                src={selectedShop?.bannerMobile}
-                alt={selectedShop?.name}
+                src={selectedBanner?.bannerMobile}
+                alt={selectedBanner?.name}
                 className="block h-full w-full object-cover md:hidden"
               />
             </>
@@ -145,48 +118,49 @@ export default function Banner() {
                 },
               }}
             >
-              {Shop.map((logo: IShop) => (
-                <SwiperSlide key={logo.id}>
-                  <div className="flex h-auto cursor-pointer flex-col">
-                    <div
-                      className={`clip-logo-slant flex h-16 w-[145px] items-center justify-center lg:w-[170px] ${
-                        logo.name === "Shop All"
-                          ? "opacity-100"
-                          : selectedShop?.name === logo.name
+              {isSuccess &&
+                Banner.map((logo: IBanner) => (
+                  <SwiperSlide key={logo.id}>
+                    <div className="flex h-auto cursor-pointer flex-col">
+                      <div
+                        className={`clip-logo-slant flex h-16 w-[145px] items-center justify-center lg:w-[170px] ${
+                          logo.name === "Shop All"
                             ? "opacity-100"
-                            : "opacity-50"
-                      }`}
-                      style={{ backgroundColor: logo.color }}
-                      onClick={() => handleSelectShop(logo)}
-                    >
-                      {logo.name === "Shop All" ? (
-                        <div className="flex w-[120px] items-center justify-center opacity-100">
-                          <p className="text-sm font-bold text-black">
-                            | Shop All
-                          </p>
+                            : selectedBanner?.name === logo.name
+                              ? "opacity-100"
+                              : "opacity-50"
+                        }`}
+                        style={{ backgroundColor: logo.color }}
+                        onClick={() => handleSelectBanner(logo)}
+                      >
+                        {logo.name === "Shop All" ? (
+                          <div className="flex w-[120px] items-center justify-center opacity-100">
+                            <p className="text-sm font-bold text-black">
+                              | Shop All
+                            </p>
+                            <img
+                              src="/imgs/riotmerch/banner/link-logo.svg"
+                              alt=""
+                              className="h-6 w-6 object-cover"
+                            />
+                          </div>
+                        ) : (
                           <img
-                            src="/imgs/riotmerch/banner/link-logo.svg"
-                            alt=""
-                            className="h-6 w-6 object-cover"
+                            src={logo.logo}
+                            alt={logo.name}
+                            className="h-[30px] w-[75px] object-contain"
                           />
-                        </div>
-                      ) : (
-                        <img
-                          src={logo.logo}
-                          alt={logo.name}
-                          className="h-[30px] w-[75px] object-contain"
-                        />
-                      )}
-                    </div>
-                  </div>
-                  {logo.name !== "Shop All" &&
-                    selectedShop?.name === logo.name && (
-                      <div className="relative h-[2px] w-[130px] bg-gray-300 lg:w-[153px]">
-                        <div className="animate-progress absolute left-0 top-0 h-1 bg-red-500"></div>
+                        )}
                       </div>
-                    )}
-                </SwiperSlide>
-              ))}
+                    </div>
+                    {logo.name !== "Shop All" &&
+                      selectedBanner?.name === logo.name && (
+                        <div className="relative h-[2px] w-[130px] bg-gray-300 lg:w-[153px]">
+                          <div className="animate-progress absolute left-0 top-0 h-1 bg-red-500"></div>
+                        </div>
+                      )}
+                  </SwiperSlide>
+                ))}
             </Swiper>
           </div>
           <button className="clip-button-slant bottom-14 right-14 h-[50px] w-full bg-[#eb0029] text-base font-bold uppercase text-white duration-300 ease-in-out hover:brightness-75 lg:absolute lg:max-w-[240px]">

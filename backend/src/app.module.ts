@@ -1,54 +1,48 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { WhatsHappeningModule } from './modules/riotgames/whatshappening/whatshappening.module';
-import { GamesModule } from './modules/riotgames/games/games.module';
-import { EsportsModule } from './modules/riotgames/esports/esports.module';
-import { EntertainmentsModule } from './modules/riotgames/entertainments/entertainments.module';
-import { ForgeModule } from './modules/riotgames/forge/forge.module';
-import { FeaturedNewsModule } from './modules/leagueoflegends/featurednews/featurednews.module';
-import { ChooseYourChampionModule } from './modules/leagueoflegends/chooseyourchampion/chooseyourchampion.module';
-import { MultipleWaysToPlayModule } from './modules/leagueoflegends/multiplewaystoplay/multiplewaystoplay.module';
-import { TheLatestModule } from './modules/valorant/thelatest/thelatest.module';
-import { LatestNewsModule } from './modules/teamfighttactics/latestnews/latenews.module';
-import { NewsModule } from './modules/wildrift/news/news.module';
-import { SliderBannerModule } from './modules/arcane/sliderbanner/sliderbanner.module';
-import { CelebrateModule } from './modules/arcane/celebrate/celebrate.module';
-import { EpisodeStillsModule } from './modules/arcane/episodestills/episodestills.module';
-import { PaPModule } from './modules/arcane/pap/pap.module';
-import { CharacterModule } from './modules/arcane/character/character.module';
-import { OurGamesModule } from './modules/arcane/ourgames/ourgames.module';
+import * as RiotGamesModules from './modules/riotgames';
+import * as LeagueOfLegendsModules from './modules/leagueoflegends';
+import * as ValorantModules from './modules/valorant';
+import * as TeamFightTacticsModules from './modules/teamfighttactics';
+import * as WildRiftModules from './modules/wildrift';
+import * as ArcaneModules from './modules/arcane';
+import * as RiotMerchModules from './modules/riotmerch';
 
 @Module({
   imports: [
     //Riot Games Module
-    WhatsHappeningModule,
-    GamesModule,
-    EsportsModule,
-    EntertainmentsModule,
-    ForgeModule,
+    RiotGamesModules.WhatsHappeningModule,
+    RiotGamesModules.GamesModule,
+    RiotGamesModules.EsportsModule,
+    RiotGamesModules.EntertainmentsModule,
+    RiotGamesModules.ForgeModule,
 
     // League of Legends Module
-    FeaturedNewsModule,
-    ChooseYourChampionModule,
-    MultipleWaysToPlayModule,
+    LeagueOfLegendsModules.FeaturedNewsModule,
+    LeagueOfLegendsModules.ChooseYourChampionModule,
+    LeagueOfLegendsModules.MultipleWaysToPlayModule,
 
     //Valorant Module
-    TheLatestModule,
+    ValorantModules.TheLatestModule,
 
     //Team Fight Tactics Module
-    LatestNewsModule,
+    TeamFightTacticsModules.LatestNewsModule,
 
     //Wild Rifts Module
-    NewsModule,
+    WildRiftModules.NewsModule,
 
     //Arcane Module
-    SliderBannerModule,
-    CelebrateModule,
-    EpisodeStillsModule,
-    PaPModule,
-    CharacterModule,
-    OurGamesModule,
+    ArcaneModules.SliderBannerModule,
+    ArcaneModules.CelebrateModule,
+    ArcaneModules.EpisodeStillsModule,
+    ArcaneModules.PaPModule,
+    ArcaneModules.CharacterModule,
+    ArcaneModules.OurGamesModule,
+
+    //Riot Merch Module
+    RiotMerchModules.BannerModule,
+    RiotMerchModules.LatestCollaborationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

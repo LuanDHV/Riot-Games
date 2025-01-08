@@ -5,6 +5,7 @@ import { deleteValorant } from './data/valorant/deleteValorant';
 import { deleteTeamFightTactics } from './data/teamfighttactics/deleteTeamfightTactics';
 import { deleteWildRift } from './data/wildrift/deleteWildRift';
 import { deleteArcane } from './data/arcane/deleteArcane';
+import { deleteRiotMerch } from './data/riotmerch/deleteRiotMerch';
 
 const prisma = new PrismaClient();
 async function main() {
@@ -14,6 +15,7 @@ async function main() {
   await deleteTeamFightTactics();
   await deleteWildRift();
   await deleteArcane();
+  await deleteRiotMerch();
 }
 
 main()

@@ -1,4 +1,4 @@
-interface IShop {
+interface IBanner {
   id: number;
   bannerDesktop?: string;
   bannerMobile?: string;
