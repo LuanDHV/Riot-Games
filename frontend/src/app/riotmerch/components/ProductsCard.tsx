@@ -1,5 +1,4 @@
 "use client";
-
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
@@ -73,7 +72,7 @@ export default function ProductsCard({ product, index }: ProductCardProps) {
 
           {/* Custom Navigation */}
           <button
-            className={`hidden group-hover:flex swiper-button-prev-${index} absolute left-5 top-1/2 z-10 flex h-16 w-16 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border bg-white shadow duration-300 hover:bg-gray-200`}
+            className={`flex opacity-0 group-hover:opacity-100 swiper-button-prev-${index} absolute left-5 top-1/2 z-10 flex h-16 w-16 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border bg-white shadow duration-300 hover:bg-gray-200`}
           >
             <img
               src="/imgs/riotmerch/products/arrow-icon.svg"
@@ -82,7 +81,7 @@ export default function ProductsCard({ product, index }: ProductCardProps) {
             />
           </button>
           <button
-            className={`hidden group-hover:flex swiper-button-next-${index} absolute right-5 top-1/2 z-10 flex h-16 w-16 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border bg-white shadow duration-300 hover:bg-gray-200`}
+            className={`flex opacity-0 group-hover:opacity-100 swiper-button-next-${index} absolute right-5 top-1/2 z-10 flex h-16 w-16 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border bg-white shadow duration-300 hover:bg-gray-200`}
           >
             <img
               src="/imgs/riotmerch/products/arrow-icon.svg"
@@ -98,9 +97,9 @@ export default function ProductsCard({ product, index }: ProductCardProps) {
             <h3 className="text-base font-bold hover:underline">
               {product.name}
             </h3>
-            <p className="mt-1 text-base">${product.price}</p>
+            <p className="mt-1 text-base font-medium">${product.price}</p>
           </div>
-          <div className="z-10 hidden h-12 w-12 cursor-pointer items-center justify-center rounded-sm border duration-300 ease-in-out hover:bg-[#d0d0d0] group-hover:flex">
+          <div className="z-10 flex h-12 w-12 cursor-pointer items-center justify-center rounded-sm border opacity-0 duration-300 ease-in-out hover:bg-[#d0d0d0] group-hover:opacity-100">
             <img
               src="/imgs/riotmerch/products/cart-icon.svg"
               alt=""

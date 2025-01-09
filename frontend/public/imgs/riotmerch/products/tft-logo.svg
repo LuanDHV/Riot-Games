@@ -1,5 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="75" height="29" fill="#ffffff"
-    role="presentation" viewBox="0 0 75 29">
+<svg xmlns="http://www.w3.org/2000/svg" width="75" height="29" fill="currentColor" role="img"
+    viewBox="0 0 75 29">
+    <title>Teamfight Tactics</title>
     <path
         d="m75 3.152-11.692.004v3.307l-2.951.854V3.156H57.93V13.17h2.426V9.71l2.95-.854v4.315h2.427V7.314l-1-1.87h3.93v10.385l2.425-.702V5.444h2.685L75 3.152Z"></path>
     <path

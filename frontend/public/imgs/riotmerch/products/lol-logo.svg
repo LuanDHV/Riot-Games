@@ -1,5 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="75" height="29" fill="#ffffff"
-    role="presentation" viewBox="0 0 75 29">
+<svg xmlns="http://www.w3.org/2000/svg" width="75" height="29" fill="currentColor" role="img"
+    viewBox="0 0 75 29">
+    <title>League of Legends</title>
     <path
         d="M52.698 15.646v13.121h-2.826l-6.106-8.526v8.526h-2.708V16.873l-.618-1.227h3.5l6.05 8.644v-8.643h2.708Z"></path>
     <path
