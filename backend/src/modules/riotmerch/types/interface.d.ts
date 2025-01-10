@@ -12,3 +12,18 @@ interface ILatestCollaborations {
   description: string;
   img: string;
 }
+
+interface IProducts {
+  name: string;
+  price: number;
+  logo: string;
+  tags: TypeTags[];
+  imgs: string[];
+}
+
+export type TypeTags =
+  | 'Special Edition'
+  | 'Preorder'
+  | 'Limited Edition'
+  | 'Retired'
+  | 'Riot Exclusive';

@@ -7,15 +7,12 @@ interface IBanner {
   logo?: string;
 }
 interface IProducts {
+  id: number;
   name: string;
   price: number;
   logo: string;
-  tags: Tags[];
+  tags: TypeTags[];
   imgs: string[];
-}
-interface ProductCardProps {
-  product: IProducts;
-  index: number;
 }
 
 export type TypeTags =
@@ -24,6 +21,11 @@ export type TypeTags =
   | "Limited Edition"
   | "Retired"
   | "Riot Exclusive";
+interface ProductCardProps {
+  product: IProducts;
+  index: number;
+}
+
 interface ILatestCollaborations {
   id: number;
   numb: string;

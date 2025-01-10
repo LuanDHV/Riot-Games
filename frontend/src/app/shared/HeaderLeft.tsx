@@ -71,7 +71,7 @@ export default function HeaderLeft({
       <div
         className={`${
           isHeaderLeftOpen ? "lg:block" : "lg:hidden"
-        } fixed left-0 z-50 hidden w-full bg-white px-8 lg:block lg:h-[65%] xl:h-[55%]`}
+        } header-calc fixed left-0 z-50 hidden h-auto w-full bg-white px-8 lg:block`}
       >
         {/* Logo Riot Games & Arrow Up */}
         <div className="flex items-center justify-between">
@@ -255,7 +255,11 @@ export default function HeaderLeft({
         {/* Overlay */}
         {isHeaderLeftOpen && (
           <div
-            className="fixed bottom-0 left-0 z-40 h-1/2 w-full bg-black opacity-50 lg:block lg:h-[35%] xl:h-[45%]"
+            className="fixed bottom-0 left-0 z-40 h-auto w-full bg-black opacity-50 lg:block"
+            style={{
+              height: `calc(100vh - ${document.querySelector(".header-calc")?.clientHeight}px)`,
+              top: `${document.querySelector(".header-calc")?.clientHeight}px`,
+            }}
             onClick={handleHeaderLeftToggle}
           ></div>
         )}

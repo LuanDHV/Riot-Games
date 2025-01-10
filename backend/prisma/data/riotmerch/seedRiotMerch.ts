@@ -1,12 +1,14 @@
 import { PrismaClient } from '@prisma/client';
 import { Banner } from './banner';
 import { LatestCollaborations } from './latestcollaborations';
+import { Products } from './products';
 
 const prisma = new PrismaClient();
 
 export async function seedRiotMerch() {
   await seedData(prisma.banner, Banner, 'name');
   await seedData(prisma.latestCollaborations, LatestCollaborations, 'numb');
+  await seedData(prisma.products, Products, 'name');
 
   console.log('Riot Merch data seeded successfully.');
 }

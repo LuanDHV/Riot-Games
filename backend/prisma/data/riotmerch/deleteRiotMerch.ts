@@ -5,6 +5,7 @@ const prisma = new PrismaClient();
 export async function deleteRiotMerch() {
   await deleteAll(prisma.banner, 'Banner');
   await deleteAll(prisma.latestCollaborations, 'LatestCollaborations');
+  await deleteAll(prisma.products, 'Products');
 
   console.log('All Riot Merch data deleted.');
 }

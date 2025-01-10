@@ -49,6 +49,7 @@ export const store = configureStore({
     [RiotMerchApi.bannerApi.reducerPath]: RiotMerchApi.bannerApi.reducer,
     [RiotMerchApi.latestcollaborationsApi.reducerPath]:
       RiotMerchApi.latestcollaborationsApi.reducer,
+    [RiotMerchApi.productsApi.reducerPath]: RiotMerchApi.productsApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -83,7 +84,8 @@ export const store = configureStore({
 
       //Riot Merch middleware
       .concat(RiotMerchApi.bannerApi.middleware)
-      .concat(RiotMerchApi.latestcollaborationsApi.middleware),
+      .concat(RiotMerchApi.latestcollaborationsApi.middleware)
+      .concat(RiotMerchApi.productsApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -64,7 +64,7 @@ export default function ProductsCard({ product, index }: ProductCardProps) {
                 <img
                   src={img}
                   alt={`${product.name} Image ${imgIndex + 1}`}
-                  className="h-[250px] w-full cursor-pointer object-contain duration-300 ease-in-out hover:scale-105"
+                  className="h-[250px] w-full cursor-pointer object-contain duration-300 ease-in-out group-hover:scale-105"
                 />
               </SwiperSlide>
             ))}

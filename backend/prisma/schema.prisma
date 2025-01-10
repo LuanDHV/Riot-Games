@@ -173,3 +173,12 @@ model LatestCollaborations {
   description String
   img         String
 }
+
+model Products {
+  id    Int      @id @default(autoincrement())
+  name  String   @unique
+  price Float
+  logo  String
+  tags  String[]
+  imgs  String[]
+}
