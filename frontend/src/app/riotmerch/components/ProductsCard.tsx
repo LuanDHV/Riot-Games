@@ -4,22 +4,40 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { ProductCardProps, TypeTags } from "../types/interface";
-
-const getTagStyles = (tags: TypeTags) => {
-  const styles = {
-    "Special Edition": { bg: "bg-[#4500d5]", text: "text-white" },
-    Preorder: { bg: "bg-[#666666]", text: "text-white" },
-    "Limited Edition": { bg: "bg-yellow-400", text: "text-black" },
-    Retired: { bg: "bg-black", text: "text-white" },
-    "Riot Exclusive": { bg: "bg-[#6495ed]", text: "text-white" },
-  };
-  return styles[tags];
-};
+import { useRouter } from "next/navigation";
 
 export default function ProductsCard({ product, index }: ProductCardProps) {
+  const router = useRouter();
+
+  const getTagStyles = (tags: TypeTags) => {
+    const styles = {
+      "Special Edition": { bg: "bg-[#4500d5]", text: "text-white" },
+      Preorder: { bg: "bg-[#666666]", text: "text-white" },
+      "Limited Edition": { bg: "bg-yellow-400", text: "text-black" },
+      Retired: { bg: "bg-black", text: "text-white" },
+      "Riot Exclusive": { bg: "bg-[#6495ed]", text: "text-white" },
+    };
+    return styles[tags];
+  };
+
+  // Function Create Slug
+  const createSlug = (name: string) =>
+    name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
+
+  const handleDetailProduct = () => {
+    const slug = createSlug(product.name); // Create slug from product name
+    router.push(`/riotmerch/${slug}`); // navigation to detail product
+  };
+
   return (
     <>
-      <div className="group row-span-1 lg:col-span-1">
+      <div
+        className="group row-span-1 lg:col-span-1"
+        onClick={handleDetailProduct}
+      >
         {/* Logo and Tags */}
         <div className="flex items-center justify-between p-4">
           <img
