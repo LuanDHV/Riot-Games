@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   IHeaderData,
   IHeaderLeftProps,
@@ -61,6 +61,23 @@ export default function HeaderLeft({
   const [openSubHeaderLeft, setOpenSubHeaderLeft] = useState<number | null>(
     null,
   );
+  const [overlayStyle, setOverlayStyle] = useState({
+    height: "0px",
+    top: "0px",
+  });
+
+  useEffect(() => {
+    if (isHeaderLeftOpen) {
+      const headerCalc = document.querySelector(".header-calc");
+      if (headerCalc) {
+        const headerHeight = headerCalc.clientHeight;
+        setOverlayStyle({
+          height: `calc(100vh - ${headerHeight}px)`,
+          top: `${headerHeight}px`,
+        });
+      }
+    }
+  }, [isHeaderLeftOpen]);
 
   const handleSubHeaderLeftToggle = (index: number) => {
     setOpenSubHeaderLeft(openSubHeaderLeft === index ? null : index);
@@ -255,11 +272,8 @@ export default function HeaderLeft({
         {/* Overlay */}
         {isHeaderLeftOpen && (
           <div
-            className="fixed bottom-0 left-0 z-40 h-auto w-full bg-black opacity-50 lg:block"
-            style={{
-              height: `calc(100vh - ${document.querySelector(".header-calc")?.clientHeight}px)`,
-              top: `${document.querySelector(".header-calc")?.clientHeight}px`,
-            }}
+            className="fixed bottom-0 left-0 z-40 w-full bg-black opacity-50 lg:block"
+            style={overlayStyle}
             onClick={handleHeaderLeftToggle}
           ></div>
         )}
