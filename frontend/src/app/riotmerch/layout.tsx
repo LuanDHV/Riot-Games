@@ -1,3 +1,6 @@
+import Header from "../shared/Header";
+import Footer from "./Layout/Footer";
+
 export const metadata = {
   title: "Homepage | Riot Game Store",
   description: "Welcome to Riot Game Store",
@@ -8,5 +11,11 @@ export default function RiotMerchLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <Header />
+      {children}
+      <Footer />
+    </>
+  );
 }

@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 
 const riotgamesHeader: IHeaderData[] = [
   {
-    icon: "imgs/header/riotgames-header-icon.png",
+    icon: "/imgs/header/riotgames-header-icon.png",
     color: "#d13639",
     title: "Who We Are",
     subHeader: [
@@ -32,7 +32,7 @@ const riotgamesHeader: IHeaderData[] = [
 
 const lolHeader: IHeaderData[] = [
   {
-    icon: "imgs/header/lol-header-icon.png",
+    icon: "/imgs/header/lol-header-icon.png",
     color: "#59c1de",
     title: "Games",
   },
@@ -91,7 +91,7 @@ const lolHeader: IHeaderData[] = [
 
 const valorantHeader: IHeaderData[] = [
   {
-    icon: "imgs/header/valorant-header-icon.png",
+    icon: "/imgs/header/valorant-header-icon.png",
     color: "#ff4655",
     title: "Game Infor",
     subHeader: [
@@ -144,7 +144,7 @@ const valorantHeader: IHeaderData[] = [
 
 const tftHeader: IHeaderData[] = [
   {
-    icon: "imgs/header/tft-header-icon.png",
+    icon: "/imgs/header/tft-header-icon.png",
     color: "#ff6807",
     title: "News",
     href: "#",
@@ -164,7 +164,7 @@ const tftHeader: IHeaderData[] = [
 
 const wildriftHeader: IHeaderData[] = [
   {
-    icon: "imgs/header/wildrift-header-icon.png",
+    icon: "/imgs/header/wildrift-header-icon.png",
     color: "#32c8ff",
     title: "Game Overview",
     href: "#",
@@ -198,7 +198,7 @@ const wildriftHeader: IHeaderData[] = [
 
 const arcaneHeader: IHeaderData[] = [
   {
-    icon: "imgs/header/arcane-header-icon.svg",
+    icon: "/imgs/header/arcane-header-icon.svg",
     color: "#ede0ce",
     title: "News",
     href: "#",
@@ -213,7 +213,7 @@ const riotmerchHeader: IHeaderData[] = [
   {
     title: "Shop All",
     href: "#",
-    icon: "imgs/header/riotgames-header-icon.png",
+    icon: "/imgs/header/riotgames-header-icon.png",
     color: "#d13639",
   },
   {
@@ -295,12 +295,12 @@ export default function HeaderRight({
           <div className="group relative flex cursor-pointer items-center">
             {/* Logo Riot Games */}
             <img
-              src="imgs/riotgames/header/riotgames-white.png"
+              src="/imgs/riotgames/header/riotgames-white.png"
               alt="Riot Games"
               className="h-10 w-24 object-contain duration-300"
             />
             <img
-              src="imgs/riotgames/header/riotgames-red.png"
+              src="/imgs/riotgames/header/riotgames-red.png"
               alt="Riot Games"
               className="absolute h-10 w-24 object-contain opacity-0 duration-300 ease-out group-hover:opacity-100"
               onClick={handleHeaderLeftToggle}
@@ -309,12 +309,12 @@ export default function HeaderRight({
             {/* Arrow Down */}
             <div className="relative ml-3">
               <img
-                src="imgs/riotgames/header/arrow-down-white.png"
+                src="/imgs/riotgames/header/arrow-down-white.png"
                 alt="Arrow Down"
                 className="object-cover duration-300"
               />
               <img
-                src="imgs/riotgames/header/arrow-down-red.png"
+                src="/imgs/riotgames/header/arrow-down-red.png"
                 alt="Arrow Down"
                 className="absolute top-0 object-cover opacity-0 duration-300 ease-out group-hover:opacity-100"
               />
@@ -357,7 +357,7 @@ export default function HeaderRight({
                     {/* Show arrow if data sub Header is available */}
                     {HeaderItems.subHeader ? (
                       <img
-                        src="imgs/riotgames/header/arrow-down-white.png"
+                        src="/imgs/riotgames/header/arrow-down-white.png"
                         alt="Arrow"
                         className="ml-3 object-cover"
                       />
@@ -410,7 +410,7 @@ export default function HeaderRight({
               } w-full text-xs font-bold uppercase text-white outline-none`}
             />
             <img
-              src="imgs/riotgames/header/search-icon.png"
+              src="/imgs/riotgames/header/search-icon.png"
               alt="Search Icon"
               className="ml-2 h-5 w-5"
             />
@@ -430,7 +430,7 @@ export default function HeaderRight({
 
         {/* Header Open Mobile */}
         <img
-          src="imgs/riotgames/header/header-open.png"
+          src="/imgs/riotgames/header/header-open.png"
           alt="Header"
           className="cursor-pointer object-cover lg:hidden"
           onClick={handleHeaderRightToggle}
@@ -447,13 +447,13 @@ export default function HeaderRight({
         <div className="flex h-20 items-center justify-between px-5">
           <Link href="#">
             <img
-              src="imgs/riotgames/header/riotgames-icon.png"
+              src="/imgs/riotgames/header/riotgames-icon.png"
               alt="Riot Games Icon"
               className="object-cover"
             />
           </Link>
           <img
-            src="imgs/riotgames/header/header-close-white.png"
+            src="/imgs/riotgames/header/header-close-white.png"
             alt="Header Close"
             className="cursor-pointer object-cover lg:hidden"
             onClick={handleHeaderRightToggle}
@@ -475,7 +475,7 @@ export default function HeaderRight({
                 {/* Show arrow if data sub Header is available*/}
                 {HeaderItems.subHeader ? (
                   <img
-                    src={`imgs/riotgames/header/arrow-${
+                    src={`/imgs/riotgames/header/arrow-${
                       openSubHeaderRight === index ? "up" : "down"
                     }-white.png`}
                     alt="Arrow"
@@ -520,7 +520,7 @@ export default function HeaderRight({
             } w-full text-xs font-bold uppercase text-white outline-none`}
           />
           <img
-            src="imgs/riotgames/header/search-icon.png"
+            src="/imgs/riotgames/header/search-icon.png"
             alt="Search Icon"
             className="ml-2 h-5 w-5"
           />

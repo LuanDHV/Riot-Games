@@ -175,10 +175,12 @@ model LatestCollaborations {
 }
 
 model Products {
-  id    Int      @id @default(autoincrement())
-  name  String   @unique
-  price Float
-  logo  String
-  tags  String[]
-  imgs  String[]
+  id           Int      @id @default(autoincrement())
+  name         String   @unique
+  price        Float
+  logo         String
+  category     String
+  tags         String[]
+  descriptions String[]
+  imgs         String[]
 }

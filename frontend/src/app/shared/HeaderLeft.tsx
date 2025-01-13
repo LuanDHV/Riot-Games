@@ -95,12 +95,12 @@ export default function HeaderLeft({
           <div className="group relative flex h-20 cursor-pointer items-center">
             {/* Logo Riot Games */}
             <img
-              src="imgs/riotgames/header/riotgames-black.png"
+              src="/imgs/riotgames/header/riotgames-black.png"
               alt="Riot Games"
               className="h-10 w-24 object-contain duration-300"
             />
             <img
-              src="imgs/riotgames/header/riotgames-red.png"
+              src="/imgs/riotgames/header/riotgames-red.png"
               alt="Riot Games"
               className="absolute h-10 w-24 object-contain opacity-0 duration-300 ease-out group-hover:opacity-100"
               onClick={handleHeaderLeftToggle}
@@ -109,19 +109,19 @@ export default function HeaderLeft({
             {/* Arrow Up */}
             <div className="relative ml-3">
               <img
-                src="imgs/riotgames/header/arrow-up-black.png"
+                src="/imgs/riotgames/header/arrow-up-black.png"
                 alt="Arrow Up"
                 className="object-cover duration-300"
               />
               <img
-                src="imgs/riotgames/header/arrow-up-red.png"
+                src="/imgs/riotgames/header/arrow-up-red.png"
                 alt="Arrow Up"
                 className="absolute top-0 object-cover opacity-0 duration-300 ease-out group-hover:opacity-100"
               />
             </div>
           </div>
           <img
-            src="imgs/riotgames/header/header-close-black.png"
+            src="/imgs/riotgames/header/header-close-black.png"
             alt="Header Close"
             className="hidden h-8 w-8 cursor-pointer object-contain lg:block"
             onClick={handleHeaderLeftToggle}
@@ -290,12 +290,12 @@ export default function HeaderLeft({
           <div className="group relative flex h-20 cursor-pointer items-center">
             {/* Logo Riot Games */}
             <img
-              src="imgs/riotgames/header/riotgames-black.png"
+              src="/imgs/riotgames/header/riotgames-black.png"
               alt="Riot Games"
               className="h-10 w-24 object-contain duration-300"
             />
             <img
-              src="imgs/riotgames/header/riotgames-red.png"
+              src="/imgs/riotgames/header/riotgames-red.png"
               alt="Riot Games"
               className="absolute h-10 w-24 object-contain opacity-0 duration-300 ease-out group-hover:opacity-100"
               onClick={handleHeaderLeftToggle}
@@ -304,19 +304,19 @@ export default function HeaderLeft({
             {/* Arrow Up */}
             <div className="relative ml-3">
               <img
-                src="imgs/riotgames/header/arrow-up-black.png"
+                src="/imgs/riotgames/header/arrow-up-black.png"
                 alt="Arrow Up"
                 className="object-cover duration-300"
               />
               <img
-                src="imgs/riotgames/header/arrow-up-red.png"
+                src="/imgs/riotgames/header/arrow-up-red.png"
                 alt="Arrow Up"
                 className="absolute top-0 object-cover opacity-0 duration-300 ease-out group-hover:opacity-100"
               />
             </div>
           </div>
           <img
-            src="imgs/riotgames/header/header-close-black.png"
+            src="/imgs/riotgames/header/header-close-black.png"
             alt="Header Close"
             className="cursor-pointer object-contain lg:hidden"
             onClick={handleHeaderLeftToggle}

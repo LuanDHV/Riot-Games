@@ -17,7 +17,9 @@ interface IProducts {
   name: string;
   price: number;
   logo: string;
+  category: string;
   tags: TypeTags[];
+  descriptions: string[];
   imgs: string[];
 }
 
