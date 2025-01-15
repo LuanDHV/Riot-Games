@@ -46,11 +46,11 @@ export default function ProductsCard({ product, index }: ProductCardProps) {
             className="h-[30px] w-[70px] object-contain opacity-50"
           />
           <div className="flex space-x-2">
-            {product.tags.map((tag, i) => {
+            {product.tags.map((tag: TypeTags, index: number) => {
               const { bg, text } = getTagStyles(tag);
               return (
                 <span
-                  key={i}
+                  key={index}
                   className={`rounded-sm px-2 py-1 text-sm ${bg} ${text}`}
                 >
                   {tag}
@@ -115,7 +115,7 @@ export default function ProductsCard({ product, index }: ProductCardProps) {
             <h3 className="text-base font-bold hover:underline">
               {product.name}
             </h3>
-            <p className="mt-1 text-base font-medium">${product.price}</p>
+            <p className="mt-1 text-base">${product.price}</p>
           </div>
           <div className="z-10 flex h-12 w-12 cursor-pointer items-center justify-center rounded-sm border opacity-0 duration-300 ease-in-out hover:bg-[#d0d0d0] group-hover:opacity-100">
             <img
