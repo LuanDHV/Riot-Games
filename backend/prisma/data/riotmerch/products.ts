@@ -141,7 +141,6 @@ export const Products: IProducts[] = [
       '/imgs/riotmerch/products/arcane/Arcane-Family-Reunion-Holiday-Tibbers-3.png',
       '/imgs/riotmerch/products/arcane/Arcane-Family-Reunion-Holiday-Tibbers-4.png',
       '/imgs/riotmerch/products/arcane/Arcane-Family-Reunion-Holiday-Tibbers-5.png',
-      '/imgs/riotmerch/products/arcane/Arcane-Family-Reunion-Holiday-Tibbers-6.png',
     ],
   },
   {

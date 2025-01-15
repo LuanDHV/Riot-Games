@@ -1,8 +1,12 @@
 "use client";
+import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
 import { useParams } from "next/navigation";
 import { useGetProductsQuery } from "@/store/api/riotmerchApi/productsApi";
 import { IProducts, TypeTags } from "../types/interface";
-import Link from "next/link";
 import AddToCart from "../components/AddToCart";
 
 export default function DetailProduct() {
@@ -83,9 +87,23 @@ export default function DetailProduct() {
 
       <div className="flex h-auto flex-col lg:flex-row">
         {/* Product Image */}
-
         <div className="relative flex w-full items-center justify-center bg-[url('/imgs/riotmerch/products/detail/main-background.png')] bg-cover bg-top p-6 lg:w-2/5 lg:p-0 xl:w-1/2 2xl:w-4/6">
-          <div className="clip-detail-slant absolute bottom-0 h-1/2 w-full bg-[url('/imgs/riotmerch/products/detail/arcane-background.png')] bg-cover bg-center"></div>
+          <div
+            className={`clip-detail-slant absolute bottom-0 h-1/2 w-full bg-cover bg-center ${
+              product.category === "Arcane"
+                ? "bg-[url('/imgs/riotmerch/products/detail/arcane-background.png')]"
+                : product.category === "League of Legends"
+                  ? "bg-[url('/imgs/riotmerch/products/detail/lol-background.png')]"
+                  : product.category === "Valorant"
+                    ? "bg-[url('/imgs/riotmerch/products/detail/valorant-background.png')]"
+                    : product.category === "Teamfight Tatics"
+                      ? "bg-[url('/imgs/riotmerch/products/detail/tft-background.png')]"
+                      : product.category === "LOL Esport"
+                        ? "bg-[url('/imgs/riotmerch/products/detail/lol-esport-background.png')]"
+                        : ""
+            }`}
+          />
+
           {/* Nav Bar */}
           <nav className="absolute left-0 top-0 w-screen">
             <ol className="flex h-10 w-full items-center gap-1 px-6 text-base lg:h-[60px] lg:px-10">
@@ -107,62 +125,112 @@ export default function DetailProduct() {
           />
         </div>
 
-        {/* 
-        Product Detail */}
-        <div className="w-full px-10 pb-10 pt-4 lg:max-h-[760px] lg:w-3/5 lg:overflow-y-scroll lg:pt-10 xl:w-1/2 2xl:w-2/6">
-          <div className="mb-4 text-sm font-bold uppercase text-[#666666]">
-            {product.category}
-          </div>
-          <h1 className="text-[38px] font-bold leading-10 lg:text-6xl">
-            {product.name}
-          </h1>
-          {/* Tags */}
-          <div className="mt-4 flex justify-between gap-2 lg:mt-10">
-            <div className="flex gap-2">
+        {/* Swiper  */}
+        <div className="relative h-full w-full lg:hidden">
+          <Swiper
+            modules={[Navigation]}
+            navigation={{
+              nextEl: `.button-next`,
+              prevEl: `.button-prev`,
+            }}
+            spaceBetween={5}
+            breakpoints={{
+              480: {
+                slidesPerView: 1,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+            loop={true}
+          >
+            {product.imgs.slice(1).map((img: string, imgIndex: number) => (
+              <SwiperSlide key={imgIndex}>
+                <img
+                  src={img}
+                  alt={`${product.name} Image ${imgIndex + 2}`}
+                  className="h-full w-full cursor-pointer object-contain"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Custom Navigation  */}
+          <button className="button-prev absolute left-5 top-1/2 z-10 flex h-16 w-16 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border bg-white shadow duration-300 hover:bg-gray-200">
+            <img
+              src="/imgs/riotmerch/products/arrow-icon.svg"
+              alt="Previous"
+              className="h-6 w-6 rotate-180 object-cover"
+            />
+          </button>
+          <button className="button-next absolute right-5 top-1/2 z-10 flex h-16 w-16 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border bg-white shadow duration-300 hover:bg-gray-200">
+            <img
+              src="/imgs/riotmerch/products/arrow-icon.svg"
+              alt="Next"
+              className="h-6 w-6 object-cover"
+            />
+          </button>
+        </div>
+
+        {/* Product Detail */}
+        <div className="w-full pb-10 lg:w-3/5 xl:w-1/2 2xl:w-2/6">
+          <div className="w-full px-10 pt-4 lg:max-h-[760px] lg:overflow-y-scroll lg:pt-10">
+            <div className="mb-4 text-sm font-bold uppercase text-[#666666]">
+              {product.category}
+            </div>
+            <h1 className="text-[38px] font-bold leading-10 lg:text-6xl">
+              {product.name}
+            </h1>
+            {/* Tags */}
+            <div className="mt-4 flex justify-between gap-2 lg:mt-10">
               <div className="flex gap-2">
-                <img
-                  src="/imgs/riotmerch/products/love-icon.svg"
-                  alt="Love Icon"
-                  className="h-10 w-10 cursor-pointer object-cover"
-                />
-                <img
-                  src="/imgs/riotmerch/products/link-icon.svg"
-                  alt="Love Icon"
-                  className="h-10 w-10 cursor-pointer object-cover"
-                />
-              </div>
-              <div className="flex items-center justify-center gap-2">
-                {product.tags.map((tag: TypeTags, index: number) => {
-                  const { bg, text } = getTagStyles(tag);
-                  return (
-                    <span
-                      key={index}
-                      className={`flex min-h-10 items-center justify-center px-2 py-1 text-sm lg:min-w-[160px] lg:text-base ${bg} ${text}`}
-                    >
-                      {tag}
-                    </span>
-                  );
-                })}
+                <div className="flex gap-2">
+                  <img
+                    src="/imgs/riotmerch/products/love-icon.svg"
+                    alt="Love Icon"
+                    className="h-10 w-10 cursor-pointer object-cover"
+                  />
+                  <img
+                    src="/imgs/riotmerch/products/link-icon.svg"
+                    alt="Love Icon"
+                    className="h-10 w-10 cursor-pointer object-cover"
+                  />
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  {product.tags.map((tag: TypeTags, index: number) => {
+                    const { bg, text } = getTagStyles(tag);
+                    return (
+                      <span
+                        key={index}
+                        className={`flex min-h-10 items-center justify-center px-2 py-1 text-sm lg:min-w-[160px] lg:text-base ${bg} ${text}`}
+                      >
+                        {tag}
+                      </span>
+                    );
+                  })}
+                </div>
               </div>
             </div>
-          </div>
 
-          <p className="hidden py-6 text-2xl lg:block"> ${product.price}</p>
-          <div className="hidden flex-col gap-2 pt-8 lg:flex">
-            <p>This product is a collector's item intended for ages 14+</p>
-            <p className="font-bold">Expected ship date: Dec 31, 2025</p>
-          </div>
-          <div className="hidden py-4 lg:block">
-            <AddToCart />
-          </div>
-          <div className="text-base">
-            <div className="my-8 hidden border border-[#d0d0d0]"></div>
-            <p className="my-4 font-medium lg:mb-8">Descriptions</p>
-            {product.descriptions.map((description: string, index: number) => (
-              <p key={index} className="mt-4">
-                {description}
-              </p>
-            ))}
+            <p className="hidden py-6 text-2xl lg:block"> ${product.price}</p>
+            <div className="hidden flex-col gap-2 pt-8 lg:flex">
+              <p>This product is a collector's item intended for ages 14+</p>
+              <p className="font-bold">Expected ship date: Dec 31, 2025</p>
+            </div>
+            <div className="hidden py-4 lg:block">
+              <AddToCart />
+            </div>
+            <div className="text-base">
+              <div className="my-8 hidden border border-[#d0d0d0]"></div>
+              <p className="my-4 font-medium lg:mb-8">Descriptions</p>
+              {product.descriptions.map(
+                (description: string, index: number) => (
+                  <p key={index} className="mt-4">
+                    {description}
+                  </p>
+                ),
+              )}
+            </div>
           </div>
         </div>
 
@@ -184,6 +252,53 @@ export default function DetailProduct() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Swiper  */}
+      <div className="relative hidden h-full w-full lg:block">
+        <Swiper
+          modules={[Navigation]}
+          navigation={{
+            nextEl: `.button-next`,
+            prevEl: `.button-prev`,
+          }}
+          spaceBetween={5}
+          breakpoints={{
+            480: {
+              slidesPerView: 1,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          }}
+          loop={true}
+        >
+          {product.imgs.slice(1).map((img: string, imgIndex: number) => (
+            <SwiperSlide key={imgIndex}>
+              <img
+                src={img}
+                alt={`${product.name} Image ${imgIndex + 2}`}
+                className="h-full w-full cursor-pointer object-contain"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* Custom Navigation  */}
+        <button className="button-prev absolute left-5 top-1/2 z-10 flex h-16 w-16 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border bg-white shadow duration-300 hover:bg-gray-200">
+          <img
+            src="/imgs/riotmerch/products/arrow-icon.svg"
+            alt="Previous"
+            className="h-6 w-6 rotate-180 object-cover"
+          />
+        </button>
+        <button className="button-next absolute right-5 top-1/2 z-10 flex h-16 w-16 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border bg-white shadow duration-300 hover:bg-gray-200">
+          <img
+            src="/imgs/riotmerch/products/arrow-icon.svg"
+            alt="Next"
+            className="h-6 w-6 object-cover"
+          />
+        </button>
       </div>
     </div>
   );

@@ -50,8 +50,8 @@ export default function Footer() {
 
   return (
     <>
-      <div className="clip-top-left-slant h-auto w-full bg-black bg-[url('/imgs/riotmerch/footer/footer-background.png')] bg-cover bg-center">
-        <div className="w-full px-5 text-white lg:ml-10 lg:mt-16 lg:w-5/6 lg:p-0">
+      <div className="clip-top-left-slant-mobile lg:clip-top-left-slant-desktop h-auto w-full bg-black bg-[url('/imgs/riotmerch/footer/footer-background.png')] bg-cover bg-center">
+        <div className="w-full px-5 text-white lg:w-5/6 lg:px-0 lg:pl-10 lg:pt-16">
           <div className="mt-4 grid lg:mt-0 lg:grid-flow-col">
             <div className="">
               <img

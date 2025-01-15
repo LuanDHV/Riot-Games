@@ -34,10 +34,7 @@ export default function ProductsCard({ product, index }: ProductCardProps) {
 
   return (
     <>
-      <div
-        className="group row-span-1 lg:col-span-1"
-        onClick={handleDetailProduct}
-      >
+      <div className="group row-span-1 lg:col-span-1">
         {/* Logo and Tags */}
         <div className="flex items-center justify-between p-4">
           <img
@@ -83,6 +80,7 @@ export default function ProductsCard({ product, index }: ProductCardProps) {
                   src={img}
                   alt={`${product.name} Image ${imgIndex + 1}`}
                   className="h-[250px] w-full cursor-pointer object-contain duration-300 ease-in-out group-hover:scale-105"
+                  onClick={handleDetailProduct}
                 />
               </SwiperSlide>
             ))}
@@ -112,7 +110,10 @@ export default function ProductsCard({ product, index }: ProductCardProps) {
         {/* Product Information */}
         <div className="flex w-full items-center justify-between px-5">
           <div className="flex flex-col py-4">
-            <h3 className="text-base font-bold hover:underline">
+            <h3
+              className="cursor-pointer text-base font-bold hover:underline"
+              onClick={handleDetailProduct}
+            >
               {product.name}
             </h3>
             <p className="mt-1 text-base">${product.price}</p>

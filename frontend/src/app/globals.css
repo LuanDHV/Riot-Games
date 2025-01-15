@@ -14,8 +14,12 @@
     clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 90% 100%, 0% 100%);
   }
 
-  .clip-top-left-slant {
+  .clip-top-left-slant-mobile {
     clip-path: polygon(0% 1%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .clip-top-left-slant-desktop {
+    clip-path: polygon(0% 5%, 100% 0%, 100% 100%, 0% 100%);
   }
 
   .clip-banner-slant-mobile {
