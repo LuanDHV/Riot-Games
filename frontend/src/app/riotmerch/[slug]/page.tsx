@@ -1,22 +1,41 @@
 "use client";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import { useParams } from "next/navigation";
 import { useGetProductsQuery } from "@/store/api/riotmerchApi/productsApi";
 import { IProducts, TypeTags } from "../types/interface";
 import AddToCart from "../components/AddToCart";
+import { useEffect, useState } from "react";
 
 export default function DetailProduct() {
   const { slug } = useParams(); // Get slug from URL
+  const [showAddToCart, setShowAddToCart] = useState(false);
   const {
     data: Products,
     error,
     isLoading,
     isSuccess,
   } = useGetProductsQuery(undefined);
+
+  // Function check scroll
+  const handleScroll = () => {
+    if (window.scrollY >= 200) {
+      setShowAddToCart(true);
+    } else {
+      setShowAddToCart(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // Function Create Slug
   const createSlug = (name: string) =>
@@ -125,10 +144,14 @@ export default function DetailProduct() {
           />
         </div>
 
-        {/* Swiper  */}
+        {/* Swiper Mobile*/}
         <div className="relative h-full w-full lg:hidden">
           <Swiper
-            modules={[Navigation]}
+            modules={[Navigation, Autoplay]}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
             navigation={{
               nextEl: `.button-next`,
               prevEl: `.button-prev`,
@@ -139,7 +162,7 @@ export default function DetailProduct() {
                 slidesPerView: 1,
               },
               1024: {
-                slidesPerView: 3,
+                slidesPerView: 4,
               },
             }}
             loop={true}
@@ -235,29 +258,37 @@ export default function DetailProduct() {
         </div>
 
         {/* Bottom Add To Cart */}
-        <div className="fixed bottom-0 z-50 hidden h-auto w-full bg-white lg:px-10 lg:py-4">
-          <div className="px-5">
-            <div className="flex justify-between py-4 text-base lg:text-[28px]">
-              <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2">
-                <h3 className="font-medium lg:order-2">
-                  <span className="mr-2 hidden text-gray-300 lg:inline-block">
-                    |
+        {showAddToCart && (
+          <div className="fixed bottom-0 z-50 h-auto w-full bg-white lg:px-10 lg:py-4">
+            <div className="px-5">
+              <div className="flex justify-between py-4 text-base lg:text-[28px]">
+                <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2">
+                  <h3 className="font-medium lg:order-2">
+                    <span className="mr-2 hidden text-gray-300 lg:inline-block">
+                      |
+                    </span>
+                    {product.name}
+                  </h3>
+                  <span className="l:mt-0 mt-1 lg:order-1">
+                    ${product.price}
                   </span>
-                  {product.name}
-                </h3>
-                <span className="l:mt-0 mt-1 lg:order-1">${product.price}</span>
-              </div>
+                </div>
 
-              <AddToCart />
+                <AddToCart />
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
 
-      {/* Swiper  */}
+      {/* Swiper Desktop  */}
       <div className="relative hidden h-full w-full lg:block">
         <Swiper
-          modules={[Navigation]}
+          modules={[Navigation, Autoplay]}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
           navigation={{
             nextEl: `.button-next`,
             prevEl: `.button-prev`,
@@ -268,7 +299,7 @@ export default function DetailProduct() {
               slidesPerView: 1,
             },
             1024: {
-              slidesPerView: 3,
+              slidesPerView: 4,
             },
           }}
           loop={true}
