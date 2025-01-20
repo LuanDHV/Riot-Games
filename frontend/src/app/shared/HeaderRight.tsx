@@ -212,7 +212,7 @@ const arcaneHeader: IHeaderData[] = [
 const riotmerchHeader: IHeaderData[] = [
   {
     title: "Shop All",
-    href: "#",
+    href: "/riotmerch",
     icon: "/imgs/header/riotgames-header-icon.png",
     color: "#d13639",
   },

@@ -341,7 +341,7 @@ export default function HeaderLeft({
               >
                 <p className="font-bold uppercase">{HeaderItems.title}</p>
                 <img
-                  src={`imgs/riotgames/header/arrow-${
+                  src={`/imgs/riotgames/header/arrow-${
                     openSubHeaderLeft === index ? "up" : "down"
                   }-grey.png`}
                   alt={`Arrow ${openSubHeaderLeft === index ? "UP" : "DOWN"}`}
