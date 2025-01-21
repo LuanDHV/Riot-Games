@@ -87,7 +87,7 @@ export default function Banner() {
           <div className="lg:clip-swiper-slant bottom-7 flex bg-white pb-2 pt-4 lg:absolute lg:w-3/5 lg:pr-14">
             <Swiper
               modules={[Pagination, Autoplay]}
-              spaceBetween={20}
+              spaceBetween={10}
               breakpoints={{
                 320: {
                   slidesPerView: 2,

@@ -32,7 +32,7 @@ export default function News() {
             delay: 3000,
             disableOnInteraction: false,
           }}
-          spaceBetween={20}
+          spaceBetween={10}
           breakpoints={{
             640: {
               slidesPerView: 1,

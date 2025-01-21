@@ -48,7 +48,7 @@ export default function EpisodeStills() {
           />
         </div>
 
-        <Swiper modules={[Pagination]} spaceBetween={20} slidesPerView={4}>
+        <Swiper modules={[Pagination]} spaceBetween={10} slidesPerView={4}>
           {isSuccess &&
             EpisodeStills.map((img: IEpisodeStills) => (
               <SwiperSlide key={img.id}>

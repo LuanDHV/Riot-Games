@@ -372,10 +372,19 @@ export default function DetailProduct() {
                   }}
                   spaceBetween={10}
                   breakpoints={{
-                    480: {
+                    640: {
                       slidesPerView: 1,
                     },
+                    768: {
+                      slidesPerView: 2,
+                    },
                     1024: {
+                      slidesPerView: 3,
+                    },
+                    1280: {
+                      slidesPerView: 4,
+                    },
+                    1536: {
                       slidesPerView: 5,
                     },
                   }}

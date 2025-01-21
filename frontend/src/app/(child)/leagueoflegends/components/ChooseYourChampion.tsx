@@ -78,7 +78,7 @@ export default function ChooseYourChampion() {
               delay: 3000,
               disableOnInteraction: false,
             }}
-            spaceBetween={20}
+            spaceBetween={10}
             slidesPerView={4}
             breakpoints={{
               1024: {

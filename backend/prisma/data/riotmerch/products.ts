@@ -161,8 +161,97 @@ export const Products: IProducts[] = [
       '/imgs/riotmerch/products/arcane/Nendoroid-Jinx-(Arcane version)-5.png',
     ],
   },
+  {
+    name: 'Funko POP! Arcane Mel',
+    price: 11.99,
+    logo: '/imgs/riotmerch/products/arcane-logo.svg',
+    category: 'Arcane',
+    tags: ['Retired', 'Limited Edition'],
+    descriptions: [
+      'The war between the Piltover and the Undercity is heating up! Prepare for battle with Funko POP! Mel! This councilwoman is ready to lead the people of Piltover in your Arcane: League of Legends collection. Vinyl figure is approximately 4.45-inches tall.',
+    ],
+    imgs: [
+      '/imgs/riotmerch/products/arcane/Funko-POP-Arcane-Mel-1.png',
+      '/imgs/riotmerch/products/arcane/Funko-POP-Arcane-Mel-2.png',
+      '/imgs/riotmerch/products/arcane/Funko-POP-Arcane-Mel-3.png',
+      '/imgs/riotmerch/products/arcane/Funko-POP-Arcane-Mel-4.png',
+    ],
+  },
+  {
+    name: 'Funko POP! Arcane Caitlyn',
+    price: 11.99,
+    logo: '/imgs/riotmerch/products/arcane-logo.svg',
+    category: 'Arcane',
+    tags: ['Limited Edition', 'Preorder'],
+    descriptions: [
+      'The war between the Piltover and the Undercity is heating up! Prepare for battle with Funko POP! Caitlyn! This topsider is ready to uncover dark secrets in your Arcane: League of Legends collection. Vinyl figure is approximately 3.95-inches tall.',
+    ],
+    imgs: [
+      '/imgs/riotmerch/products/arcane/Funko-POP-Arcane-Caitlyn-1.png',
+      '/imgs/riotmerch/products/arcane/Funko-POP-Arcane-Caitlyn-2.png',
+      '/imgs/riotmerch/products/arcane/Funko-POP-Arcane-Caitlyn-3.png',
+      '/imgs/riotmerch/products/arcane/Funko-POP-Arcane-Caitlyn-4.png',
+    ],
+  },
+  {
+    name: 'Funko POP! Arcane Champion Viktor',
+    price: 11.99,
+    logo: '/imgs/riotmerch/products/arcane-logo.svg',
+    category: 'Arcane',
+    tags: ['Retired', 'Limited Edition'],
+    descriptions: [
+      'The war between the Piltover and the Undercity is heating up! Prepare for battle with Funko POP! Champion Viktor! This inventor is ready to push the boundaries of Hextech and chaos in your Arcane: League of Legends collection. Vinyl figure is approximately 5.2-inches tall.',
+    ],
+    imgs: [
+      '/imgs/riotmerch/products/arcane/Funko-POP-Arcane-Champion-Viktor-1.png',
+      '/imgs/riotmerch/products/arcane/Funko-POP-Arcane-Champion-Viktor-2.png',
+      '/imgs/riotmerch/products/arcane/Funko-POP-Arcane-Champion-Viktor-3.png',
+      '/imgs/riotmerch/products/arcane/Funko-POP-Arcane-Champion-Viktor-4.png',
+    ],
+  },
 
   //LOL
+  {
+    name: 'Infinity Studio Renekton Quarter Scale Statue',
+    price: 1079.99,
+    logo: '/imgs/riotmerch/products/lol-logo.svg',
+    category: 'League of Legends',
+    tags: [],
+    descriptions: [
+      'Posed as if to strike you down with his imposing crescent-bladed axe, the Infinity Studio Renekton Quarter Scale Statue will tower above the rest of your collection standing nearly 30 inches tall.',
+      'Sculpted in insane detail down to his individual reptilian scales, every single aspect of the Butcher of the Sands has been brought to life with painstaking care. His burning, rage-filled eyes, bared teeth, and (light up!) blade stand testament to the centuries of imprisonment he suffered.',
+    ],
+    imgs: [
+      '/imgs/riotmerch/products/lol/Infinity-Studio-Renekton-Quarter-Scale-Statue-1.png',
+      '/imgs/riotmerch/products/lol/Infinity-Studio-Renekton-Quarter-Scale-Statue-2.png',
+      '/imgs/riotmerch/products/lol/Infinity-Studio-Renekton-Quarter-Scale-Statue-3.png',
+      '/imgs/riotmerch/products/lol/Infinity-Studio-Renekton-Quarter-Scale-Statue-4.png',
+      '/imgs/riotmerch/products/lol/Infinity-Studio-Renekton-Quarter-Scale-Statue-5.png',
+      '/imgs/riotmerch/products/lol/Infinity-Studio-Renekton-Quarter-Scale-Statue-6.png',
+    ],
+  },
+  {
+    name: 'Infinity Studio Captain Fortune Quarter Scale Statue',
+    price: 1079.99,
+    logo: '/imgs/riotmerch/products/lol-logo.svg',
+    category: 'League of Legends',
+    tags: [],
+    descriptions: [
+      'In another life, Sarah Fortune would have been a respected ship captain, supported by the love of her mother and the admiration of her city. But the things Bilgewater takes, you can not always get back...',
+      'Bring the Bounty Hunter is dream to life with the Infinity Studio Captain Fortune Quarter Scale Statue. Never one to go without a fight, Captain Fortune is sculpted with both guns blazing as a denizen of the deep tries to drag her to a watery end.',
+      'She carries the weight of her makers love with every step, taking nothing for granted. At her command is the Hallowed Mist, an ancient and protective magic that has blessed Gwens scissors, needles, and sewing thread.',
+    ],
+    imgs: [
+      '/imgs/riotmerch/products/lol/Infinity-Studio-Captain-Fortune-Quarter-Scale-Statue-1.png',
+      '/imgs/riotmerch/products/lol/Infinity-Studio-Captain-Fortune-Quarter-Scale-Statue-2.png',
+      '/imgs/riotmerch/products/lol/Infinity-Studio-Captain-Fortune-Quarter-Scale-Statue-3.png',
+      '/imgs/riotmerch/products/lol/Infinity-Studio-Captain-Fortune-Quarter-Scale-Statue-4.png',
+      '/imgs/riotmerch/products/lol/Infinity-Studio-Captain-Fortune-Quarter-Scale-Statue-5.png',
+      '/imgs/riotmerch/products/lol/Infinity-Studio-Captain-Fortune-Quarter-Scale-Statue-6.png',
+      '/imgs/riotmerch/products/lol/Infinity-Studio-Captain-Fortune-Quarter-Scale-Statue-7.png',
+      '/imgs/riotmerch/products/lol/Infinity-Studio-Captain-Fortune-Quarter-Scale-Statue-8.png',
+    ],
+  },
   {
     name: 'Worlds 2024 Lux Scale Statue by Jimei Palace',
     price: 499.99,
