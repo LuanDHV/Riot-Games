@@ -1,4 +1,4 @@
-interface IBanner {
+export interface IBanner {
   id: number;
   bannerDesktop?: string;
   bannerMobile?: string;
@@ -6,7 +6,7 @@ interface IBanner {
   color: string;
   logo?: string;
 }
-interface IProducts {
+export interface IProducts {
   id: number;
   name: string;
   price: number;
@@ -23,12 +23,12 @@ export type TypeTags =
   | "Limited Edition"
   | "Retired"
   | "Riot Exclusive";
-interface ProductCardProps {
+export interface IProductCardProps {
   product: IProducts;
   index: number;
 }
 
-interface ILatestCollaborations {
+export interface ILatestCollaborations {
   id: number;
   numb: string;
   title: string;
@@ -54,4 +54,9 @@ export interface IFormFields {
 export interface IFooterDataSection2 {
   title: string;
   link: string;
+}
+
+export interface IRiotMerchCartProps {
+  openRiotMerchCart: boolean;
+  setOpenRiotMerchCart: (open: boolean) => void;
 }

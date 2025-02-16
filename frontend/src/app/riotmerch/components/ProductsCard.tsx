@@ -3,10 +3,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-import { ProductCardProps, TypeTags } from "../types/interface";
+import { IProductCardProps, TypeTags } from "../types/interface";
 import { useRouter } from "next/navigation";
 
-export default function ProductsCard({ product, index }: ProductCardProps) {
+export default function ProductsCard({ product, index }: IProductCardProps) {
   const router = useRouter();
 
   const getTagStyles = (tags: TypeTags) => {
@@ -120,7 +120,7 @@ export default function ProductsCard({ product, index }: ProductCardProps) {
           </div>
           <div className="z-10 flex h-12 w-12 cursor-pointer items-center justify-center rounded-sm border opacity-0 duration-300 ease-in-out hover:bg-[#d0d0d0] group-hover:opacity-100">
             <img
-              src="/imgs/riotmerch/products/cart-icon.svg"
+              src="/imgs/riotmerch/products/cart-icon-black.svg"
               alt=""
               className="h-6 w-6 object-cover"
             />

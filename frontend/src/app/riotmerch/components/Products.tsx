@@ -14,7 +14,6 @@ export default function Products() {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;
-  console.log(Products);
 
   return (
     <>

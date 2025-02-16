@@ -7,6 +7,7 @@ import {
   ISubHeaderData,
 } from "./types/interface";
 import { usePathname } from "next/navigation";
+import RiotMerchCart from "../riotmerch/components/RiotMerchCart";
 
 const riotgamesHeader: IHeaderData[] = [
   {
@@ -247,6 +248,12 @@ export default function HeaderRight({
     null,
   );
 
+  const [openRiotMerchCart, setOpenRiotMerchCart] = useState<boolean>(false);
+
+  const handleOpenRiotMerchCart = () => {
+    setOpenRiotMerchCart(!openRiotMerchCart);
+  };
+
   const handleSubHeaderRightToggle = (index: number) => {
     setOpenSubHeaderRight(openSubHeaderRight === index ? null : index);
   };
@@ -277,6 +284,8 @@ export default function HeaderRight({
   }
 
   const isRiotGamesPage = pathname.startsWith("/riotgames");
+
+  console.log(openRiotMerchCart);
 
   return (
     <>
@@ -426,15 +435,33 @@ export default function HeaderRight({
               Sign In
             </Link>
           </div>
+          {pathname === "/riotmerch" ? (
+            <img
+              src="/imgs/riotmerch/products/cart-icon-white.svg"
+              alt="Cart Icon"
+              className="cursor-pointer"
+              onClick={handleOpenRiotMerchCart}
+            />
+          ) : null}
         </div>
 
         {/* Header Open Mobile */}
-        <img
-          src="/imgs/riotgames/header/header-open.png"
-          alt="Header"
-          className="cursor-pointer object-cover lg:hidden"
-          onClick={handleHeaderRightToggle}
-        />
+        <div className="flex gap-5 lg:hidden">
+          {pathname === "/riotmerch" ? (
+            <img
+              src="/imgs/riotmerch/products/cart-icon-white.svg"
+              alt="Cart Icon"
+              className="cursor-pointer object-contain"
+              onClick={() => setOpenRiotMerchCart(!openRiotMerchCart)}
+            />
+          ) : null}
+          <img
+            src="/imgs/riotgames/header/header-open.png"
+            alt="Header"
+            className="cursor-pointer object-cover"
+            onClick={handleHeaderRightToggle}
+          />
+        </div>
       </div>
 
       {/* Header Right Mobile */}
@@ -443,7 +470,6 @@ export default function HeaderRight({
           isHeaderRightOpen ? "block" : "hidden"
         } fixed right-0 z-50 h-screen w-full bg-[#1f1f1f] md:w-[55%] lg:hidden`}
       >
-        {/* Header Header */}
         <div className="flex h-20 items-center justify-between px-5">
           <Link href="#">
             <img
@@ -460,7 +486,6 @@ export default function HeaderRight({
           />
         </div>
 
-        {/* Header  */}
         <div className="mx-auto flex h-auto flex-col pt-5">
           {CurrentHeader?.map((HeaderItems: IHeaderData, index: number) => (
             <div key={index}>
@@ -545,6 +570,12 @@ export default function HeaderRight({
           ></div>
         )}
       </div>
+
+      {/* Riot Merch Cart */}
+      <RiotMerchCart
+        openRiotMerchCart={openRiotMerchCart}
+        setOpenRiotMerchCart={setOpenRiotMerchCart}
+      />
     </>
   );
 }
