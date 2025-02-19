@@ -435,26 +435,26 @@ export default function HeaderRight({
               Sign In
             </Link>
           </div>
-          {pathname === "/riotmerch" ? (
+          {pathname.startsWith("/riotmerch") && (
             <img
               src="/imgs/riotmerch/products/cart-icon-white.svg"
               alt="Cart Icon"
               className="cursor-pointer"
               onClick={handleOpenRiotMerchCart}
             />
-          ) : null}
+          )}
         </div>
 
         {/* Header Open Mobile */}
         <div className="flex gap-5 lg:hidden">
-          {pathname === "/riotmerch" ? (
+          {pathname.startsWith("/riotmerch") && (
             <img
               src="/imgs/riotmerch/products/cart-icon-white.svg"
               alt="Cart Icon"
               className="cursor-pointer object-contain"
               onClick={() => setOpenRiotMerchCart(!openRiotMerchCart)}
             />
-          ) : null}
+          )}
           <img
             src="/imgs/riotgames/header/header-open.png"
             alt="Header"

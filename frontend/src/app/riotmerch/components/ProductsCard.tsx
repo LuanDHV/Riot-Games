@@ -28,8 +28,8 @@ export default function ProductsCard({ product, index }: IProductCardProps) {
       .replace(/(^-|-$)/g, "");
 
   const handleDetailProduct = () => {
-    const slug = createSlug(product.name); // Create slug from product name
-    router.push(`/riotmerch/${slug}`); // navigation to detail product
+    const slug = createSlug(product.name);
+    router.push(`/riotmerch/${slug}`);
   };
 
   return (
@@ -67,8 +67,8 @@ export default function ProductsCard({ product, index }: IProductCardProps) {
           <Swiper
             modules={[Navigation]}
             navigation={{
-              nextEl: `.swiper-button-next-${index}`,
-              prevEl: `.swiper-button-prev-${index}`,
+              nextEl: `.button-next-${index}`,
+              prevEl: `.button-prev-${index}`,
             }}
             spaceBetween={10}
             slidesPerView={1}
@@ -97,7 +97,7 @@ export default function ProductsCard({ product, index }: IProductCardProps) {
             />
           </button>
           <button
-            className={`flex opacity-0 group-hover:opacity-100 swiper-button-next-${index} absolute right-5 top-1/2 z-10 flex h-16 w-16 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border bg-white shadow duration-300 hover:bg-gray-200`}
+            className={`flex opacity-0 group-hover:opacity-100 button-next-${index} absolute right-5 top-1/2 z-10 flex h-16 w-16 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border bg-white shadow duration-300 hover:bg-gray-200`}
           >
             <img
               src="/imgs/riotmerch/products/arrow-icon.svg"

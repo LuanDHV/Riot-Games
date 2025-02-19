@@ -47,8 +47,8 @@ export default function DetailProduct() {
       .replace(/(^-|-$)/g, "");
 
   const handleDetailProduct = (prod: IProducts) => {
-    const slug = createSlug(prod.name); // Create slug from product name
-    router.push(`/riotmerch/${slug}`); // navigation to detail product
+    const slug = createSlug(prod.name);
+    router.push(`/riotmerch/${slug}`);
   };
 
   if (isLoading) return <div>Loading...</div>;
@@ -368,7 +368,7 @@ export default function DetailProduct() {
                   }}
                   navigation={{
                     nextEl: `.button-next-3`,
-                    prevEl: `.button-prev-2`,
+                    prevEl: `.button-prev-3`,
                   }}
                   spaceBetween={10}
                   breakpoints={{
@@ -463,23 +463,24 @@ export default function DetailProduct() {
                     </SwiperSlide>
                   ))}
                 </Swiper>
-
-                {/* Custom Navigation  */}
-                <button className="button-prev-3 absolute left-5 top-1/2 z-10 flex h-16 w-16 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border bg-white shadow duration-300 hover:bg-gray-200">
-                  <img
-                    src="/imgs/riotmerch/products/arrow-icon.svg"
-                    alt="Previous"
-                    className="h-6 w-6 rotate-180 object-cover"
-                  />
-                </button>
-                <button className="button-next-3 absolute right-5 top-1/2 z-10 flex h-16 w-16 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border bg-white shadow duration-300 hover:bg-gray-200">
-                  <img
-                    src="/imgs/riotmerch/products/arrow-icon.svg"
-                    alt="Next"
-                    className="h-6 w-6 object-cover"
-                  />
-                </button>
               </div>
+            </div>
+            <div className="flex justify-center gap-[60px] px-6 py-4">
+              {/* Custom Navigation */}
+              <button className="button-prev-3 flex h-[38px] w-[38px] cursor-pointer items-center justify-center rounded-full border bg-white shadow duration-300 ease-in-out hover:bg-gray-200">
+                <img
+                  src="/imgs/riotmerch/products/arrow-icon.svg"
+                  alt="Prev"
+                  className="h-6 w-6 rotate-180 object-cover"
+                />
+              </button>
+              <button className="button-next-3 flex h-[38px] w-[38px] cursor-pointer items-center justify-center rounded-full border bg-white shadow duration-300 ease-in-out hover:bg-gray-200">
+                <img
+                  src="/imgs/riotmerch/products/arrow-icon.svg"
+                  alt="Next"
+                  className="h-6 w-6 object-cover"
+                />
+              </button>
             </div>
           </>
         )}
