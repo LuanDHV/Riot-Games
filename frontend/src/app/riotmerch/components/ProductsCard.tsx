@@ -5,9 +5,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { IProductCardProps, TypeTags } from "../types/interface";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function ProductsCard({ product, index }: IProductCardProps) {
   const router = useRouter();
+  const [isAdding, setIsAdding] = useState<boolean>(false);
 
   const getTagStyles = (tags: TypeTags) => {
     const styles = {
@@ -34,7 +36,7 @@ export default function ProductsCard({ product, index }: IProductCardProps) {
 
   return (
     <>
-      <div className="group row-span-1 lg:col-span-1">
+      <div className="group relative row-span-1 lg:col-span-1">
         {/* Logo and Tags */}
         <div className="flex items-center justify-between p-4">
           <img
@@ -118,7 +120,10 @@ export default function ProductsCard({ product, index }: IProductCardProps) {
             </h3>
             <p className="mt-1 text-base">${product.price}</p>
           </div>
-          <div className="z-10 flex h-12 w-12 cursor-pointer items-center justify-center rounded-sm border opacity-0 duration-300 ease-in-out hover:bg-[#d0d0d0] group-hover:opacity-100">
+          <div
+            className="z-10 flex h-12 w-12 cursor-pointer items-center justify-center rounded-sm border opacity-0 duration-300 ease-in-out hover:bg-[#d0d0d0] group-hover:opacity-100"
+            onClick={() => setIsAdding(!isAdding)}
+          >
             <img
               src="/imgs/riotmerch/products/cart-icon-black.svg"
               alt=""
@@ -126,6 +131,41 @@ export default function ProductsCard({ product, index }: IProductCardProps) {
             />
           </div>
         </div>
+
+        {/* Add To Cart Modal */}
+        {isAdding && (
+          <div className="absolute bottom-0 z-20 h-4/6 w-full rounded bg-white px-5 text-black shadow-md">
+            <div className="flex h-full flex-col justify-between">
+              <div className="flex w-full items-center justify-between border-b border-[#d0d0d0]">
+                <div className="flex flex-col py-4">
+                  <h3
+                    className="cursor-pointer text-base font-bold hover:underline"
+                    onClick={handleDetailProduct}
+                  >
+                    {product.name}
+                  </h3>
+                  <p className="mt-1 text-base">${product.price}</p>
+                </div>
+                <div
+                  className="z-10 flex h-12 w-12 cursor-pointer items-center justify-center rounded-sm border duration-300 ease-in-out hover:bg-[#d0d0d0]"
+                  onClick={() => setIsAdding(!isAdding)}
+                >
+                  <img
+                    src="/imgs/riotmerch/products/close-icon.svg"
+                    alt=""
+                    className="h-6 w-6 object-cover"
+                  />
+                </div>
+              </div>
+              <p className="text-base">
+                This product is a collector's item intended for ages 14+
+              </p>
+              <button className="clip-button-slant mb-4 mt-6 h-[50px] w-full bg-black text-base font-bold uppercase text-white duration-300 ease-in-out hover:brightness-110">
+                Add To Cart
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
