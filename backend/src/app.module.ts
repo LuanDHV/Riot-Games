@@ -44,6 +44,7 @@ import * as RiotMerchModules from './modules/riotmerch';
     RiotMerchModules.BannerModule,
     RiotMerchModules.LatestCollaborationsModule,
     RiotMerchModules.ProductsModule,
+    RiotMerchModules.CartModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -183,4 +183,12 @@ model Products {
   tags         String[]
   descriptions String[]
   imgs         String[]
+  Cart         Cart[]
+}
+
+model Cart {
+  id        Int      @id @default(autoincrement())
+  quantity  Int      @default(1)
+  productId Int      @unique
+  product   Products @relation(fields: [productId], references: [id])
 }
