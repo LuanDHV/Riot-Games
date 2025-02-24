@@ -14,14 +14,10 @@ export const cartApi = createApi({
   reducerPath: "cartApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:5000/api/riotmerch",
-    prepareHeaders: (headers) => {
-      headers.set("cart-id", getCartId());
-      return headers;
-    },
   }),
   endpoints: (builder) => ({
-    getCart: builder.query<ICartItem[], void>({
-      query: () => "/cart",
+    getCart: builder.query<{ cartId: string; products: ICartItem[] }, void>({
+      query: () => `/cart/${getCartId()}`,
     }),
     addToCart: builder.mutation<void, { productId: number; quantity: number }>({
       query: (body) => ({
@@ -32,14 +28,20 @@ export const cartApi = createApi({
     }),
     updateCart: builder.mutation<void, { id: string; quantity: number }>({
       query: ({ id, quantity }) => ({
-        url: `/cart/${id}`,
+        url: `/cart/${getCartId()}/${id}`,
         method: "PATCH",
         body: { quantity },
       }),
     }),
     removeFromCart: builder.mutation<void, { id: string }>({
       query: ({ id }) => ({
-        url: `/cart/${id}`,
+        url: `/cart/${getCartId()}/${id}`,
+        method: "DELETE",
+      }),
+    }),
+    clearCart: builder.mutation<void, void>({
+      query: () => ({
+        url: `/cart/${getCartId()}`,
         method: "DELETE",
       }),
     }),
@@ -51,4 +53,5 @@ export const {
   useAddToCartMutation,
   useUpdateCartMutation,
   useRemoveFromCartMutation,
+  useClearCartMutation,
 } = cartApi;

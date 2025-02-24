@@ -15,6 +15,7 @@ export interface IProducts {
   tags: TypeTags[];
   descriptions: string[];
   imgs: string[];
+  quantity?: number;
 }
 
 export type TypeTags =
@@ -61,8 +62,9 @@ export interface IRiotMerchCartProps {
   setOpenRiotMerchCart: (open: boolean) => void;
 }
 
-interface ICartItem {
+export interface ICartItem {
   id: string;
   productId: number;
   quantity: number;
+  product: IProducts;
 }

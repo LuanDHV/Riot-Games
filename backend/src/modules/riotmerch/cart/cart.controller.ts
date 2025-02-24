@@ -10,28 +10,23 @@ import {
 import { CartService } from './cart.service';
 import { AddToCartDto, UpdateCartDto } from './cart.dto';
 
-@Controller('/api/riotmerch/cart')
+@Controller('api/riotmerch/cart')
 export class CartController {
   constructor(private readonly cartService: CartService) {}
 
-  @Get('')
+  @Get()
   getAllCarts() {
     return this.cartService.getAllCarts();
   }
 
   @Get(':cartId')
-  getCartById(@Param('cartId') cartId: string) {
-    return this.cartService.getCartById(cartId);
+  getCart(@Param('cartId') cartId: string) {
+    return this.cartService.getCart(cartId);
   }
 
   @Post(':cartId')
   addToCart(@Param('cartId') cartId: string, @Body() dto: AddToCartDto) {
     return this.cartService.addToCart(cartId, dto);
-  }
-
-  @Delete(':cartId')
-  removeCartById(@Param('cartId') cartId: string) {
-    return this.cartService.removeCartById(cartId);
   }
 
   @Patch(':cartId/:id')
@@ -46,5 +41,10 @@ export class CartController {
   @Delete(':cartId/:id')
   removeFromCart(@Param('cartId') cartId: string, @Param('id') id: string) {
     return this.cartService.removeFromCart(cartId, id);
+  }
+
+  @Delete(':cartId')
+  clearCart(@Param('cartId') cartId: string) {
+    return this.cartService.clearCart(cartId);
   }
 }

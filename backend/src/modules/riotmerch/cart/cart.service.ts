@@ -8,18 +8,58 @@ export class CartService {
   constructor(private prisma: PrismaService) {}
 
   async getAllCarts() {
-    return this.prisma.cart.findMany({
+    const cartItems = await this.prisma.cart.findMany({
       include: { product: true },
     });
+
+    // Group products by cartId
+    const cartsMap = new Map<string, { cartId: string; products: any[] }>();
+
+    cartItems.forEach((item) => {
+      if (!cartsMap.has(item.cartId)) {
+        cartsMap.set(item.cartId, { cartId: item.cartId, products: [] });
+      }
+
+      cartsMap.get(item.cartId)!.products.push({
+        id: item.product.id,
+        name: item.product.name,
+        price: item.product.price,
+        logo: item.product.logo,
+        category: item.product.category,
+        tags: item.product.tags,
+        descriptions: item.product.descriptions,
+        imgs: item.product.imgs,
+        quantity: item.quantity,
+      });
+    });
+
+    return Array.from(cartsMap.values());
   }
 
-  async getCartById(cartId: string) {
+  async getCart(cartId: string) {
     const cartItems = await this.prisma.cart.findMany({
       where: { cartId },
       include: { product: true },
     });
 
-    return cartItems;
+    if (cartItems.length === 0) {
+      throw new NotFoundException('Cart not found');
+    }
+
+    return {
+      cartId,
+      products: cartItems.map((item) => ({
+        id: item.product.id,
+        name: item.product.name,
+        price: item.product.price,
+        logo: item.product.logo,
+        category: item.product.category,
+        tags: item.product.tags,
+        descriptions: item.product.descriptions,
+        imgs: item.product.imgs,
+        quantity: item.quantity,
+      })),
+    };
   }
 
   async addToCart(cartId: string, dto: AddToCartDto) {
@@ -34,7 +74,7 @@ export class CartService {
     if (existingItem) {
       return this.prisma.cart.update({
         where: { id: existingItem.id },
-        data: { quantity: existingItem.quantity + dto.quantity },
+        data: { quantity: { increment: dto.quantity } },
       });
     }
 
@@ -48,24 +88,12 @@ export class CartService {
     });
   }
 
-  async removeCartById(cartId: string) {
-    const cartItems = await this.prisma.cart.findMany({
-      where: { cartId },
-    });
-
-    if (cartItems.length === 0) {
-      throw new NotFoundException('Cart not found');
-    }
-
-    return this.prisma.cart.deleteMany({
-      where: { cartId },
-    });
-  }
-
   async updateCart(cartId: string, id: string, dto: UpdateCartDto) {
-    const cartItem = await this.prisma.cart.findUnique({ where: { id } });
+    const cartItem = await this.prisma.cart.findFirst({
+      where: { id, cartId },
+    });
 
-    if (!cartItem || cartItem.cartId !== cartId) {
+    if (!cartItem) {
       throw new NotFoundException('Cart item not found');
     }
 
@@ -76,12 +104,24 @@ export class CartService {
   }
 
   async removeFromCart(cartId: string, id: string) {
-    const cartItem = await this.prisma.cart.findUnique({ where: { id } });
+    const cartItem = await this.prisma.cart.findFirst({
+      where: { id, cartId },
+    });
 
-    if (!cartItem || cartItem.cartId !== cartId) {
+    if (!cartItem) {
       throw new NotFoundException('Cart item not found');
     }
 
     return this.prisma.cart.delete({ where: { id } });
+  }
+
+  async clearCart(cartId: string) {
+    const cartItems = await this.prisma.cart.findMany({ where: { cartId } });
+
+    if (cartItems.length === 0) {
+      throw new NotFoundException('Cart not found');
+    }
+
+    return this.prisma.cart.deleteMany({ where: { cartId } });
   }
 }
