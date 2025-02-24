@@ -4,37 +4,47 @@ import {
   Post,
   Patch,
   Delete,
-  Param,
   Body,
+  Param,
 } from '@nestjs/common';
 import { CartService } from './cart.service';
+import { AddToCartDto, UpdateCartDto } from './cart.dto';
 
-@Controller('api/riotmerch/cart')
+@Controller('/api/riotmerch/cart')
 export class CartController {
   constructor(private readonly cartService: CartService) {}
 
-  @Get()
-  getAllCart() {
-    return this.cartService.getAll();
+  @Get('')
+  getAllCarts() {
+    return this.cartService.getAllCarts();
   }
 
-  @Get(':id')
-  getCartItem(@Param('id') id: string) {
-    return this.cartService.getById(Number(id));
+  @Get(':cartId')
+  getCartById(@Param('cartId') cartId: string) {
+    return this.cartService.getCartById(cartId);
   }
 
-  @Post()
-  addToCart(@Body() body: { productId: number; quantity: number }) {
-    return this.cartService.addToCart(body.productId, body.quantity);
+  @Post(':cartId')
+  addToCart(@Param('cartId') cartId: string, @Body() dto: AddToCartDto) {
+    return this.cartService.addToCart(cartId, dto);
   }
 
-  @Patch(':id')
-  updateCartItem(@Param('id') id: string, @Body() body: { quantity: number }) {
-    return this.cartService.updateQuantity(Number(id), body.quantity);
+  @Delete(':cartId')
+  removeCartById(@Param('cartId') cartId: string) {
+    return this.cartService.removeCartById(cartId);
   }
 
-  @Delete(':id')
-  removeCartItem(@Param('id') id: string) {
-    return this.cartService.removeFromCart(Number(id));
+  @Patch(':cartId/:id')
+  updateCart(
+    @Param('cartId') cartId: string,
+    @Param('id') id: string,
+    @Body() dto: UpdateCartDto,
+  ) {
+    return this.cartService.updateCart(cartId, id, dto);
+  }
+
+  @Delete(':cartId/:id')
+  removeFromCart(@Param('cartId') cartId: string, @Param('id') id: string) {
+    return this.cartService.removeFromCart(cartId, id);
   }
 }

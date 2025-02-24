@@ -1,3 +1,4 @@
+import { ICharacter } from "@/app/(child)/arcane/types/interface";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const characterApi = createApi({
@@ -6,7 +7,7 @@ export const characterApi = createApi({
     baseUrl: "http://localhost:5000/api/arcane",
   }),
   endpoints: (builder) => ({
-    getCharacter: builder.query({
+    getCharacter: builder.query<ICharacter[], void>({
       query: () => "/character",
     }),
   }),

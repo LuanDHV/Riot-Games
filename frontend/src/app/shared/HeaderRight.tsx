@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import {
   IHeaderData,
@@ -250,6 +250,8 @@ export default function HeaderRight({
 
   const [openRiotMerchCart, setOpenRiotMerchCart] = useState<boolean>(false);
 
+  const pathname = usePathname();
+
   const handleOpenRiotMerchCart = () => {
     setOpenRiotMerchCart(!openRiotMerchCart);
   };
@@ -258,23 +260,16 @@ export default function HeaderRight({
     setOpenSubHeaderRight(openSubHeaderRight === index ? null : index);
   };
 
-  const pathname = usePathname();
-
-  const CurrentHeader = pathname.startsWith("/riotgames")
-    ? riotgamesHeader
-    : pathname.startsWith("/leagueoflegends")
-      ? lolHeader
-      : pathname.startsWith("/valorant")
-        ? valorantHeader
-        : pathname.startsWith("/teamfighttactics")
-          ? tftHeader
-          : pathname.startsWith("/wildrift")
-            ? wildriftHeader
-            : pathname.startsWith("/arcane")
-              ? arcaneHeader
-              : pathname.startsWith("/riotmerch")
-                ? riotmerchHeader
-                : null;
+  const CurrentHeader = useMemo(() => {
+    if (pathname.startsWith("/riotgames")) return riotgamesHeader;
+    if (pathname.startsWith("/leagueoflegends")) return lolHeader;
+    if (pathname.startsWith("/valorant")) return valorantHeader;
+    if (pathname.startsWith("/teamfighttactics")) return tftHeader;
+    if (pathname.startsWith("/wildrift")) return wildriftHeader;
+    if (pathname.startsWith("/arcane")) return arcaneHeader;
+    if (pathname.startsWith("/riotmerch")) return riotmerchHeader;
+    return null;
+  }, [pathname]);
 
   const currentIcon = CurrentHeader?.[0]?.icon || null;
   const currentColor = CurrentHeader?.[0]?.color || "#f9f9f9";
@@ -284,8 +279,6 @@ export default function HeaderRight({
   }
 
   const isRiotGamesPage = pathname.startsWith("/riotgames");
-
-  console.log(openRiotMerchCart);
 
   return (
     <>

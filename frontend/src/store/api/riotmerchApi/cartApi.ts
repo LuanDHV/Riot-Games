@@ -1,36 +1,47 @@
+import { ICartItem } from "@/app/riotmerch/types/interface";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
+const getCartId = () => {
+  let cartId = localStorage.getItem("cartId");
+  if (!cartId) {
+    cartId = crypto.randomUUID();
+    localStorage.setItem("cartId", cartId);
+  }
+  return cartId;
+};
 
 export const cartApi = createApi({
   reducerPath: "cartApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/riotmerch" }),
-  tagTypes: ["Cart"],
+  baseQuery: fetchBaseQuery({
+    baseUrl: "http://localhost:5000/api/riotmerch",
+    prepareHeaders: (headers) => {
+      headers.set("cart-id", getCartId());
+      return headers;
+    },
+  }),
   endpoints: (builder) => ({
-    getCart: builder.query({
+    getCart: builder.query<ICartItem[], void>({
       query: () => "/cart",
-      providesTags: ["Cart"],
     }),
-    addToCart: builder.mutation({
-      query: (item) => ({
-        url: "/cart",
+    addToCart: builder.mutation<void, { productId: number; quantity: number }>({
+      query: (body) => ({
+        url: `/cart/${getCartId()}`,
         method: "POST",
-        body: item,
+        body,
       }),
-      invalidatesTags: ["Cart"],
     }),
-    updateQuantity: builder.mutation({
+    updateCart: builder.mutation<void, { id: string; quantity: number }>({
       query: ({ id, quantity }) => ({
         url: `/cart/${id}`,
         method: "PATCH",
         body: { quantity },
       }),
-      invalidatesTags: ["Cart"],
     }),
-    removeFromCart: builder.mutation({
-      query: (id) => ({
+    removeFromCart: builder.mutation<void, { id: string }>({
+      query: ({ id }) => ({
         url: `/cart/${id}`,
         method: "DELETE",
       }),
-      invalidatesTags: ["Cart"],
     }),
   }),
 });
@@ -38,6 +49,6 @@ export const cartApi = createApi({
 export const {
   useGetCartQuery,
   useAddToCartMutation,
-  useUpdateQuantityMutation,
+  useUpdateCartMutation,
   useRemoveFromCartMutation,
 } = cartApi;

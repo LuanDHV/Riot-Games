@@ -6,6 +6,7 @@ import "swiper/css/navigation";
 import { useRouter } from "next/navigation";
 import { useGetProductsQuery } from "@/store/api/riotmerchApi/productsApi";
 import { IProducts, IRiotMerchCartProps } from "../types/interface";
+import { useEffect, useState } from "react";
 
 export default function RiotMerchCart({
   openRiotMerchCart,
@@ -21,9 +22,15 @@ export default function RiotMerchCart({
     isSuccess,
   } = useGetProductsQuery(undefined);
 
-  const randomProducts: IProducts[] = Products
-    ? [...Products].sort(() => Math.random() - 0.5).slice(0, 10)
-    : [];
+  const [randomProducts, setRandomProducts] = useState<IProducts[]>([]);
+
+  useEffect(() => {
+    if (Products) {
+      setRandomProducts(
+        [...Products].sort(() => Math.random() - 0.5).slice(0, 10),
+      );
+    }
+  }, [Products]);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;
@@ -89,7 +96,7 @@ export default function RiotMerchCart({
                       }}
                       spaceBetween={10}
                       slidesPerView={1}
-                      loop={true}
+                      loop={randomProducts.length > 1}
                     >
                       {isSuccess &&
                         randomProducts.map((product: IProducts) => (

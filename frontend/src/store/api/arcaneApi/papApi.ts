@@ -1,3 +1,4 @@
+import { IPaP } from "@/app/(child)/arcane/types/interface";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const papApi = createApi({
@@ -6,7 +7,7 @@ export const papApi = createApi({
     baseUrl: "http://localhost:5000/api/arcane",
   }),
   endpoints: (builder) => ({
-    getPaP: builder.query({
+    getPaP: builder.query<IPaP[], void>({
       query: () => "/pap",
     }),
   }),

@@ -183,12 +183,16 @@ model Products {
   tags         String[]
   descriptions String[]
   imgs         String[]
-  Cart         Cart[]
+  cart         Cart[]
 }
 
 model Cart {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(uuid()) // UUID is string
+  cartId    String // Guest's cart
+  productId Int
   quantity  Int      @default(1)
-  productId Int      @unique
-  product   Products @relation(fields: [productId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  product Products @relation(fields: [productId], references: [id], onDelete: Cascade)
 }

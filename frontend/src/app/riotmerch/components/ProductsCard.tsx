@@ -6,10 +6,12 @@ import "swiper/css/navigation";
 import { IProductCardProps, TypeTags } from "../types/interface";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useAddToCartMutation } from "@/store/api/riotmerchApi/cartApi";
 
 export default function ProductsCard({ product, index }: IProductCardProps) {
   const router = useRouter();
   const [isAdding, setIsAdding] = useState<boolean>(false);
+  const [addToCart, { isLoading: isAddingToCart }] = useAddToCartMutation();
 
   const getTagStyles = (tags: TypeTags) => {
     const styles = {
@@ -32,6 +34,16 @@ export default function ProductsCard({ product, index }: IProductCardProps) {
   const handleDetailProduct = () => {
     const slug = createSlug(product.name);
     router.push(`/riotmerch/${slug}`);
+  };
+
+  const handleAddToCart = async () => {
+    try {
+      await addToCart({ productId: product.id, quantity: 1 }).unwrap();
+      // setIsAdding(!isAdding); //Close modal after adding to cart
+      console.log("Added to cart!!!");
+    } catch (error) {
+      console.error("Failed to add to cart:", error);
+    }
   };
 
   return (
@@ -160,7 +172,11 @@ export default function ProductsCard({ product, index }: IProductCardProps) {
               <p className="text-base">
                 This product is a collector's item intended for ages 14+
               </p>
-              <button className="clip-button-slant mb-4 mt-6 h-[50px] w-full bg-black text-base font-bold uppercase text-white duration-300 ease-in-out hover:brightness-110">
+              <button
+                className="clip-button-slant mb-4 mt-6 h-[50px] w-full bg-black text-base font-bold uppercase text-white duration-300 ease-in-out hover:brightness-110"
+                onClick={handleAddToCart}
+                disabled={isAddingToCart}
+              >
                 Add To Cart
               </button>
             </div>

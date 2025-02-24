@@ -60,3 +60,9 @@ export interface IRiotMerchCartProps {
   openRiotMerchCart: boolean;
   setOpenRiotMerchCart: (open: boolean) => void;
 }
+
+interface ICartItem {
+  id: string;
+  productId: number;
+  quantity: number;
+}
