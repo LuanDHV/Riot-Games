@@ -16,7 +16,7 @@ export default function SliderBanner() {
     isLoading,
     isSuccess,
   } = useGetSliderBannerQuery(undefined);
-  const [activeVideo, setActiveVideo] = useState("");
+  const [activeVideo, setActiveVideo] = useState<string>("");
   const videoRef = useRef<HTMLDivElement | null>(null);
 
   const handleOutsideClick = (e: any) => {

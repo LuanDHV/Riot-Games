@@ -29,22 +29,16 @@ export class CartController {
     return this.cartService.addToCart(cartId, dto);
   }
 
-  @Patch(':cartId/:id')
-  updateCart(
-    @Param('cartId') cartId: string,
-    @Param('id') id: string,
-    @Body() dto: UpdateCartDto,
-  ) {
-    return this.cartService.updateCart(cartId, id, dto);
-  }
-
-  @Delete(':cartId/:id')
-  removeFromCart(@Param('cartId') cartId: string, @Param('id') id: string) {
-    return this.cartService.removeFromCart(cartId, id);
+  @Patch(':cartId')
+  updateCart(@Param('cartId') cartId: string, @Body() dto: UpdateCartDto) {
+    return this.cartService.updateCart(cartId, dto.productId, dto);
   }
 
   @Delete(':cartId')
-  clearCart(@Param('cartId') cartId: string) {
-    return this.cartService.clearCart(cartId);
+  removeFromCart(
+    @Param('cartId') cartId: string,
+    @Body('productId') productId: number,
+  ) {
+    return this.cartService.removeFromCart(cartId, productId);
   }
 }

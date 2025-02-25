@@ -10,6 +10,7 @@ export class CartService {
   async getAllCarts() {
     const cartItems = await this.prisma.cart.findMany({
       include: { product: true },
+      orderBy: { createdAt: 'asc' },
     });
 
     // Group products by cartId
@@ -30,6 +31,7 @@ export class CartService {
         descriptions: item.product.descriptions,
         imgs: item.product.imgs,
         quantity: item.quantity,
+        addedAt: item.createdAt,
       });
     });
 
@@ -40,6 +42,7 @@ export class CartService {
     const cartItems = await this.prisma.cart.findMany({
       where: { cartId },
       include: { product: true },
+      orderBy: { createdAt: 'asc' },
     });
 
     if (cartItems.length === 0) {
@@ -58,6 +61,7 @@ export class CartService {
         descriptions: item.product.descriptions,
         imgs: item.product.imgs,
         quantity: item.quantity,
+        addedAt: item.createdAt,
       })),
     };
   }
@@ -88,9 +92,9 @@ export class CartService {
     });
   }
 
-  async updateCart(cartId: string, id: string, dto: UpdateCartDto) {
+  async updateCart(cartId: string, productId: number, dto: UpdateCartDto) {
     const cartItem = await this.prisma.cart.findFirst({
-      where: { id, cartId },
+      where: { cartId, productId },
     });
 
     if (!cartItem) {
@@ -98,30 +102,20 @@ export class CartService {
     }
 
     return this.prisma.cart.update({
-      where: { id },
+      where: { id: cartItem.id },
       data: { quantity: dto.quantity },
     });
   }
 
-  async removeFromCart(cartId: string, id: string) {
+  async removeFromCart(cartId: string, productId: number) {
     const cartItem = await this.prisma.cart.findFirst({
-      where: { id, cartId },
+      where: { cartId, productId },
     });
 
     if (!cartItem) {
       throw new NotFoundException('Cart item not found');
     }
 
-    return this.prisma.cart.delete({ where: { id } });
-  }
-
-  async clearCart(cartId: string) {
-    const cartItems = await this.prisma.cart.findMany({ where: { cartId } });
-
-    if (cartItems.length === 0) {
-      throw new NotFoundException('Cart not found');
-    }
-
-    return this.prisma.cart.deleteMany({ where: { cartId } });
+    return this.prisma.cart.delete({ where: { id: cartItem.id } });
   }
 }

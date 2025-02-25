@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
 export default function DetailProduct() {
   const router = useRouter();
   const { slug } = useParams(); // Get slug from URL
-  const [showAddToCart, setShowAddToCart] = useState(false);
+  const [showAddToCart, setShowAddToCart] = useState<boolean>(false);
   const {
     data: Products,
     error,

@@ -12,6 +12,10 @@ export class AddToCartDto {
 
 export class UpdateCartDto {
   @IsInt()
+  @IsNotEmpty()
+  productId: number;
+
+  @IsInt()
   @Min(1)
   quantity: number;
 }

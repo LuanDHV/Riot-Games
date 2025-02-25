@@ -26,6 +26,8 @@ export default function Banner() {
 
   // Automatically switch Banners every 3 seconds
   useEffect(() => {
+    if (!Banner || Banner.length === 0) return;
+
     const interval = setInterval(() => {
       setSelectedBanner((prev) => {
         if (!prev) return Banner[0];

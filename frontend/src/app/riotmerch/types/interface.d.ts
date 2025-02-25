@@ -62,9 +62,37 @@ export interface IRiotMerchCartProps {
   setOpenRiotMerchCart: (open: boolean) => void;
 }
 
+export interface ICart {
+  cartId: string;
+  products: ICartItem[];
+}
+
 export interface ICartItem {
-  id: string;
+  id: number;
+  name: string;
+  price: number;
+  logo: string;
+  category: string;
+  tags: string[];
+  descriptions: string[];
+  imgs: string[];
+  quantity: number;
+}
+
+export interface ICartAdd {
   productId: number;
   quantity: number;
-  product: IProducts;
+}
+
+export interface ICartUpdate {
+  productId: number;
+  quantity: number;
+}
+
+export interface ICartRemove {
+  productId: number;
+}
+
+export interface ICartClear {
+  cartId: string;
 }

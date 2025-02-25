@@ -39,8 +39,8 @@ export default function ProductsCard({ product, index }: IProductCardProps) {
   const handleAddToCart = async () => {
     try {
       await addToCart({ productId: product.id, quantity: 1 }).unwrap();
-      // setIsAdding(!isAdding); //Close modal after adding to cart
-      console.log("Added to cart!!!");
+      setIsAdding(!isAdding); //Close modal after adding to cart
+      console.log("Added to cart successfully !");
     } catch (error) {
       console.error("Failed to add to cart:", error);
     }

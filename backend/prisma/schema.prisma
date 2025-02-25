@@ -187,10 +187,10 @@ model Products {
 }
 
 model Cart {
-  id     String @id @default(uuid()) // UUID is string
-  cartId String // Guest's cart
-
+  id        String   @id @default(uuid()) // UUID is string
+  cartId    String // Guest's cart
   productId Int
   quantity  Int      @default(1)
+  createdAt DateTime @default(now())
   product   Products @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
