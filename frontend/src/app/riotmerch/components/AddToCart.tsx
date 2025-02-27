@@ -1,8 +1,26 @@
-export default function AddToCart() {
+import { useAddToCartMutation } from "@/store/api/riotmerchApi/cartApi";
+import { ICartAdd } from "../types/interface";
+
+export default function AddToCart({ productId, quantity }: ICartAdd) {
+  const [addToCart, { isLoading: isAddingToCart }] = useAddToCartMutation();
+
+  const handleAddToCart = async () => {
+    try {
+      await addToCart({ productId, quantity }).unwrap();
+
+      console.log("Added to cart successfully !");
+    } catch (error) {
+      console.error("Failed to add to cart:", error);
+    }
+  };
   return (
     <>
       <div className="flex gap-5">
-        <div className="hidden h-[50px] w-[240px] items-center justify-center bg-[#efe7db] duration-300 ease-in-out hover:cursor-pointer hover:brightness-90 lg:flex">
+        <button
+          className="hidden h-[50px] w-[240px] items-center justify-center bg-[#efe7db] duration-300 ease-in-out hover:cursor-pointer hover:brightness-90 lg:flex"
+          onClick={handleAddToCart}
+          disabled={isAddingToCart}
+        >
           <img
             src="/imgs/riotmerch/products/detail/add-to-cart-button-1.png"
             alt="Image"
@@ -14,7 +32,7 @@ export default function AddToCart() {
             src="/imgs/riotmerch/products/detail/add-to-cart-button-2.png"
             alt="Image"
           />
-        </div>
+        </button>
         <button className="clip-cart-slant flex h-[50px] w-[50px] items-center justify-center bg-red-500">
           <img
             src="/imgs/riotmerch/products/cart-fast-icon.svg"

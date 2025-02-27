@@ -14,7 +14,7 @@ import { useRouter } from "next/navigation";
 export default function DetailProduct() {
   const router = useRouter();
   const { slug } = useParams(); // Get slug from URL
-  const [showAddToCart, setShowAddToCart] = useState<boolean>(false);
+  const [showAddToCart, setShowAddToCart] = useState(false);
   const {
     data: Products,
     error,
@@ -251,7 +251,7 @@ export default function DetailProduct() {
                 <p className="font-bold">Expected ship date: Dec 31, 2025</p>
               </div>
               <div className="hidden py-4 lg:block">
-                <AddToCart />
+                <AddToCart productId={product.id} quantity={1} />
               </div>
               <div className="text-base">
                 <div className="my-8 hidden border border-[#d0d0d0]"></div>
@@ -502,7 +502,7 @@ export default function DetailProduct() {
                   </span>
                 </div>
 
-                <AddToCart />
+                <AddToCart productId={product.id} quantity={1} />
               </div>
             </div>
           </div>
