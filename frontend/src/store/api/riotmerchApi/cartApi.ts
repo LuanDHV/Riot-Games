@@ -43,7 +43,7 @@ export const cartApi = createApi({
       query: ({ productId }) => ({
         url: `/cart/${getCartId()}`,
         method: "DELETE",
-        body: { productId }, // Gửi productId trong body
+        body: { productId },
       }),
       invalidatesTags: ["Cart"],
     }),

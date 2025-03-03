@@ -45,10 +45,6 @@ export class CartService {
       orderBy: { createdAt: 'asc' },
     });
 
-    if (cartItems.length === 0) {
-      throw new NotFoundException('Cart not found');
-    }
-
     return {
       cartId,
       products: cartItems.map((item) => ({
@@ -116,6 +112,18 @@ export class CartService {
       throw new NotFoundException('Cart item not found');
     }
 
-    return this.prisma.cart.delete({ where: { id: cartItem.id } });
+    await this.prisma.cart.delete({ where: { id: cartItem.id } });
+
+    const remainingItems = await this.prisma.cart.findMany({
+      where: { cartId },
+    });
+
+    return {
+      cartId,
+      products: remainingItems.map((item) => ({
+        id: item.productId,
+        quantity: item.quantity,
+      })),
+    };
   }
 }
