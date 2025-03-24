@@ -1,5 +1,6 @@
 import { useAddToCartMutation } from "@/store/api/riotmerchApi/cartApi";
 import { ICartAdd } from "../types/interface";
+import { toast } from "react-toastify";
 
 export default function AddToCart({ productId, quantity }: ICartAdd) {
   const [addToCart, { isLoading: isAddingToCart }] = useAddToCartMutation();
@@ -7,9 +8,10 @@ export default function AddToCart({ productId, quantity }: ICartAdd) {
   const handleAddToCart = async () => {
     try {
       await addToCart({ productId, quantity }).unwrap();
-
       console.log("Added to cart successfully !");
+      toast.success("Added to cart successfully");
     } catch (error) {
+      toast.error("Failed to add to cart");
       console.error("Failed to add to cart:", error);
     }
   };

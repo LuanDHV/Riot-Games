@@ -1,6 +1,7 @@
 // RootLayout.tsx
 import "./globals.css";
 import StoreProvider from "../store/providers/StoreProvider";
+import ToastProvider from "../store/providers/ToastProvider";
 
 export const metadata = {
   title: "Riot Games",
@@ -16,7 +17,10 @@ export default function RootLayout({
   return (
     <StoreProvider>
       <html lang="en">
-        <body>{children}</body>
+        <body>
+          <ToastProvider />
+          {children}
+        </body>
       </html>
     </StoreProvider>
   );

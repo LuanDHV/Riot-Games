@@ -18,6 +18,7 @@ import {
   useRemoveFromCartMutation,
   useUpdateCartMutation,
 } from "@/store/api/riotmerchApi/cartApi";
+import { toast } from "react-toastify";
 
 export default function RiotMerchCart({
   openRiotMerchCart,
@@ -59,8 +60,10 @@ export default function RiotMerchCart({
         productId: item.productId,
         quantity: item.quantity + 1,
       });
+      toast.success("Increased quantity successfully");
       console.log("Increased quantity:", item.productId);
     } catch (error) {
+      toast.success("Increased quantity successfully");
       console.error("Failed to increase", error);
     }
   };
@@ -71,8 +74,10 @@ export default function RiotMerchCart({
         productId: item.productId,
         quantity: item.quantity - 1,
       });
+      toast.success("Decreased quantity successfully");
       console.log("Decreased quantity:", item.productId);
     } catch (error) {
+      toast.error("Failed to decrease quantity");
       console.error("Failed to decrease", error);
     }
   };
@@ -80,8 +85,10 @@ export default function RiotMerchCart({
   const handleRemoveItem = async (item: ICartRemove) => {
     try {
       await removeFromCart({ productId: item.productId });
+      toast.success("Removed product successfully");
       console.log("Removed item:", item.productId);
     } catch (error) {
+      toast.success("Failed removed product ");
       console.error("Failed to remove item", error);
     }
   };

@@ -7,6 +7,7 @@ import { IProductCardProps, TypeTags } from "../types/interface";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAddToCartMutation } from "@/store/api/riotmerchApi/cartApi";
+import { toast } from "react-toastify";
 
 export default function ProductsCard({ product, index }: IProductCardProps) {
   const router = useRouter();
@@ -41,7 +42,9 @@ export default function ProductsCard({ product, index }: IProductCardProps) {
       await addToCart({ productId: product.id, quantity: 1 }).unwrap();
       setIsAdding(!isAdding); //Close modal after adding to cart
       console.log("Added to cart successfully !");
+      toast.success("Added to cart successfully");
     } catch (error) {
+      toast.error("Failed to add to cart");
       console.error("Failed to add to cart:", error);
     }
   };
