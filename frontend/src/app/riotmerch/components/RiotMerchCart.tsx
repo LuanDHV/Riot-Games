@@ -319,7 +319,10 @@ export default function RiotMerchCart({
             {/* Show When Cart is not Empty */}
             {CartSuccess && CartItems?.products.length > 0 && (
               <div className="w-full border-t-[1px] border-[#d0d0d0] p-8">
-                <button className="clip-button-slant h-[50px] w-full bg-[#eb0029] text-base font-bold uppercase text-white duration-300 ease-in-out">
+                <button
+                  className="clip-button-slant h-[50px] w-full bg-[#eb0029] text-base font-bold uppercase text-white duration-300 ease-in-out"
+                  onClick={() => router.push("/checkout")}
+                >
                   Check Out
                 </button>
               </div>
