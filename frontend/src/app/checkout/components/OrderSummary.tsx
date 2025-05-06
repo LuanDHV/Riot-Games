@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import PaymentForm from "./PaymentForm";
+import DeliveryForm from "./DeliveryForm";
 
 export default function OrderSummary() {
   const [isOpen, setIsOpen] = useState(false);
@@ -94,95 +96,40 @@ export default function OrderSummary() {
       {/* Delivery */}
       <div className="flex flex-col gap-3 px-5 py-3">
         <h2 className="text-xl font-semibold text-[#000000]">Delivery</h2>
-        <div className="">
-          <div className="rounded-lg border border-[#ffdeb3] bg-[#ffeedb] p-4">
-            <div className="flex">
-              <div className="mr-3 mt-[2px]">
-                <img
-                  src="/imgs/checkout/ordersummary/warning-icon.svg"
-                  alt="Warning Icon"
-                />
-              </div>
-              <span className="text-sm text-[#241700]">
-                Please ensure your address is correct to avoid processing or
-                delivery issues
-              </span>
+        <div className="rounded-lg border border-[#ffdeb3] bg-[#ffeedb] p-4">
+          <div className="flex">
+            <div className="mr-3 mt-[2px]">
+              <img
+                src="/imgs/checkout/ordersummary/warning-icon.svg"
+                alt="Warning Icon"
+              />
             </div>
-          </div>
-          {/* Country/Region */}
-          <div className="mt-3">
-            <input
-              type="text"
-              placeholder="Country/Region"
-              className="w-full rounded-lg border px-[11px] py-[13.5px] outline-blue-500 placeholder:text-sm"
-            />
-          </div>
-          {/* First Name */}
-          <div className="mt-3">
-            <input
-              type="text"
-              placeholder="First Name"
-              className="w-full rounded-lg border px-[11px] py-[13.5px] outline-blue-500 placeholder:text-sm"
-            />
-          </div>
-          {/* Last Name */}
-          <div className="mt-3">
-            <input
-              type="text"
-              placeholder="Last Name"
-              className="w-full rounded-lg border px-[11px] py-[13.5px] outline-blue-500 placeholder:text-sm"
-            />
-          </div>
-          {/* Address */}
-          <div className="mt-3">
-            <input
-              type="text"
-              placeholder="Address"
-              className="w-full rounded-lg border px-[11px] py-[13.5px] outline-blue-500 placeholder:text-sm"
-            />
-          </div>
-          {/* Apartment, suite, etc. (optional) */}
-          <div className="mt-3">
-            <input
-              type="text"
-              placeholder="Apartment, suite, etc. (optional)"
-              className="w-full rounded-lg border px-[11px] py-[13.5px] outline-blue-500 placeholder:text-sm"
-            />
-          </div>
-          {/* City */}
-          <div className="mt-3">
-            <input
-              type="text"
-              placeholder="City"
-              className="w-full rounded-lg border px-[11px] py-[13.5px] outline-blue-500 placeholder:text-sm"
-            />
-          </div>
-          {/* Postal Code */}
-          <div className="mt-3">
-            <input
-              type="text"
-              placeholder="Postal Code"
-              className="w-full rounded-lg border px-[11px] py-[13.5px] outline-blue-500 placeholder:text-sm"
-            />
-          </div>
-          {/* Phone (optional) */}
-          <div className="mt-3">
-            <input
-              type="text"
-              placeholder="Phone (optional)"
-              className="w-full rounded-lg border px-[11px] py-[13.5px] outline-blue-500 placeholder:text-sm"
-            />
+            <span className="text-sm text-[#241700]">
+              Please ensure your address is correct to avoid processing or
+              delivery issues
+            </span>
           </div>
         </div>
+        <DeliveryForm />
       </div>
       {/* Shipping method */}
       <div className="flex flex-col gap-3 px-5 py-3">
         <h2 className="text-base font-semibold text-[#000000]">
           Shipping method
         </h2>
-        <p className="p-4 text-sm text-[#707070]">
+        <p className="rounded-lg bg-[#f5f5f5] p-4 text-sm text-[#707070]">
           Enter your shipping address to view available shipping methods.
         </p>
+      </div>
+      {/* Payment method */}
+      <div className="flex flex-col gap-1 px-5 py-3">
+        <h2 className="text-base font-semibold text-[#000000]">
+          Payment method
+        </h2>
+        <p className="text-sm text-[#707070]">
+          All transactions are secure and encrypted.
+        </p>
+        <PaymentForm />
       </div>
     </>
   );
