@@ -1,9 +1,9 @@
-import OrderSummary from "./components/OrderSummary";
+import CheckOutForm from "./components/CheckOutForm";
 
 export default function CheckOut() {
   return (
     <>
-      <OrderSummary />
+      <CheckOutForm />
     </>
   );
 }

@@ -3,8 +3,9 @@ import Link from "next/link";
 import { useState } from "react";
 import PaymentForm from "./PaymentForm";
 import DeliveryForm from "./DeliveryForm";
+import BillingAddressForm from "./BillingAddressForm";
 
-export default function OrderSummary() {
+export default function CheckOutForm() {
   const [isOpen, setIsOpen] = useState(false);
   const handleOpenDetailCart = () => {
     setIsOpen(!isOpen);
@@ -122,14 +123,23 @@ export default function OrderSummary() {
         </p>
       </div>
       {/* Payment method */}
-      <div className="flex flex-col gap-1 px-5 py-3">
-        <h2 className="text-base font-semibold text-[#000000]">
-          Payment method
-        </h2>
-        <p className="text-sm text-[#707070]">
-          All transactions are secure and encrypted.
-        </p>
+      <div className="flex flex-col gap-3 px-5 py-3">
+        <div className="flex flex-col gap-1">
+          <h2 className="text-base font-semibold text-[#000000]">
+            Payment method
+          </h2>
+          <p className="text-sm text-[#707070]">
+            All transactions are secure and encrypted.
+          </p>
+        </div>
         <PaymentForm />
+      </div>
+      {/* Billing Address */}
+      <div className="flex flex-col gap-3 px-5 py-3">
+        <h2 className="text-base font-semibold text-[#000000]">
+          Billing address
+        </h2>
+        <BillingAddressForm />
       </div>
     </>
   );

@@ -7,7 +7,6 @@ export default function PaymentForm() {
 
   return (
     <>
-      {/* Radio buttons */}
       <form className="">
         {/* Credit Card Form */}
         <label
