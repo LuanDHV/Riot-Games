@@ -28,7 +28,7 @@ export default function BillingAddressForm() {
 
         {/* Use a different billing address */}
         <label
-          className={`flex cursor-pointer items-center gap-3 rounded-b-xl border p-[14px] text-sm ${billingAddress === "Use a different billing address" ? "rounded-b-none border-blue-500 bg-[#F0F5FF]" : ""}`}
+          className={`flex cursor-pointer items-center gap-3 border p-[14px] text-sm ${billingAddress === "Use a different billing address" ? "rounded-b-none border-blue-500 bg-[#F0F5FF]" : "rounded-b-xl"}`}
         >
           <input
             type="radio"

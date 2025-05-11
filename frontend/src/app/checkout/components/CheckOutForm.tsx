@@ -4,42 +4,16 @@ import { useState } from "react";
 import PaymentForm from "./PaymentForm";
 import DeliveryForm from "./DeliveryForm";
 import BillingAddressForm from "./BillingAddressForm";
+import OrderSummary from "./OrderSummary";
 
 export default function CheckOutForm() {
-  const [isOpen, setIsOpen] = useState(false);
-  const handleOpenDetailCart = () => {
-    setIsOpen(!isOpen);
+  const [showDetailOrderSummary, setShowDetailOrderSummary] = useState(false);
+  const handleShowDetailOrderSummary = () => {
+    setShowDetailOrderSummary(!showDetailOrderSummary);
   };
 
   return (
     <>
-      {/* Order Summary */}
-      <div className="p-5">
-        <img
-          src="/imgs/checkout/ordersummary/riotgames-black.png"
-          alt="Riot Game Icon"
-          className="h-10 w-[140px] object-contain"
-        />
-
-        <div
-          className="flex cursor-pointer justify-between border-b border-t px-2 py-5 text-[#1773b0]"
-          onClick={handleOpenDetailCart}
-        >
-          <div className="flex items-center">
-            <span className="text-sm">Order Summary</span>
-            <img
-              src={
-                !isOpen
-                  ? "/imgs/checkout/ordersummary/arrow-down-icon.svg"
-                  : "/imgs/checkout/ordersummary/arrow-up-icon.svg"
-              }
-              alt={!isOpen ? "Arrow Down" : "Arrow Up"}
-              className="ml-2 h-[14px] w-[14px] object-cover"
-            />
-          </div>
-          <strong className="text-lg">$29.99</strong>
-        </div>
-      </div>
       {/* Contact information */}
       <div className="px-5 py-3">
         <h2 className="text-center text-sm text-[#707070]">Express checkout</h2>
@@ -88,7 +62,10 @@ export default function CheckOutForm() {
           />
         </div>
         <div className="mt-3 flex items-center">
-          <input type="checkbox" className="h-5 w-5 rounded-lg" />
+          <input
+            type="checkbox"
+            className="h-5 w-5 cursor-pointer rounded-lg"
+          />
           <label className="pl-[11px] text-sm">
             Keep me up to date on news and exclusive offers
           </label>
@@ -140,6 +117,43 @@ export default function CheckOutForm() {
           Billing address
         </h2>
         <BillingAddressForm />
+      </div>
+      {/* Order Summary */}
+      <div className="flex flex-col px-5 py-3">
+        <div className="flex items-center justify-between">
+          <h2 className="pb-5 text-[21px] font-semibold text-[#000000]">
+            Order Summary
+          </h2>
+          <div
+            className="flex cursor-pointer items-center text-sm text-[#1773b0]"
+            onClick={handleShowDetailOrderSummary}
+          >
+            {showDetailOrderSummary ? "Hide" : "Show"}
+            <img
+              src={
+                !showDetailOrderSummary
+                  ? "/imgs/checkout/ordersummary/arrow-down-icon.svg"
+                  : "/imgs/checkout/ordersummary/arrow-up-icon.svg"
+              }
+              alt={!showDetailOrderSummary ? "Arrow Down" : "Arrow Up"}
+              className="ml-2 h-[14px] w-[14px] object-cover"
+            />
+          </div>
+        </div>
+        <OrderSummary showDetailOrderSummary={showDetailOrderSummary} />
+      </div>
+      {/* Pay Now */}
+      <div className="px-5 pb-6 pt-10">
+        <button className="h-[52px] w-full rounded-xl bg-[#1773B0] p-[14px] text-sm font-semibold text-white duration-300 ease-in-out hover:bg-[#105989]">
+          Pay now
+        </button>
+      </div>
+      {/* Footer */}
+      <div className="flex border-t bg-[#0000000b] p-5 text-sm text-[#1773b0] underline">
+        <div className="w-1/4">Refund policy</div>
+        <div className="w-1/4">Shipping policy</div>
+        <div className="w-1/4">Privacy policy</div>
+        <div className="w-1/4">Terms of service</div>
       </div>
     </>
   );
